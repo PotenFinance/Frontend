@@ -3,15 +3,15 @@ import { useEffect } from 'react';
 
 export default function Home() {
   const handleLogin = () => {
-    if (Kakao.isInitialized()) {
-      Kakao.Auth.authorize({
+    if (window.Kakao.isInitialized()) {
+      window.Kakao.Auth.authorize({
         redirectUri: process.env.NEXT_PUBLIC_REDIRECT_URI,
       });
     }
   };
 
   useEffect(() => {
-    Kakao.init(process.env.NEXT_PUBLIC_KAKAO_KEY);
+    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_KEY);
   }, []);
 
   return (
