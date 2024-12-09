@@ -40,7 +40,6 @@ export const global = css`
 
   // 페이퍼로지 700
   @font-face {
-    // 페이퍼 로지 600
     font-family: 'Paperlogy';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2')
       format('woff2');
