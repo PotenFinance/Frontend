@@ -1,3 +1,4 @@
+import { getItem } from '@/utils/localStorage';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
@@ -7,7 +8,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   config => {
-    const token = localStorage.getItem('@token');
+    const token = getItem('@token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -19,7 +20,7 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   response => response,
   error => {
-    const token = localStorage.getItem('@token');
+    const token = getItem('@token');
     if (error.response.status === 401) {
       if (token) {
         console.error('401 Unauthorized: 토큰 재발급 필요');
