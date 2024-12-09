@@ -5,13 +5,13 @@ export default function Home() {
   const handleLogin = () => {
     if (window.Kakao.isInitialized()) {
       window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_REDIRECT_URI,
+        redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
       });
     }
   };
 
   useEffect(() => {
-    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_KEY);
+    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
   }, []);
 
   return (
