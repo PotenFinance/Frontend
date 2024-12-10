@@ -3,6 +3,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
+import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 
 function BeginStep3() {
   const { color } = useTheme();
@@ -20,7 +21,7 @@ function BeginStep3() {
         </InputWrap>
         <List>
           <Item>
-            <span>로고</span>
+            <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
             <div>
               <p>스포티파이</p>
               <span>음악</span>

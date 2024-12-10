@@ -5,9 +5,13 @@ import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import PlusIcon from '@assets/icons/Plus';
 import Button from '@components/common/Button';
+import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
+import { useTheme } from '@emotion/react';
 
 function BeginStep2() {
   const router = useRouter();
+  const { color } = useTheme();
+
   return (
     <>
       <BackHeader handleBack={() => router.push('/begin/step/1')} />
@@ -16,7 +20,7 @@ function BeginStep2() {
           <BeginStepTitle>사용하고 있는 구독 서비스를 선택해 주세요.</BeginStepTitle>
           <SubList>
             <SubItem>
-              <img />
+              <NetflixLargeLogo width={148} height={56} color={color.brand.netflix} />
               <div>
                 <div>
                   <span>넷플릭스</span>
@@ -61,6 +65,10 @@ const Item = styled.li`
 `;
 
 const SubItem = styled(Item)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
   & > div {
     display: flex;
     justify-content: space-between;
