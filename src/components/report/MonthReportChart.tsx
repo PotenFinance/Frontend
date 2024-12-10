@@ -1,7 +1,11 @@
+import ArrowDown from '@assets/icons/arrow/ArrowDown';
 import BarChart from '@components/common/chart/BarChart';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 
 function MonthReportChart() {
+  const { color } = useTheme();
+
   return (
     <Wrap>
       <FlexWrap>
@@ -16,7 +20,7 @@ function MonthReportChart() {
             <p>
               전월대비 <span>17,890원</span>
             </p>
-            <span>V</span>
+            <ArrowDown color={color.theme.positive} />
           </div>
         </MonthPriceWrap>
       </FlexWrap>
@@ -84,12 +88,12 @@ const MonthPriceWrap = styled.div`
     display: flex;
     align-items: center;
     gap: 2px;
+    font-family: ${({ theme }) => theme.typography.title_4.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.title_4.fontWeight};
+    font-size: ${({ theme }) => theme.typography.title_4.fontSize};
+    line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.title_4.letterSpacing};
     p {
-      font-family: ${({ theme }) => theme.typography.title_4.fontFamily};
-      font-weight: ${({ theme }) => theme.typography.title_4.fontWeight};
-      font-size: ${({ theme }) => theme.typography.title_4.fontSize};
-      line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
-      letter-spacing: ${({ theme }) => theme.typography.title_4.letterSpacing};
       span {
         color: ${({ theme }) => theme.color.theme.positive};
       }
