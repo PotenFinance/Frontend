@@ -33,4 +33,6 @@ const Nav = styled.nav`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  position: fixed;
+  bottom: 0;
 `;
