@@ -18,8 +18,9 @@ function BeginStep2() {
       <BeginStepContainer>
         <ContentWrap>
           <BeginStepTitle>사용하고 있는 구독 서비스를 선택해 주세요.</BeginStepTitle>
-          <SubList>
-            <SubItem>
+          <ServiceList>
+            {/* 컴포넌트 분리 AddedServiceItem */}
+            <ServiceItem>
               <NetflixLargeLogo width={148} height={56} color={color.brand.netflix} />
               <div>
                 <div>
@@ -28,13 +29,14 @@ function BeginStep2() {
                 </div>
                 <DeleteButton>삭제</DeleteButton>
               </div>
-            </SubItem>
+            </ServiceItem>
             <Link href={'/begin/step/3'}>
+              {/* 컴포넌트 분리 AddServiceItem */}
               <PlusItem>
                 <PlusIcon color="white" width={41} height={41} />
               </PlusItem>
             </Link>
-          </SubList>
+          </ServiceList>
         </ContentWrap>
         <Link href={'/begin/step/4'}>
           <Button text="다 선택했어요." />
@@ -52,7 +54,7 @@ const ContentWrap = styled.div`
   gap: 20px;
 `;
 
-const SubList = styled.ul`
+const ServiceList = styled.ul`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
@@ -64,7 +66,7 @@ const Item = styled.li`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 `;
 
-const SubItem = styled(Item)`
+const ServiceItem = styled(Item)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

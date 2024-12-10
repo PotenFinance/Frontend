@@ -18,6 +18,7 @@ function BeginStep4() {
       <BeginStepContainer>
         <ContentWrap>
           <BeginStepTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</BeginStepTitle>
+          {/* 컴포넌트 분리 ServiceTabs */}
           <Tabs>
             <Tab>
               <SpotifySmallLogo width={40} height={40} color={color.base.gray.base} />
@@ -25,6 +26,7 @@ function BeginStep4() {
             </Tab>
           </Tabs>
           <div>
+            {/* 컴포넌트 분리 ServiceOption */}
             <Option>
               <OptionTitle>
                 <Status status="warn" />
@@ -41,6 +43,7 @@ function BeginStep4() {
               </OptionList>
             </Option>
             <Divider />
+            {/* 컴포넌트 분리 ServiceOption */}
             <Option>
               <OptionTitle>
                 <Status status="error" />

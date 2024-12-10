@@ -6,20 +6,22 @@ import BackHeader from '../BackHeader';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 
 function BeginStep3() {
-  const { color } = useTheme();
   const router = useRouter();
+  const { color } = useTheme();
 
   return (
     <>
       <BackHeader handleBack={() => router.push('/begin/step/2')} />
       <Container>
-        <InputWrap>
+        {/* 컴포넌트 분리 ServiceSearch */}
+        <Search>
           <Input />
           <button>
             <SearchIcon width={44} height={44} color={color.secondary} />
           </button>
-        </InputWrap>
+        </Search>
         <List>
+          {/* 컴포넌트 분리 SearchedServiceItem */}
           <Item>
             <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
             <div>
@@ -42,7 +44,7 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const InputWrap = styled.div`
+const Search = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;
