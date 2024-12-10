@@ -7,7 +7,6 @@ export default function NavTab() {
   const [activeTabPathName, setActiveTabPathName] = useState('/');
 
   const handleTabClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     setActiveTabPathName(e.currentTarget.pathname);
   };
 
