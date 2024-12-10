@@ -21,10 +21,10 @@ export default function NavTab() {
             href={menu.path}
             menuname={menu.name}
             onClick={handleTabClick}
-            className={`${activeTabPathName === menu.path ? 'active' : null}`}
+            active={activeTabPathName === menu.path}
           >
             <Icon className={`tab-icon ${menu.path.slice(1)}`} width={25} height={25} />
-            <span className={`tab-name`}>{menu.name}</span>
+            <TabName active={activeTabPathName === menu.path}>{menu.name}</TabName>
           </Tab>
         );
       })}
@@ -45,10 +45,10 @@ const Nav = styled.nav`
   box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.1);
 `;
 
-const Tab = styled(Link)<{ menuname: string }>`
+const Tab = styled(Link)<{ active: boolean; menuname: string }>`
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: ${({ theme, active }) => (active ? theme.color.primary._1 : 'transparent')};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,18 +56,8 @@ const Tab = styled(Link)<{ menuname: string }>`
   border-top-right-radius: ${({ menuname }) => (menuname !== '마이페이지' ? '16px' : 0)};
   border-top-left-radius: ${({ menuname }) => (menuname !== '홈' ? '16px' : 0)};
 
-  // 비활성화상태 탭 이름
-  & .tab-name {
-    margin-top: 3px;
-    font-size: ${({ theme }) => theme.typography.title_3.fontSize};
-    font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
-    color: ${({ theme }) => theme.color.base.black};
-  }
-
   // 활성화 탭
   &.active {
-    background-color: ${({ theme }) => theme.color.primary._1};
-
     // 활성화 탭 아이콘
     & .tab-icon {
       // 홈
@@ -94,10 +84,12 @@ const Tab = styled(Link)<{ menuname: string }>`
         }
       }
     }
-
-    // 활성화상태 탭 이름
-    & .tab-name {
-      color: ${({ theme }) => theme.color.base.white};
-    }
   }
+`;
+
+const TabName = styled.span<{ active: boolean }>`
+  margin-top: 3px;
+  font-size: ${({ theme }) => theme.typography.title_3.fontSize};
+  font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
+  color: ${({ theme, active }) => (active ? theme.color.base.white : theme.color.base.black)};
 `;
