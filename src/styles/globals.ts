@@ -7,9 +7,8 @@ export const global = css`
   }
 
   body {
-    font-family: 'Pretendard JP', 'Paperlogy', 'S-CoreDream', Arial, Helvetica, sans-serif,
-      -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-      Droid Sans;
+    font-family: 'Pretendard JP', Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans;
   }
 
   * {
