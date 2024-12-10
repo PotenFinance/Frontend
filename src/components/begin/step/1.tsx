@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { BeginMainButton, BeginStepTitle } from '../styled';
+import { BeginStepTitle } from '../styled';
 import Link from 'next/link';
 import BackHeader from '../BackHeader';
 import { useRouter } from 'next/router';
+import Button from '@components/common/Button';
 
 function BeginStep1() {
   const router = useRouter();
@@ -22,7 +23,7 @@ function BeginStep1() {
           </div>
         </InputWrap>
         <Link href={'/begin/step/2'}>
-          <BeginMainButton>결정했어요.</BeginMainButton>
+          <Button text="결정했어요." />
         </Link>
       </Container>
     </>

@@ -1,10 +1,13 @@
-import { BeginMainButton } from '@components/begin/styled';
+import EyeIcon from '@assets/icons/Eye';
+import Button from '@components/common/Button';
+import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect } from 'react';
 
 function BeginPage() {
+  const { color } = useTheme();
+
   const handleLogin = () => {
     if (window.Kakao.isInitialized()) {
       window.Kakao.Auth.authorize({
@@ -26,13 +29,16 @@ function BeginPage() {
       </Title>
       <Image src={'/images/cards.png'} alt="cards" layout="responsive" width={374} height={360} />
       <ButtonWrap>
-        <Link href={'/begin/step/1'}>
-          <BeginMainButton>시작하기</BeginMainButton>
-        </Link>
-        <LoginButton onClick={handleLogin}>
-          <Image src={'/images/kakao-logo.png'} alt="kakao-logo" width={24} height={24} />
-          카카오 계정으로 로그인하기
-        </LoginButton>
+        <Button
+          text="카카오 계정으로 로그인"
+          icon={<Image src={'/images/kakao-logo.png'} alt="kakao-logo" width={24} height={24} />}
+          bgColor={color.secondary}
+          textColor={color.base.black}
+          onClick={handleLogin}
+        />
+        <ExploreButton>
+          <EyeIcon width={20} height={20} /> 써빗 둘러보기
+        </ExploreButton>
       </ButtonWrap>
     </Container>
   );
@@ -68,7 +74,7 @@ const ButtonWrap = styled.div`
   gap: 20px;
 `;
 
-const LoginButton = styled.button`
+const ExploreButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

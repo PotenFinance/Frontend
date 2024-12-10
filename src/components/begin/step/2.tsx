@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { BeginMainButton, BeginStepTitle } from '../styled';
+import { BeginStepTitle } from '../styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import PlusIcon from '@assets/icons/Plus';
+import Button from '@components/common/Button';
 
 function BeginStep2() {
   const router = useRouter();
@@ -32,7 +33,7 @@ function BeginStep2() {
           </SubList>
         </ContentWrap>
         <Link href={'/begin/step/4'}>
-          <BeginMainButton>다 선택했어요.</BeginMainButton>
+          <Button text="다 선택했어요." />
         </Link>
       </Container>
     </>
