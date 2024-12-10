@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 export const global = css`
+  /* global styles */
   html,
   body {
     max-width: 100vw;
@@ -23,14 +24,14 @@ export const global = css`
     text-decoration: none;
   }
 
-  // css reset
+  /* css reset */
   ul {
     list-style: none;
   }
 
-  // Web fonts
+  /* web fonts */
+  /* 페이퍼로지 600 */
   @font-face {
-    // 페이퍼로지 600
     font-family: 'Paperlogy';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2')
       format('woff2');
@@ -38,7 +39,7 @@ export const global = css`
     font-style: normal;
   }
 
-  // 페이퍼로지 700
+  /* 페이퍼로지 700 */
   @font-face {
     font-family: 'Paperlogy';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2')
@@ -47,7 +48,7 @@ export const global = css`
     font-style: normal;
   }
 
-  // 에스코어드림
+  /* 에스코어드림 */
   @font-face {
     font-family: 'S-CoreDream';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff')
