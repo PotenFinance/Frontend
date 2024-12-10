@@ -85,6 +85,11 @@ interface ITypography {
         | {
             [key: string]: string;
           };
+      letterSpacing:
+        | string
+        | {
+            [key: string]: string;
+          };
     };
   };
 }
@@ -95,51 +100,59 @@ const typography = {
     fontWeight: 600,
     fontSize: '20px',
     lineHeight: '28px',
+    letterSpacing: '-0.0116em',
   },
   heading_2: {
     fontFamily: 'Paperlogy',
     fontWeight: 600,
     fontSize: '16px',
     lineHeight: '16px',
+    letterSpacing: '-0.01em',
   },
   sub_1: {
     fontFamily: 'Pretendard JP',
     fontWeight: 600,
     fontSize: '14px',
     lineHeight: '16px',
+    letterSpacing: '0em',
   },
   title_1: {
     fontFamily: 'Pretendard JP',
     fontWeight: 500,
     fontSize: '16px',
     lineHeight: '20px',
+    letterSpacing: '0em',
   },
   title_2: {
     fontFamily: 'Pretendard JP',
     fontWeight: 500,
     fontSize: '13px',
     lineHeight: '16px',
+    letterSpacing: '-0.01em',
   },
   title_3: {
     fontFamily: 'Pretendard JP',
     fontWeight: 500,
     fontSize: '12px',
     lineHeight: '15px',
+    letterSpacing: '-0.01em',
   },
   title_4: {
     fontFamily: 'Pretendard JP',
     fontWeight: 400,
     fontSize: '10px',
     lineHeight: '13px',
+    letterSpacing: '-0.01em',
   },
   body_1: {
     fontFamily: 'Pretendard JP',
-    fontWeight: 300,
+    fontWeight: {
+      default: 300,
+      bold: 500,
+    },
     fontSize: '16px',
     lineHeight: '26px',
-    bold: {
-      fontWeight: 500,
-    },
+    letterSpacing: '-0.01em',
   },
   display_1: {
     fontFamily: 'Pretendard JP',
@@ -148,12 +161,16 @@ const typography = {
       small: 600,
     },
     fontSize: {
-      default: '20px',
+      default: '32px',
       small: '16px',
     },
     lineHeight: {
       default: '42px',
       small: '20px',
+    },
+    letterSpacing: {
+      default: '-0.02em',
+      small: '-0.01em',
     },
   },
   display_2: {
@@ -163,7 +180,14 @@ const typography = {
       default: '20px',
       small: '18px',
     },
-    lineHeight: '16px',
+    lineHeight: {
+      default: '28px',
+      small: '24px',
+    },
+    letterSpacing: {
+      default: '-0.02em',
+      small: '-0.01em',
+    },
   },
   display_3: {
     fontFamily: 'S-Core Dream',
@@ -176,12 +200,17 @@ const typography = {
       default: '36px',
       small: '16px',
     },
+    letterSpacing: {
+      default: '-0.016em',
+      small: '-0.011em',
+    },
   },
   label_stamp: {
     fontFamily: 'Paperlogy',
     fontWeight: 700,
     fontSize: '12px',
     lineHeight: '12px',
+    letterSpacing: '0.02em',
   },
 };
 
