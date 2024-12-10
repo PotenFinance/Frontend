@@ -4,6 +4,9 @@ import { BeginStepContainer, BeginStepTitle } from '../styled';
 import styled from '@emotion/styled';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import { useTheme } from '@emotion/react';
+import Status from '@components/common/Status';
+import Checkbox from '@components/common/Checkbox';
+import Divider from '@components/common/Divider';
 
 function BeginStep4() {
   const router = useRouter();
@@ -18,13 +21,13 @@ function BeginStep4() {
           <Tabs>
             <Tab>
               <SpotifySmallLogo width={40} height={40} color={color.base.gray.base} />
-              <Status color="green" />
+              <Status status="success" />
             </Tab>
           </Tabs>
           <div>
             <Option>
               <OptionTitle>
-                <Status color="green" />
+                <Status status="warn" />
                 <span>플랜</span>
               </OptionTitle>
               <OptionList>
@@ -37,10 +40,10 @@ function BeginStep4() {
                 </OptionItem>
               </OptionList>
             </Option>
-            <Devider />
+            <Divider />
             <Option>
               <OptionTitle>
-                <Status color="green" />
+                <Status status="error" />
                 <span>개인 / 그룹</span>
               </OptionTitle>
               <OptionList>
@@ -134,33 +137,4 @@ const OptionItem = styled.li`
       line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
     }
   }
-`;
-
-const Status = styled.div<{ color?: string }>`
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: ${({ theme, color }) =>
-    color === 'green' ? theme.color.theme.positive : 'transparent'};
-  border: 1px solid
-    ${({ theme, color }) =>
-      color === 'yellow'
-        ? theme.color.secondary
-        : color === 'red'
-        ? theme.color.theme.negavite
-        : 'transparent'};
-`;
-
-const Devider = styled.div`
-  width: 100%;
-  height: 4px;
-  background-color: ${({ theme }) => theme.color.base.gray._c};
-`;
-
-const Checkbox = styled.button<{ checked?: boolean }>`
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.color.base.black};
-  background: ${({ theme, checked }) => (checked ? theme.color.base.black : 'none')};
 `;
