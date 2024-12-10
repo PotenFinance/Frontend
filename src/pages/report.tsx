@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 function ReportPage() {
   const router = useRouter();
-  const { type = 'platform' } = router.query;
+  const { type } = router.query;
 
   const handleChangeTab = (type: string) => {
     router.push(`/report?type=${type}`);
