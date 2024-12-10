@@ -36,14 +36,13 @@ function BeginStep3() {
 export default BeginStep3;
 
 const Container = styled.div`
-  padding: 20px 0 40px;
+  padding: 20px 16px 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
 
 const InputWrap = styled.div`
-  padding: 0 16px;
   display: flex;
   align-items: center;
   gap: 2px;

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const BeginStepContainer = styled.div`
-  padding: 20px 20px 40px;
+  padding: 20px 16px 40px;
   height: calc(100% - 50px);
   display: flex;
   flex-direction: column;

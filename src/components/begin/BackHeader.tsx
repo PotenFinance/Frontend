@@ -9,7 +9,7 @@ function BackHeader({ handleBack }: IProps) {
   return (
     <Container>
       <BackButton onClick={handleBack}>
-        <ArrowBackIcon width={12} height={20} />
+        <ArrowBackIcon width={16} height={16} />
       </BackButton>
     </Container>
   );
@@ -24,5 +24,6 @@ const Container = styled.div`
 `;
 
 const BackButton = styled.button`
-  display: inline-flex;
+  display: flex;
+  padding: 4px;
 `;
