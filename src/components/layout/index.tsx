@@ -23,8 +23,8 @@ export default function Layout({ children }: LayoutProps) {
 }
 
 const Container = styled.div`
-  min-width: 390px;
-  max-width: 600px;
+  /* min-width: 390px; */
+  max-width: 390px;
   height: 100dvh;
   margin: 0 auto;
   /* border: solid 1px red; */
