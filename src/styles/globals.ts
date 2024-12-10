@@ -35,6 +35,7 @@ export const global = css`
     background: none;
     border: none;
     font: inherit;
+    cursor: pointer;
   }
 
   // Web fonts

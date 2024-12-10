@@ -1,8 +1,21 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 function BeginPage() {
+  const handleLogin = () => {
+    if (window.Kakao.isInitialized()) {
+      window.Kakao.Auth.authorize({
+        redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
+      });
+    }
+  };
+
+  useEffect(() => {
+    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+  }, []);
+
   return (
     <PageWrap>
       <Title>
@@ -13,7 +26,7 @@ function BeginPage() {
         <Link href={'/begin/step/1'}>
           <MainButton>시작하기</MainButton>
         </Link>
-        <LoginButton>
+        <LoginButton onClick={handleLogin}>
           <Image src={'/images/kakao-logo.png'} alt="kakao-logo" width={24} height={24} />
           카카오 계정으로 로그인하기
         </LoginButton>
