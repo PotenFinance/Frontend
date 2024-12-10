@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
+import localFont from 'next/font/local';
 
 interface LayoutProps {
   /**
@@ -8,10 +9,18 @@ interface LayoutProps {
   children?: React.ReactNode;
 }
 
+const pretendard = localFont({
+  src: '../../fonts/PretendardJPVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard-jp',
+});
+
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Container>
+    <Container className={pretendard.variable}>
       {children}
+      <p>안녕하세요</p>
       <Nav>
         <Link href="/">홈</Link>
         <Link href="/">소비리포트</Link>
@@ -33,4 +42,5 @@ const Nav = styled.nav`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
 `;
