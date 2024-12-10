@@ -6,11 +6,11 @@ export const global = css`
     max-width: 100vw;
   }
 
-  body {
+  /* body {
     font-family: 'Pretendard JP', 'Paperlogy', 'S-CoreDream', Arial, Helvetica, sans-serif,
       -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
       Droid Sans;
-  }
+  } */
 
   * {
     box-sizing: border-box;
@@ -25,17 +25,26 @@ export const global = css`
 
   p {
     white-space: pre-wrap;
+    word-break: keep-all;
   }
 
   // css reset
   ul {
     list-style: none;
   }
+
   button {
     background: none;
     border: none;
     font: inherit;
     cursor: pointer;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
   }
 
   // Web fonts
