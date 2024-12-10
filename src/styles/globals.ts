@@ -23,9 +23,18 @@ export const global = css`
     text-decoration: none;
   }
 
+  p {
+    white-space: pre-wrap;
+  }
+
   // css reset
   ul {
     list-style: none;
+  }
+  button {
+    background: none;
+    border: none;
+    font: inherit;
   }
 
   // Web fonts
