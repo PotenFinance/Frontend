@@ -34,10 +34,10 @@ const List = styled.ul`
   flex-direction: column;
 `;
 const Item = styled.li`
-  padding: 10px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   border-top: 0.3px solid black;
   border-bottom: 0.3px solid black;
 `;
@@ -68,7 +68,7 @@ const InfoWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   & > div {
     display: flex;
     justify-content: space-between;

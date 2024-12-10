@@ -30,7 +30,7 @@ const Item = styled.li<{ active?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: ${({ active }) => (active ? '1px 0px 2px 0px #0000001A' : 'none')};
+  box-shadow: ${({ active }) => (active ? '1px 0px 2px 0px rgba(0, 0, 0, 0.10)' : 'none')};
   border-bottom: ${({ active }) => (active ? 'none' : '1.5px solid #EDEDED')};
   font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
   font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};

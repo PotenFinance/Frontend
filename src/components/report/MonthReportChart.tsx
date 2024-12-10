@@ -32,22 +32,21 @@ function MonthReportChart() {
 export default MonthReportChart;
 
 const Wrap = styled.div`
-  padding: 20px 10px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
 const FlexWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 `;
 
 const TitleWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   h1 {
     font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
     font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};

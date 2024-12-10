@@ -12,6 +12,13 @@ function DoughnutChart() {
           </div>
           <span>39,000원</span>
         </LegendItem>
+        <LegendItem>
+          <div>
+            <LegendBar color="red" />
+            <span>OTT</span>
+          </div>
+          <span>39,000원</span>
+        </LegendItem>
       </LegendList>
     </Wrap>
   );
@@ -25,13 +32,16 @@ const Wrap = styled.div`
   gap: 20px;
 `;
 
-const Doughnut = styled.div``;
+const Doughnut = styled.div`
+  min-width: 192px;
+  height: 192px;
+`;
 
 const LegendList = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 `;
 
 const LegendItem = styled.li`

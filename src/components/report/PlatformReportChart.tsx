@@ -13,10 +13,10 @@ function PlatformReportChart() {
 export default PlatformReportChart;
 
 const Wrap = styled.div`
-  padding: 20px 10px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
 const Title = styled.h1`

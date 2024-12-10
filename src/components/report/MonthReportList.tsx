@@ -30,7 +30,7 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  padding: 10px 16px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 20px;
