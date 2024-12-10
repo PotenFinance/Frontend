@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BeginStepTitle } from '../styled';
+import { BeginStepContainer, BeginStepTitle } from '../styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
@@ -11,7 +11,7 @@ function BeginStep2() {
   return (
     <>
       <BackHeader handleBack={() => router.push('/begin/step/1')} />
-      <Container>
+      <BeginStepContainer>
         <ContentWrap>
           <BeginStepTitle>사용하고 있는 구독 서비스를 선택해 주세요.</BeginStepTitle>
           <SubList>
@@ -35,21 +35,12 @@ function BeginStep2() {
         <Link href={'/begin/step/4'}>
           <Button text="다 선택했어요." />
         </Link>
-      </Container>
+      </BeginStepContainer>
     </>
   );
 }
 
 export default BeginStep2;
-
-const Container = styled.div`
-  padding: 20px 0 40px;
-  height: calc(100% - 50px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const ContentWrap = styled.div`
   display: flex;

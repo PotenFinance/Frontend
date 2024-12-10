@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BeginStepTitle } from '../styled';
+import { BeginStepContainer, BeginStepTitle } from '../styled';
 import Link from 'next/link';
 import BackHeader from '../BackHeader';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ function BeginStep1() {
   return (
     <>
       <BackHeader handleBack={() => router.push('/begin')} />
-      <Container>
+      <BeginStepContainer>
         <BeginStepTitle>구독 서비스 이용 시 적정 예산은{'\n'}얼마라고 생각하시나요?</BeginStepTitle>
         <InputWrap>
           <span>내 생각은...</span>
@@ -25,21 +25,12 @@ function BeginStep1() {
         <Link href={'/begin/step/2'}>
           <Button text="결정했어요." />
         </Link>
-      </Container>
+      </BeginStepContainer>
     </>
   );
 }
 
 export default BeginStep1;
-
-const Container = styled.div`
-  padding: 20px 0 40px;
-  height: calc(100% - 50px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const InputWrap = styled.div`
   display: flex;
