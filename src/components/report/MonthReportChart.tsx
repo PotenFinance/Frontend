@@ -1,5 +1,5 @@
+import BarChart from '@components/common/chart/BarChart';
 import styled from '@emotion/styled';
-import BarChart from '../common/chart/BarChart';
 
 function MonthReportChart() {
   return (
@@ -45,8 +45,18 @@ const TitleWrap = styled.div`
   flex-direction: column;
   gap: 10px;
   h1 {
+    font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
+    font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.heading_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.heading_1.letterSpacing};
   }
   span {
+    font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
+    font-size: ${({ theme }) => theme.typography.title_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.title_1.letterSpacing};
   }
 `;
 
@@ -56,15 +66,32 @@ const MonthPriceWrap = styled.div`
   align-items: end;
   gap: 4px;
   & > p {
+    font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
+    font-size: ${({ theme }) => theme.typography.title_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.title_1.letterSpacing};
   }
   & > span {
+    color: ${({ theme }) => theme.color.theme.positive};
+    font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.bold};
+    font-size: ${({ theme }) => theme.typography.body_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.body_1.letterSpacing};
   }
   & > div {
     display: flex;
     align-items: center;
     gap: 2px;
     p {
+      font-family: ${({ theme }) => theme.typography.title_4.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.title_4.fontWeight};
+      font-size: ${({ theme }) => theme.typography.title_4.fontSize};
+      line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.title_4.letterSpacing};
       span {
+        color: ${({ theme }) => theme.color.theme.positive};
       }
     }
   }

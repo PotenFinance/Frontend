@@ -42,8 +42,20 @@ const LegendItem = styled.li`
     display: flex;
     align-items: center;
     gap: 4px;
+    span {
+      font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.bold};
+      font-size: ${({ theme }) => theme.typography.body_1.fontSize};
+      line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.body_1.letterSpacing};
+    }
   }
   & > span {
+    font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.default};
+    font-size: ${({ theme }) => theme.typography.body_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.body_1.letterSpacing};
   }
 `;
 

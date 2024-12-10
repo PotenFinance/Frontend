@@ -1,5 +1,5 @@
+import DoughnutChart from '@components/common/chart/DoughnutChart';
 import styled from '@emotion/styled';
-import DoughnutChart from '../common/chart/DoughnutChart';
 
 function PlatformReportChart() {
   return (
@@ -19,4 +19,10 @@ const Wrap = styled.div`
   gap: 10px;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
+  font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
+  font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
+  line-height: ${({ theme }) => theme.typography.heading_1.lineHeight};
+  letter-spacing: ${({ theme }) => theme.typography.heading_1.letterSpacing};
+`;

@@ -30,7 +30,12 @@ const Item = styled.li<{ active?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: ${({ active }) => (active ? '1px 0px 2px 0px black' : 'none')};
-  border-bottom: ${({ active }) => (active ? 'none' : '1.5px solid lightgray')};
+  box-shadow: ${({ active }) => (active ? '1px 0px 2px 0px #0000001A' : 'none')};
+  border-bottom: ${({ active }) => (active ? 'none' : '1.5px solid #EDEDED')};
+  font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
+  font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
+  font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
+  line-height: ${({ theme }) => theme.typography.heading_1.lineHeight};
+  letter-spacing: ${({ theme }) => theme.typography.heading_1.letterSpacing};
   cursor: pointer;
 `;

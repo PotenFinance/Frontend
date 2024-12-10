@@ -30,7 +30,7 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  padding: 10px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -43,16 +43,36 @@ const InfoWrap = styled.div`
   flex-direction: column;
   gap: 8px;
   & > p {
+    font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
+    font-size: ${({ theme }) => theme.typography.title_1.fontSize};
+    line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.title_1.letterSpacing};
   }
   & > span {
+    font-family: ${({ theme }) => theme.typography.title_3.fontFamily};
+    font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
+    font-size: ${({ theme }) => theme.typography.title_3.fontSize};
+    line-height: ${({ theme }) => theme.typography.title_3.lineHeight};
+    letter-spacing: ${({ theme }) => theme.typography.title_3.letterSpacing};
   }
   & > div {
     display: flex;
     align-items: center;
     gap: 0.5em;
     p {
+      font-family: ${({ theme }) => theme.typography.title_3.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
+      font-size: ${({ theme }) => theme.typography.title_3.fontSize};
+      line-height: ${({ theme }) => theme.typography.title_3.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.title_3.letterSpacing};
     }
     span {
+      font-family: ${({ theme }) => theme.typography.title_2.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.title_2.fontWeight};
+      font-size: ${({ theme }) => theme.typography.title_2.fontSize};
+      line-height: ${({ theme }) => theme.typography.title_2.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.title_2.letterSpacing};
     }
   }
 `;

@@ -57,9 +57,15 @@ const Tag = styled.div<{ bgColor?: string; textColor?: string }>`
   border-radius: 4px;
   background-color: ${({ bgColor }) => bgColor};
   color: ${({ textColor }) => textColor};
+  font-family: ${({ theme }) => theme.typography.title_4.fontFamily};
+  font-weight: ${({ theme }) => theme.typography.title_4.fontWeight};
+  font-size: ${({ theme }) => theme.typography.title_4.fontSize};
+  line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
+  letter-spacing: ${({ theme }) => theme.typography.title_4.letterSpacing};
 `;
 
 const InfoWrap = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -67,8 +73,18 @@ const InfoWrap = styled.div`
     display: flex;
     justify-content: space-between;
     &:first-of-type {
+      font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
+      font-size: ${({ theme }) => theme.typography.title_1.fontSize};
+      line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.title_1.letterSpacing};
     }
     &:last-of-type {
+      font-family: ${({ theme }) => theme.typography.title_2.fontFamily};
+      font-weight: ${({ theme }) => theme.typography.title_2.fontWeight};
+      font-size: ${({ theme }) => theme.typography.title_2.fontSize};
+      line-height: ${({ theme }) => theme.typography.title_2.lineHeight};
+      letter-spacing: ${({ theme }) => theme.typography.title_2.letterSpacing};
     }
   }
 `;

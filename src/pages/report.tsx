@@ -1,9 +1,9 @@
-import Tabs from '@/components/common/Tabs';
-import PlatformReportList from '@/components/report/PlatformReportList';
-import PlatformReportChart from '@/components/report/PlatformReportChart';
+import Tabs from '@components/common/Tabs';
+import MonthReportChart from '@components/report/MonthReportChart';
+import MonthReportList from '@components/report/MonthReportList';
+import PlatformReportChart from '@components/report/PlatformReportChart';
+import PlatformReportList from '@components/report/PlatformReportList';
 import styled from '@emotion/styled';
-import MonthReportChart from '@/components/report/MonthReportChart';
-import MonthReportList from '@/components/report/MonthReportList';
 import { useRouter } from 'next/router';
 
 function ReportPage() {
@@ -43,6 +43,6 @@ function ReportPage() {
 export default ReportPage;
 
 const Container = styled.div`
-  width: 390px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 `;

@@ -14,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
       {children}
       <Nav>
         <Link href="/">홈</Link>
-        <Link href="/">소비리포트</Link>
+        <Link href="/report">소비리포트</Link>
         <Link href="/">커뮤니티</Link>
         <Link href="/mypage">마이페이지</Link>
       </Nav>
