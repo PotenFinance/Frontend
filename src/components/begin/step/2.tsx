@@ -21,7 +21,7 @@ function BeginStep2() {
           <ServiceList>
             {/* 컴포넌트 분리 AddedServiceItem */}
             <ServiceItem>
-              <NetflixLargeLogo width={148} height={56} color={color.brand.netflix} />
+              <NetflixLargeLogo width={'100%'} height={'100%'} color={color.brand.netflix} />
               <div>
                 <div>
                   <span>넷플릭스</span>
@@ -33,7 +33,7 @@ function BeginStep2() {
             <Link href={'/begin/step/3'}>
               {/* 컴포넌트 분리 AddServiceItem */}
               <PlusItem>
-                <PlusIcon color="white" width={41} height={41} />
+                <PlusIcon color="white" width={40} height={40} />
               </PlusItem>
             </Link>
           </ServiceList>
@@ -61,7 +61,7 @@ const ServiceList = styled.ul`
 `;
 
 const Item = styled.li`
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 `;
@@ -76,6 +76,9 @@ const ServiceItem = styled(Item)`
     justify-content: space-between;
     align-items: center;
     div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
       span {
         font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
         font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};

@@ -16,9 +16,9 @@ function BeginStep3() {
         {/* 컴포넌트 분리 ServiceSearch */}
         <Search>
           <Input />
-          <button>
-            <SearchIcon width={44} height={44} color={color.secondary} />
-          </button>
+          <SearchButton>
+            <SearchIcon width={36} height={36} color={color.secondary} />
+          </SearchButton>
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
@@ -47,7 +47,11 @@ const Container = styled.div`
 const Search = styled.div`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+`;
+
+const SearchButton = styled.button`
+  display: flex;
 `;
 
 const Input = styled.input`
@@ -71,7 +75,7 @@ const Item = styled.li`
   padding: 8px 16px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   border-bottom: 0.3px solid ${({ theme }) => theme.color.base.black};
   & > div {
     display: flex;

@@ -27,7 +27,14 @@ function BeginPage() {
       <Title>
         <span>써빗</span>에서 구독 비용을{'\n'}관리해볼까요?
       </Title>
-      <Image src={'/images/cards.png'} alt="cards" layout="responsive" width={374} height={360} />
+      <Image
+        src={'/images/cards.png'}
+        alt="cards"
+        layout="responsive"
+        width={750}
+        height={719}
+        style={{ maxWidth: 240 }}
+      />
       <ButtonWrap>
         <Button
           text="카카오 계정으로 로그인"
@@ -37,7 +44,7 @@ function BeginPage() {
           onClick={handleLogin}
         />
         <ExploreButton>
-          <EyeIcon width={20} height={20} /> 써빗 둘러보기
+          <EyeIcon width={16} height={16} /> 써빗 둘러보기
         </ExploreButton>
       </ButtonWrap>
     </Container>
@@ -48,7 +55,7 @@ export default BeginPage;
 
 const Container = styled.div`
   height: 100%;
-  padding: 20px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,14 +78,16 @@ const Title = styled.p`
 const ButtonWrap = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 `;
 
 const ExploreButton = styled.button`
+  padding: 8px;
+  width: fit-content;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   font-family: ${({ theme }) => theme.typography.title_3.fontFamily};
   font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
   font-size: ${({ theme }) => theme.typography.title_3.fontSize};

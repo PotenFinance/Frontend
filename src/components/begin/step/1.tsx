@@ -52,9 +52,9 @@ const InputWrap = styled.div`
 `;
 
 const PriceInput = styled.input`
-  width: 6em;
-  text-decoration: underline #cccccc;
+  width: 130px;
+  text-decoration: underline ${({ theme }) => theme.color.base.gray._c};
   &::placeholder {
-    color: #cccccc;
+    color: ${({ theme }) => theme.color.base.gray._c};
   }
 `;

@@ -28,8 +28,8 @@ const Container = styled.button<ButtonProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  border-radius: 25.85px;
+  gap: 8px;
+  border-radius: 24px;
   background-color: ${({ theme, bgColor }) => bgColor || theme.color.primary._1};
   span {
     color: ${({ theme, textColor }) => textColor || theme.color.base.white};
