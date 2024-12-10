@@ -6,13 +6,11 @@ import { lightTheme } from '@styles/theme';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider theme={lightTheme}>
       <Global styles={global} />
-      <ThemeProvider theme={lightTheme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }
