@@ -1,19 +1,7 @@
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
-import { useEffect } from 'react';
 
 export default function Home() {
-  const handleLogin = () => {
-    if (window.Kakao.isInitialized()) {
-      window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
-      });
-    }
-  };
-
-  useEffect(() => {
-    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
-  }, []);
-
   return (
     <>
       <Head>
@@ -24,9 +12,25 @@ export default function Home() {
       </Head>
       <main>
         <h1>포텐파이낸스</h1>
-        <button onClick={handleLogin}>카카오 로그인</button>
       </main>
       <footer></footer>
     </>
   );
 }
+
+export const getServerSideProps = async ({ req }: GetServerSidePropsContext) => {
+  const accessToken = req.cookies.accessToken;
+
+  if (!accessToken) {
+    return {
+      redirect: {
+        destination: '/begin',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
