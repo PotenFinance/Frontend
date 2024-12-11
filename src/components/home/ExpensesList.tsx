@@ -9,7 +9,8 @@ interface IProps {
   }>;
 }
 
-export default function SubscriptionList({ subListData }: IProps) {
+/** 당원 구독 내역 */
+export default function ExpensesList({ subListData }: IProps) {
   return (
     <Container>
       <Heading>

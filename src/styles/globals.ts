@@ -28,7 +28,6 @@ export const global = css`
     word-break: keep-all;
   }
 
-  /* css reset */
   // 접근성을 고려한 텍스트 감춤 클래스
   .a11y-hidden {
     overflow: hidden;

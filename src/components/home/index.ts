@@ -1,3 +1,5 @@
-import SubscriptionList from './SubscriptionList';
+import ExpensesList from './ExpensesList';
+import MySubscription from './MySubscription';
+import TotalSpending from './TotalSpending';
 
-export { SubscriptionList };
+export { ExpensesList, MySubscription, TotalSpending };

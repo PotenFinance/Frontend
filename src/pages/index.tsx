@@ -1,4 +1,6 @@
-import { SubscriptionList } from '@components/home';
+import { MySubscription, ExpensesList, TotalSpending } from '@components/home';
+import SavingOptions from '@components/home/SavingOptions';
+
 import styled from '@emotion/styled';
 import { TypographySize } from '@styles/theme';
 
@@ -78,7 +80,7 @@ export default function Home() {
                   {`의 이번달 총 구독 비용은`}
                 </li>
                 <li>
-                  <TotalExpenses>{`102,200원`}</TotalExpenses>
+                  <TotalSpendingAmount>{`102,200원`}</TotalSpendingAmount>
                   {`입니다.`}
                 </li>
               </ul>
@@ -88,12 +90,17 @@ export default function Home() {
               <span className="text">구독</span>
             </SubCountContainer>
           </OverviewDesc>
-          <SubscriptionList subListData={subListMockData} />
+          <ExpensesList subListData={subListMockData} />
           <RemainingBudget>
             <Desc>{`남은 예산`}</Desc>
             <Amount>{`7,800원`}</Amount>
           </RemainingBudget>
         </OverviewSection>
+        <ScrollableContainer>
+          <MySubscription />
+          <TotalSpending />
+          <SavingOptions />
+        </ScrollableContainer>
       </Main>
     </>
   );
@@ -130,7 +137,7 @@ const Username = styled.span`
   font-weight: ${({ theme }) => theme.typography.heading_2.fontWeight};
 `;
 
-const TotalExpenses = styled.span`
+const TotalSpendingAmount = styled.span`
   font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
   font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
   font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
@@ -172,4 +179,12 @@ const Amount = styled.span`
   font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
   font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
   font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
+`;
+
+const ScrollableContainer = styled.div`
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  // TODO: 추후 삭제
+  margin-top: -10px;
+  background-color: ${({ theme }) => theme.color.base.white};
 `;
