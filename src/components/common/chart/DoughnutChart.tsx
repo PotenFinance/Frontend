@@ -1,24 +1,32 @@
 import styled from '@emotion/styled';
+import Doughnut from './Doughnut';
+import { useTheme } from '@emotion/react';
 
 function DoughnutChart() {
+  const { color } = useTheme();
+
+  const data = [
+    { id: 'ott', name: 'OTT', value: 39000, color: color.theme.ott },
+    { id: 'music', name: '음악', value: 11900, color: color.theme.music },
+    { id: 'work', name: '작업', value: 30000, color: color.theme.work },
+    { id: 'game', name: '게임', value: 9900, color: color.theme.game },
+    { id: 'daily', name: '일상', value: 18000, color: color.theme.daily },
+    { id: 'etc', name: '기타', value: 2800, color: color.theme.etc },
+  ];
+
   return (
     <Wrap>
-      <Doughnut>파이</Doughnut>
+      <Doughnut data={data} />
       <LegendList>
-        <LegendItem>
-          <div>
-            <LegendBar color="red" />
-            <span>OTT</span>
-          </div>
-          <span>39,000원</span>
-        </LegendItem>
-        <LegendItem>
-          <div>
-            <LegendBar color="red" />
-            <span>OTT</span>
-          </div>
-          <span>39,000원</span>
-        </LegendItem>
+        {data.map(v => (
+          <LegendItem key={v.id}>
+            <div>
+              <LegendBar color={v.color} />
+              <span>{v.name}</span>
+            </div>
+            <span>{v.value.toLocaleString()}원</span>
+          </LegendItem>
+        ))}
       </LegendList>
     </Wrap>
   );
@@ -32,13 +40,8 @@ const Wrap = styled.div`
   gap: 20px;
 `;
 
-const Doughnut = styled.div`
-  min-width: 192px;
-  height: 192px;
-`;
-
 const LegendList = styled.ul`
-  width: 100%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 4px;
