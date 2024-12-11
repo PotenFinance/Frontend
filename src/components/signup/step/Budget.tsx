@@ -1,12 +1,21 @@
 import styled from '@emotion/styled';
 import { SignupContainer, SignupTitle } from '../styled';
-import Link from 'next/link';
 import BackHeader from '../BackHeader';
 import { useRouter } from 'next/router';
 import Button from '@components/common/Button';
+import { useSignupStore } from 'stores/useSignupStore';
+import { useState } from 'react';
 
 function SignupBudget() {
   const router = useRouter();
+
+  const { budget, setSignupData } = useSignupStore();
+  const [inputBudget, setInputBudget] = useState(budget);
+
+  const handleSubmit = () => {
+    setSignupData({ budget: inputBudget });
+    router.push('/signup/service');
+  };
 
   return (
     <>
@@ -18,13 +27,16 @@ function SignupBudget() {
           <div>
             <span>1달마다</span>
             <div>
-              <PriceInput placeholder="00,000" />원
+              <PriceInput
+                value={inputBudget}
+                onChange={e => setInputBudget(e.target.value)}
+                placeholder="00,000"
+              />
+              원
             </div>
           </div>
         </InputWrap>
-        <Link href={'/signup/service'}>
-          <Button text="결정했어요." />
-        </Link>
+        <Button text="결정했어요." disabled={!inputBudget} onClick={handleSubmit} />
       </SignupContainer>
     </>
   );
