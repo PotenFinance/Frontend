@@ -24,5 +24,4 @@ const Title = styled.h1`
   font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
   font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
   line-height: ${({ theme }) => theme.typography.heading_1.lineHeight};
-  letter-spacing: ${({ theme }) => theme.typography.heading_1.letterSpacing};
 `;

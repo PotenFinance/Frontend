@@ -60,7 +60,6 @@ const LegendItem = styled.li`
       font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.bold};
       font-size: ${({ theme }) => theme.typography.body_1.fontSize};
       line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
-      letter-spacing: ${({ theme }) => theme.typography.body_1.letterSpacing};
     }
   }
   & > span {
@@ -68,7 +67,6 @@ const LegendItem = styled.li`
     font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.default};
     font-size: ${({ theme }) => theme.typography.body_1.fontSize};
     line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
-    letter-spacing: ${({ theme }) => theme.typography.body_1.letterSpacing};
   }
 `;
 

@@ -61,7 +61,6 @@ const Tag = styled.div<{ bgColor?: string; textColor?: string }>`
   font-weight: ${({ theme }) => theme.typography.title_4.fontWeight};
   font-size: ${({ theme }) => theme.typography.title_4.fontSize};
   line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
-  letter-spacing: ${({ theme }) => theme.typography.title_4.letterSpacing};
 `;
 
 const InfoWrap = styled.div`
@@ -77,14 +76,12 @@ const InfoWrap = styled.div`
       font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
       font-size: ${({ theme }) => theme.typography.title_1.fontSize};
       line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
-      letter-spacing: ${({ theme }) => theme.typography.title_1.letterSpacing};
     }
     &:last-of-type {
       font-family: ${({ theme }) => theme.typography.title_2.fontFamily};
       font-weight: ${({ theme }) => theme.typography.title_2.fontWeight};
       font-size: ${({ theme }) => theme.typography.title_2.fontSize};
       line-height: ${({ theme }) => theme.typography.title_2.lineHeight};
-      letter-spacing: ${({ theme }) => theme.typography.title_2.letterSpacing};
     }
   }
 `;

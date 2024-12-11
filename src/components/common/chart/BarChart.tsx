@@ -76,5 +76,4 @@ const Label = styled.span`
   font-weight: ${({ theme }) => theme.typography.title_3.fontWeight};
   font-size: ${({ theme }) => theme.typography.title_3.fontSize};
   line-height: ${({ theme }) => theme.typography.title_3.lineHeight};
-  letter-spacing: ${({ theme }) => theme.typography.title_3.letterSpacing};
 `;
