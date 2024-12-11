@@ -1,33 +1,44 @@
-import { getLocalStorageItem } from '@utils/localStorage';
+import { getCookie, setCookie } from '@utils/cookie';
 import axios from 'axios';
+import { getTokenApi } from './auth';
+import { useRouter } from 'next/router';
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
   withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
   config => {
-    const token = getLocalStorageItem('@token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
+    const accessToken = getCookie('accessToken');
+    config.headers.Authorization = `Bearer ${accessToken}`;
+
     return config;
   },
   error => Promise.reject(error),
 );
 
 axiosInstance.interceptors.response.use(
-  response => response,
-  error => {
-    const token = getLocalStorageItem('@token');
+  response => response.data,
+  async error => {
+    const router = useRouter();
+    const originalRequest = error.config;
+    const refreshToken = getCookie('refreshToken');
+
     if (error.response.status === 401) {
-      if (token) {
-        console.error('401 Unauthorized: 토큰 재발급 필요');
-      } else {
-        console.error('401 Unauthorized: 로그인 필요');
+      try {
+        const { access_token, refresh_token } = await getTokenApi(refreshToken);
+        setCookie('accessToken', access_token);
+        setCookie('refreshToken', refresh_token);
+        return axiosInstance(originalRequest);
+      } catch (err) {
+        router.push('/begin');
       }
     }
+
     return Promise.reject(error);
   },
 );
