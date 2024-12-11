@@ -36,3 +36,30 @@ export const NAV_MENU: INavMenu[] = [
     icon: mypageIcon,
   },
 ];
+
+export const CATEGORY = [
+  {
+    id: 1,
+    name: 'OTT',
+  },
+  {
+    id: 2,
+    name: '음악',
+  },
+  {
+    id: 3,
+    name: '작업',
+  },
+  {
+    id: 4,
+    name: '게임',
+  },
+  {
+    id: 5,
+    name: '일상',
+  },
+  {
+    id: 6,
+    name: '기타',
+  },
+];

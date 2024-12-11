@@ -21,11 +21,12 @@ const dummyData = {
 const budgetValue = 200000;
 const currentValue = 102200;
 
-/** 총 구독 비용 */
-export default function TotalSpending() {
+/** 연간 구독 비용 */
+export default function YearlySpending() {
   const year = new Date().getFullYear();
+
   return (
-    <SectionLayout heading="총 구독 비용">
+    <SectionLayout heading="연간 구독 비용">
       <InnerWrapper>
         <ChartContainer>
           <BarChart

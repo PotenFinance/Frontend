@@ -1,6 +1,5 @@
-import { MySubscription, ExpensesList, TotalSpending } from '@components/home';
+import { MySubscription, ExpensesListCard, YearlySpending } from '@components/home';
 import SavingOptions from '@components/home/SavingOptions';
-
 import styled from '@emotion/styled';
 import { TypographySize } from '@styles/theme';
 
@@ -48,6 +47,30 @@ const subListMockData = [
   },
 ];
 
+/** 나의 구독 서비스 더미데이터 */
+const subDummyData = [
+  {
+    service: 'netflix',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'disney',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'spotify',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'adobe',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+];
+
 export default function Home() {
   // const handleLogin = () => {
   //   if (window.Kakao.isInitialized()) {
@@ -90,15 +113,15 @@ export default function Home() {
               <span className="text">구독</span>
             </SubCountContainer>
           </OverviewDesc>
-          <ExpensesList subListData={subListMockData} />
+          <ExpensesListCard subListData={subListMockData} />
           <RemainingBudget>
             <Desc>{`남은 예산`}</Desc>
             <Amount>{`7,800원`}</Amount>
           </RemainingBudget>
         </OverviewSection>
         <ScrollableContainer>
-          <MySubscription />
-          <TotalSpending />
+          <MySubscription data={subDummyData} />
+          <YearlySpending />
           {/* 후순위 */}
           {/* <SavingOptions /> */}
         </ScrollableContainer>
@@ -114,6 +137,8 @@ const Main = styled.main`
 const OverviewSection = styled.section`
   color: ${({ theme }) => theme.color.base.white};
   padding: 10px 19px 15px;
+  position: sticky;
+  top: 0;
 `;
 
 const OverviewDesc = styled.div`
@@ -186,6 +211,10 @@ const ScrollableContainer = styled.div`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   // TODO: 추후 삭제
-  margin-top: -10px;
+  /* margin-top: -10px; */
   background-color: ${({ theme }) => theme.color.base.white};
+  // 페이지 내 요소가 탭에 가리지 않게 하기 위한 padding-bottom
+  padding-bottom: 64px;
+  position: sticky;
+  top: 18px;
 `;

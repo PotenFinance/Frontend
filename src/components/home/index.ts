@@ -1,5 +1,5 @@
-import ExpensesList from './ExpensesList';
+import ExpensesListCard from './ExpensesListCard';
 import MySubscription from './MySubscription';
-import TotalSpending from './TotalSpending';
+import YearlySpending from './YearlySpending';
 
-export { ExpensesList, MySubscription, TotalSpending };
+export { ExpensesListCard, MySubscription, YearlySpending };

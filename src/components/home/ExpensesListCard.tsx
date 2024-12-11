@@ -9,12 +9,17 @@ interface IProps {
   }>;
 }
 
-/** 당원 구독 내역 */
-export default function ExpensesList({ subListData }: IProps) {
+/** 당월 구독 내역 */
+export default function ExpensesListCard({ subListData }: IProps) {
+  const date = new Date();
+
+  const currentYear = date.getFullYear();
+  const currentMonth = date.getMonth() + 1;
+
   return (
     <Container>
       <Heading>
-        <span>{`2024년 12월`}</span>
+        <span>{`${currentYear}년 ${currentMonth}월`}</span>
         {` 구독 내역`}
       </Heading>
       <List>
@@ -45,6 +50,11 @@ const Heading = styled.h3`
   font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
   font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
   font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
+
+  & span {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
 `;
 
 /** 구독 내역 리스트 */
@@ -57,6 +67,10 @@ const Item = styled.li`
   font-size: ${({ theme }) => theme.typography.body_1.fontSize};
   display: flex;
   justify-content: space-between;
+
+  & + li {
+    margin-top: 5px;
+  }
 `;
 
 /** 구독하는 서비스 */
