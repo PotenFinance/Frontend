@@ -22,5 +22,6 @@ function SignupPage() {
 export default SignupPage;
 
 const Container = styled.div`
-  height: calc(100dvh - 64px);
+  height: 100dvh;
+  padding-bottom: 64px;
 `;

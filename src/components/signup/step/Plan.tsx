@@ -7,6 +7,7 @@ import { useTheme } from '@emotion/react';
 import Status from '@components/common/Status';
 import Checkbox from '@components/common/Checkbox';
 import Divider from '@components/common/Divider';
+import Button from '@components/common/Button';
 
 function SignupPlan() {
   const router = useRouter();
@@ -60,6 +61,7 @@ function SignupPlan() {
             </Option>
           </div>
         </ContentWrap>
+        <Button text="완료" />
       </SignupContainer>
     </>
   );

@@ -62,6 +62,7 @@ const ServiceList = styled.ul`
 
 const Item = styled.li`
   padding: 12px;
+  height: 100%;
   border-radius: 8px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 `;
@@ -112,7 +113,6 @@ const DeleteButton = styled.button`
 `;
 
 const PlusItem = styled(Item)`
-  height: 136px;
   display: flex;
   justify-content: center;
   align-items: center;
