@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import localFont from 'next/font/local';
+import NavTab from './NavTab';
 
 interface LayoutProps {
   /**
@@ -8,31 +9,35 @@ interface LayoutProps {
   children?: React.ReactNode;
 }
 
+const pretendard = localFont({
+  src: '../../fonts/PretendardJPVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard-jp',
+});
+
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Container>
+    <Container className={pretendard.variable}>
       {children}
-      <Nav>
-        <Link href="/">홈</Link>
-        <Link href="/report?type=platform">소비리포트</Link>
-        <Link href="/">커뮤니티</Link>
-        <Link href="/mypage">마이페이지</Link>
-      </Nav>
+      <div className="nav-wrapper">
+        <NavTab />
+      </div>
     </Container>
   );
 }
 
 const Container = styled.div`
-  /* min-width: 390px; */
-  max-width: 390px;
+  position: relative;
+  min-width: 390px;
+  max-width: 600px;
   margin: 0 auto;
-  /* border: solid 1px red; */
-`;
 
-const Nav = styled.nav`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 0;
+  // 하단 탭 화면 하단에 고정하기 위한 wrapper 요소
+  & .nav-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 `;
