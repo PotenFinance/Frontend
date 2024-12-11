@@ -1,8 +1,8 @@
 import axiosInstance from './axiosInstance';
 
-export const loginApi = async () => {
+export const loginApi = async (code: string) => {
   try {
-    const { data } = await axiosInstance.get('/auth/kakao/callback');
+    const { data } = await axiosInstance.get('/auth/kakao/callback', { params: { code } });
     return data;
   } catch (error) {
     console.error(error);
