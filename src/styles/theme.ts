@@ -67,6 +67,12 @@ type TypographyType =
   | 'display_3'
   | 'label_stamp';
 
+export type TypographySize = {
+  default: string;
+  small?: string;
+  large?: string;
+};
+
 interface ITypography {
   typography: {
     [key in TypographyType]: {
@@ -76,16 +82,8 @@ interface ITypography {
         | {
             [key: string]: number;
           };
-      fontSize:
-        | string
-        | {
-            [key: string]: string;
-          };
-      lineHeight:
-        | string
-        | {
-            [key: string]: string;
-          };
+      fontSize: string | TypographySize;
+      lineHeight: string | TypographySize;
     };
   };
 }
@@ -163,11 +161,9 @@ const typography = {
     fontSize: {
       default: '20px',
       small: '18px',
+      large: '32px',
     },
-    lineHeight: {
-      default: '28px',
-      small: '24px',
-    },
+    lineHeight: { default: '28px', small: '24px', large: '52px' },
   },
   display_3: {
     fontFamily: 'S-Core Dream',

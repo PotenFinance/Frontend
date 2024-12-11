@@ -6,11 +6,10 @@ export const global = css`
     max-width: 100vw;
   }
 
-  /* body {
-    font-family: 'Pretendard JP', 'Paperlogy', 'S-CoreDream', Arial, Helvetica, sans-serif,
-      -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
-      Droid Sans;
-  } */
+  body {
+    font-family: 'Pretendard JP', Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont,
+      Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans;
+  }
 
   * {
     box-sizing: border-box;
@@ -49,7 +48,7 @@ export const global = css`
 
   // Web fonts
   @font-face {
-    // 페이퍼로지 600
+    // 페이퍼로지 SemiBold
     font-family: 'Paperlogy';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2')
       format('woff2');
@@ -57,7 +56,7 @@ export const global = css`
     font-style: normal;
   }
 
-  // 페이퍼로지 700
+  // 페이퍼로지 Bold
   @font-face {
     font-family: 'Paperlogy';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2')
@@ -66,7 +65,7 @@ export const global = css`
     font-style: normal;
   }
 
-  // 에스코어드림
+  // 에스코어드림 Bold
   @font-face {
     font-family: 'S-CoreDream';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff')
