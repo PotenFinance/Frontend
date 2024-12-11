@@ -45,8 +45,9 @@ interface IColor {
       black: string;
       white: string;
       gray: {
-        primary: string;
-        secondary: string;
+        base: string;
+        _5: string;
+        _c: string;
       };
     };
   };
@@ -214,8 +215,9 @@ export const lightTheme: Theme = {
       black: '#000000',
       white: '#FFFFFF',
       gray: {
-        primary: '#949494',
-        secondary: '#555555',
+        base: '#949494',
+        _5: '#555555',
+        _c: '#CCCCCC',
       },
     },
   },

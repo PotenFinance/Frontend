@@ -23,13 +23,31 @@ export const global = css`
     text-decoration: none;
   }
 
+  p {
+    white-space: pre-wrap;
+    word-break: keep-all;
+  }
+
   /* css reset */
   ul {
     list-style: none;
   }
+  
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+  }
 
-  /* web fonts */
-  /* 페이퍼로지 600 */
+  input {
+    border: none;
+    outline: none;
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Web fonts */
   @font-face {
     // 페이퍼로지 SemiBold
     font-family: 'Paperlogy';
