@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
-import { BeginStepContainer, BeginStepTitle } from '../styled';
+import { SignupContainer, SignupTitle } from '../styled';
 import Link from 'next/link';
 import BackHeader from '../BackHeader';
 import { useRouter } from 'next/router';
 import Button from '@components/common/Button';
 
-function BeginStep1() {
+function SignupBudget() {
   const router = useRouter();
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/begin')} />
-      <BeginStepContainer>
-        <BeginStepTitle>구독 서비스 이용 시 적정 예산은{'\n'}얼마라고 생각하시나요?</BeginStepTitle>
+      <BackHeader handleBack={() => router.push('/login')} />
+      <SignupContainer>
+        <SignupTitle>구독 서비스 이용 시 적정 예산은{'\n'}얼마라고 생각하시나요?</SignupTitle>
         <InputWrap>
           <span>내 생각은...</span>
           <div>
@@ -22,15 +22,15 @@ function BeginStep1() {
             </div>
           </div>
         </InputWrap>
-        <Link href={'/begin/step/2'}>
+        <Link href={'/signup/service'}>
           <Button text="결정했어요." />
         </Link>
-      </BeginStepContainer>
+      </SignupContainer>
     </>
   );
 }
 
-export default BeginStep1;
+export default SignupBudget;
 
 const InputWrap = styled.div`
   display: flex;

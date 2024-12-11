@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BeginStepContainer, BeginStepTitle } from '../styled';
+import { SignupContainer, SignupTitle } from '../styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
@@ -8,16 +8,16 @@ import Button from '@components/common/Button';
 import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
 import { useTheme } from '@emotion/react';
 
-function BeginStep2() {
+function SignupService() {
   const router = useRouter();
   const { color } = useTheme();
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/begin/step/1')} />
-      <BeginStepContainer>
+      <BackHeader handleBack={() => router.push('/signup/budget')} />
+      <SignupContainer>
         <ContentWrap>
-          <BeginStepTitle>사용하고 있는 구독 서비스를 선택해 주세요.</BeginStepTitle>
+          <SignupTitle>사용하고 있는 구독 서비스를 선택해 주세요.</SignupTitle>
           <ServiceList>
             {/* 컴포넌트 분리 AddedServiceItem */}
             <ServiceItem>
@@ -30,7 +30,7 @@ function BeginStep2() {
                 <DeleteButton>삭제</DeleteButton>
               </div>
             </ServiceItem>
-            <Link href={'/begin/step/3'}>
+            <Link href={'/signup/search'}>
               {/* 컴포넌트 분리 AddServiceItem */}
               <PlusItem>
                 <PlusIcon color="white" width={40} height={40} />
@@ -38,15 +38,15 @@ function BeginStep2() {
             </Link>
           </ServiceList>
         </ContentWrap>
-        <Link href={'/begin/step/4'}>
+        <Link href={'/signup/plan'}>
           <Button text="다 선택했어요." />
         </Link>
-      </BeginStepContainer>
+      </SignupContainer>
     </>
   );
 }
 
-export default BeginStep2;
+export default SignupService;
 
 const ContentWrap = styled.div`
   display: flex;

@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
-function BeginPage() {
+function LoginPage() {
   const { color } = useTheme();
 
   const handleLogin = () => {
@@ -51,7 +51,7 @@ function BeginPage() {
   );
 }
 
-export default BeginPage;
+export default LoginPage;
 
 const Container = styled.div`
   height: 100dvh;

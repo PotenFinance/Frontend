@@ -35,7 +35,7 @@ axiosInstance.interceptors.response.use(
         setCookie('refreshToken', refresh_token);
         return axiosInstance(originalRequest);
       } catch (err) {
-        router.push('/begin');
+        router.push('/login');
       }
     }
 
