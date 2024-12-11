@@ -22,5 +22,5 @@ function BeginStepPage() {
 export default BeginStepPage;
 
 const Container = styled.div`
-  height: 100%;
+  height: calc(100dvh - 64px);
 `;

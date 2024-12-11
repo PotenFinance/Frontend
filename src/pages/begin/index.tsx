@@ -33,7 +33,7 @@ function BeginPage() {
         layout="responsive"
         width={750}
         height={719}
-        style={{ maxWidth: 240 }}
+        style={{ maxWidth: 280 }}
       />
       <ButtonWrap>
         <Button
@@ -54,7 +54,7 @@ function BeginPage() {
 export default BeginPage;
 
 const Container = styled.div`
-  height: 100%;
+  height: 100dvh;
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
