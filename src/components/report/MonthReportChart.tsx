@@ -6,6 +6,24 @@ import styled from '@emotion/styled';
 function MonthReportChart() {
   const { color } = useTheme();
 
+  const data = {
+    1: 100000,
+    2: 30000,
+    3: 50000,
+    4: 100000,
+    5: 102200,
+    6: 50000,
+    7: 200000,
+    8: 30000,
+    9: 50000,
+    10: 160000,
+    11: 30000,
+    12: 102200,
+  };
+
+  const budgetValue = 200000;
+  const currentValue = 102200;
+
   return (
     <Wrap>
       <FlexWrap>
@@ -24,7 +42,7 @@ function MonthReportChart() {
           </div>
         </MonthPriceWrap>
       </FlexWrap>
-      <BarChart />
+      <BarChart data={data} containerBaseValue={budgetValue} statusBaseValue={currentValue} />
     </Wrap>
   );
 }
