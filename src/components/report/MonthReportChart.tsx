@@ -93,7 +93,8 @@ const MonthPriceWrap = styled.div`
   & > span {
     color: ${({ theme }) => theme.color.theme.positive};
     font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
-    font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.bold};
+    font-weight: ${({ theme }) =>
+      (theme.typography.body_1.fontWeight as { [key: string]: number }).bold};
     font-size: ${({ theme }) => theme.typography.body_1.fontSize};
     line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
   }

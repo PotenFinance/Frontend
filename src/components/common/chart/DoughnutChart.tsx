@@ -57,14 +57,16 @@ const LegendItem = styled.li`
     gap: 4px;
     span {
       font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
-      font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.bold};
+      font-weight: ${({ theme }) =>
+        (theme.typography.body_1.fontWeight as { [key: string]: number }).bold};
       font-size: ${({ theme }) => theme.typography.body_1.fontSize};
       line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
     }
   }
   & > span {
     font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
-    font-weight: ${({ theme }) => theme.typography.body_1.fontWeight.default};
+    font-weight: ${({ theme }) =>
+      (theme.typography.body_1.fontWeight as { [key: string]: number }).default};
     font-size: ${({ theme }) => theme.typography.body_1.fontSize};
     line-height: ${({ theme }) => theme.typography.body_1.lineHeight};
   }
