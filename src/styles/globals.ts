@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 export const global = css`
+  /* global styles */
   html,
   body {
     max-width: 100vw;
@@ -27,11 +28,11 @@ export const global = css`
     word-break: keep-all;
   }
 
-  // css reset
+  /* css reset */
   ul {
     list-style: none;
   }
-
+  
   button {
     background: none;
     border: none;
@@ -46,7 +47,7 @@ export const global = css`
     color: inherit;
   }
 
-  // Web fonts
+  /* Web fonts */
   @font-face {
     // 페이퍼로지 SemiBold
     font-family: 'Paperlogy';

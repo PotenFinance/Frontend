@@ -133,12 +133,12 @@ const typography = {
   },
   body_1: {
     fontFamily: 'Pretendard JP',
-    fontWeight: 300,
+    fontWeight: {
+      default: 300,
+      bold: 500,
+    },
     fontSize: '16px',
     lineHeight: '26px',
-    bold: {
-      fontWeight: 500,
-    },
   },
   display_1: {
     fontFamily: 'Pretendard JP',
@@ -147,7 +147,7 @@ const typography = {
       small: 600,
     },
     fontSize: {
-      default: '20px',
+      default: '32px',
       small: '16px',
     },
     lineHeight: {
