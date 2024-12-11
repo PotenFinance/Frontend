@@ -9,11 +9,11 @@ import { useState } from 'react';
 function SignupBudget() {
   const router = useRouter();
 
-  const { budget, setSignupData } = useSignupStore();
+  const { budget, setBudget } = useSignupStore();
   const [inputBudget, setInputBudget] = useState(budget);
 
   const handleSubmit = () => {
-    setSignupData({ budget: inputBudget });
+    setBudget(inputBudget);
     router.push('/signup/service');
   };
 
