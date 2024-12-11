@@ -11,9 +11,9 @@ interface IProps extends ButtonProps, React.ButtonHTMLAttributes<HTMLButtonEleme
   icon?: ReactNode;
 }
 
-function Button({ text, icon, bgColor, textColor, ...props }: IProps) {
+function Button({ text, icon, bgColor, textColor, disabled, ...props }: IProps) {
   return (
-    <Container bgColor={bgColor} textColor={textColor} {...props}>
+    <Container bgColor={bgColor} textColor={textColor} disabled={disabled} {...props}>
       {icon}
       <span>{text}</span>
     </Container>
@@ -30,7 +30,8 @@ const Container = styled.button<ButtonProps>`
   align-items: center;
   gap: 8px;
   border-radius: 24px;
-  background-color: ${({ theme, bgColor }) => bgColor || theme.color.primary._1};
+  background-color: ${({ theme, bgColor, disabled }) =>
+    disabled ? theme.color.base.gray.base : bgColor || theme.color.primary._1};
   span {
     color: ${({ theme, textColor }) => textColor || theme.color.base.white};
     font-family: ${({ theme }) => theme.typography.heading_2.fontFamily};

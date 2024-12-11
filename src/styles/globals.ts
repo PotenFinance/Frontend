@@ -32,12 +32,12 @@ export const global = css`
   ul {
     list-style: none;
   }
-  
+
   button {
     background: none;
     border: none;
     font: inherit;
-    cursor: pointer;
+    /* cursor: pointer; */
   }
 
   input {
