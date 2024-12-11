@@ -17,7 +17,8 @@
     "next": "15.0.4",
     "nookies": "^2.5.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "recharts": "^2.14.1"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

@@ -1,3 +1,4 @@
+import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 
 export default function Home() {
@@ -16,3 +17,20 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async ({ req }: GetServerSidePropsContext) => {
+  const accessToken = req.cookies.accessToken;
+
+  if (!accessToken) {
+    return {
+      redirect: {
+        destination: '/begin',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};

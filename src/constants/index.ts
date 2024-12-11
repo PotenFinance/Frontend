@@ -22,7 +22,7 @@ export const NAV_MENU: INavMenu[] = [
   },
   {
     name: '소비리포트',
-    path: '/report',
+    path: '/report?type=platform',
     icon: reportIcon,
   },
   {
