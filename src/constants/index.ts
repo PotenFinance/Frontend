@@ -36,3 +36,9 @@ export const NAV_MENU: INavMenu[] = [
     icon: mypageIcon,
   },
 ];
+
+export const MYPAGE_MENU = {
+  PERSONAL_SETTINGS: ['개인정보 설정', '알림 설정'],
+  SUBSCRIPTION: ['월 예산 설정', '구독 서비스 정보 수정'],
+  COMMUNITY: ['커뮤니티 프로필 수정', '게시글 관리', '댓글 관리'],
+};
