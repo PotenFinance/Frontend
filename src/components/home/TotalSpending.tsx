@@ -1,6 +1,25 @@
 import styled from '@emotion/styled';
 import SectionLayout from './SectionLayout';
 import { TypographySize } from '@styles/theme';
+import BarChart from './BarChart';
+
+const dummyData = {
+  // 1: 100000,
+  // 2: 30000,
+  // 3: 50000,
+  // 4: 100000,
+  // 5: 102200,
+  // 6: 50000,
+  // 7: 200000,
+  // 8: 30000,
+  9: 50000,
+  10: 160000,
+  11: 30000,
+  12: 102200,
+};
+
+const budgetValue = 200000;
+const currentValue = 102200;
 
 /** 총 구독 비용 */
 export default function TotalSpending() {
@@ -8,7 +27,13 @@ export default function TotalSpending() {
   return (
     <SectionLayout heading="총 구독 비용">
       <InnerWrapper>
-        <ChartContainer>차트 영역</ChartContainer>
+        <ChartContainer>
+          <BarChart
+            data={dummyData}
+            containerBaseValue={budgetValue}
+            statusBaseValue={currentValue}
+          />
+        </ChartContainer>
         <ChartDesc>
           <CurrentYear>{`${year}년`}</CurrentYear>
           <Amount>{`총 770,800원`}</Amount>
@@ -34,8 +59,10 @@ const InnerWrapper = styled.div`
 const ChartContainer = styled.div``;
 
 const ChartDesc = styled.ul`
-  border: solid 1px red;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   & li + li {
     margin-top: 6px;
