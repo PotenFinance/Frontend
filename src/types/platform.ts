@@ -13,6 +13,15 @@ interface IPlan {
   isYearlyPlan: boolean;
 }
 
+interface ISignupPlatform {
+  platformId: number;
+  planId: number;
+  isGroup: boolean;
+  isYearlyPay: boolean;
+  billingMonth: number;
+  billingDay: number;
+}
+
 interface GetPlatformsRes {
   data: IPlatform[];
 }
