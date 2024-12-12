@@ -9,7 +9,7 @@ interface IProps {
   platformId: number;
 }
 
-const memberOptions = [
+const options = [
   { planName: '혼자서 결제하고 있어요.', isGroup: false },
   { planName: '같이 결제하고 있어요.', isGroup: true },
 ];
@@ -24,7 +24,7 @@ function MemberOption({ plan, platformId }: IProps) {
         <span>개인 / 그룹</span>
       </PlanOptionTitle>
       <PlanOptionList>
-        {memberOptions.map(v => (
+        {options.map(v => (
           <PlanOptionItem key={v.planName}>
             <div>
               <p>{v.planName}</p>

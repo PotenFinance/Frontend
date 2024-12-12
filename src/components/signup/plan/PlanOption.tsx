@@ -8,7 +8,7 @@ interface IProps {
   platformId: number;
 }
 
-const planOptions = [
+const options = [
   {
     platformId: 101,
     planId: 1001,
@@ -53,7 +53,7 @@ function PlanOption({ plan, platformId }: IProps) {
         <span>플랜</span>
       </PlanOptionTitle>
       <PlanOptionList>
-        {planOptions.map(v => (
+        {options.map(v => (
           <PlanOptionItem key={v.planId}>
             <div>
               <p>{v.planName}</p>
