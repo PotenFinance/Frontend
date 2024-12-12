@@ -7,9 +7,10 @@ interface IPlatform {
   platformType: string; //TODO 추가
   planId: number;
   isGroup: boolean;
+  groupMembers: string; //TODO 추가
   isYearlyPay: boolean;
-  billingMonth: number;
-  billingDay: number;
+  billingMonth: string;
+  billingDay: string;
 }
 
 interface IStore {
@@ -17,9 +18,6 @@ interface IStore {
   platforms: IPlatform[];
   setBudget: (budget: string) => void;
   setPlatforms: (platform: IPlatform[]) => void;
-  // addPlatform: (platform: IPlatform) => void;
-  updatePlatform: (platform: IPlatform) => void;
-  // deletePlatform: (platformId: number) => void;
 }
 
 export const useSignupStore = create<IStore>()(
@@ -29,23 +27,6 @@ export const useSignupStore = create<IStore>()(
       platforms: [],
       setBudget: budget => set(state => ({ ...state, budget })),
       setPlatforms: platforms => set(state => ({ ...state, platforms })),
-      // addPlatform: platform =>
-      //   set(state => ({ ...state, platforms: [...state.platforms, platform] })),
-      updatePlatform: platform =>
-        set(state => ({
-          ...state,
-          platforms: [
-            ...state.platforms?.map(v => {
-              if (v.platformId === platform.platformId) return platform;
-              return v;
-            }),
-          ],
-        })),
-      // deletePlatform: platformId =>
-      //   set(state => ({
-      //     ...state,
-      //     platforms: [...state.platforms?.filter(v => v.platformId !== platformId)],
-      //   })),
     }),
     { name: 'signup' },
   ),

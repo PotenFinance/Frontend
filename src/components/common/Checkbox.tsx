@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
-interface IProps {
+interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   checked?: boolean;
 }
 
-function Checkbox({ checked }: IProps) {
-  return <Container checked={checked} />;
+function Checkbox({ checked, ...props }: IProps) {
+  return <Container checked={checked} {...props} />;
 }
 
 export default Checkbox;

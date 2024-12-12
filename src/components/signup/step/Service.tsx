@@ -56,9 +56,10 @@ function SignupService() {
         platformType: v.platformType,
         planId: 0,
         isGroup: false,
+        groupMembers: '0',
         isYearlyPay: false,
-        billingMonth: 0,
-        billingDay: 0,
+        billingMonth: '0',
+        billingDay: '0',
       })),
     ]);
     router.push('/signup/plan');
@@ -106,7 +107,11 @@ function SignupService() {
             </PlusItem>
           </ServiceList>
         </ContentWrap>
-        <Button text="다 선택했어요." disabled={!services.length} onClick={handleSubmit} />
+        <Button
+          text={services.length ? '다 선택했어요.' : '서비스를 추가해 주세요.'}
+          disabled={!services.length}
+          onClick={handleSubmit}
+        />
       </SignupContainer>
     </>
   );

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-type TStatus = 'success' | 'warn' | 'error';
+export type TStatus = 'success' | 'warn' | 'error';
 
 interface IProps {
   status: TStatus;
