@@ -39,7 +39,7 @@ function SignupPlan() {
       <SignupContainer>
         <ContentWrap>
           <SignupTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</SignupTitle>
-          <PlanTabs plan={getPlan(platformId)} setPlatformId={setPlatformId} />
+          <PlanTabs setPlatformId={setPlatformId} />
           <div>
             <PlanOption plan={getPlan(platformId)} platformId={platformId} />
             <Divider />

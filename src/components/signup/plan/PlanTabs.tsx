@@ -5,16 +5,15 @@ import styled from '@emotion/styled';
 import { IPlan, usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  plan: IPlan;
   setPlatformId: (value: number) => void;
 }
 
-function PlanTabs({ plan, setPlatformId }: IProps) {
+function PlanTabs({ setPlatformId }: IProps) {
   const { color } = useTheme();
 
   const { plans } = usePlanStore();
 
-  const getServiceStatus = (): TStatus => {
+  const getServiceStatus = (plan: IPlan): TStatus => {
     const { planId, isGroup, groupMembers, isYearlyPay, billingMonth, billingDay } = plan;
     return planId &&
       (isGroup ? groupMembers : true) &&
@@ -28,7 +27,7 @@ function PlanTabs({ plan, setPlatformId }: IProps) {
       {plans.map(v => (
         <Tab key={v.platformId} onClick={() => setPlatformId(v.platformId)}>
           <SpotifySmallLogo width={40} height={40} color={color.base.gray.base} />
-          <Status status={getServiceStatus()} />
+          <Status status={getServiceStatus(v)} />
         </Tab>
       ))}
     </Tabs>

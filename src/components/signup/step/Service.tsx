@@ -56,10 +56,10 @@ function SignupService() {
         platformType: v.platformType,
         planId: 0,
         isGroup: false,
-        groupMembers: '0',
+        groupMembers: '',
         isYearlyPay: false,
-        billingMonth: '0',
-        billingDay: '0',
+        billingMonth: '',
+        billingDay: '',
       })),
     ]);
     router.push('/signup/plan');

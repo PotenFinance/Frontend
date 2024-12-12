@@ -4,7 +4,7 @@ import Checkbox from '@components/common/Checkbox';
 import { IPlan, usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  plan: IPlan;
+  plan?: IPlan;
   platformId: number;
 }
 
@@ -49,7 +49,7 @@ function PlanOption({ plan, platformId }: IProps) {
   return (
     <PlanOptionContainer>
       <PlanOptionTitle>
-        <Status status={plan.planId ? 'success' : 'error'} />
+        <Status status={plan?.planId ? 'success' : 'error'} />
         <span>플랜</span>
       </PlanOptionTitle>
       <PlanOptionList>
@@ -60,7 +60,7 @@ function PlanOption({ plan, platformId }: IProps) {
               <span>{v.planCost.toLocaleString()}원 / 1개월</span>
             </div>
             <Checkbox
-              checked={plan.planId === v.planId}
+              checked={plan?.planId === v.planId}
               onClick={() => updatePlanId({ platformId, planId: v.planId })}
             />
           </PlanOptionItem>

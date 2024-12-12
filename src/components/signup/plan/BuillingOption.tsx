@@ -5,7 +5,7 @@ import { IPlan, usePlanStore } from 'stores/usePlanStore';
 import { useState } from 'react';
 
 interface IProps {
-  plan: IPlan;
+  plan?: IPlan;
   platformId: number;
 }
 
@@ -29,7 +29,7 @@ function BuillingOption({ plan, platformId }: IProps) {
       <PlanOptionTitle>
         <Status
           status={
-            (plan.isYearlyPay ? plan.billingMonth && plan.billingDay : plan.billingDay)
+            (plan?.isYearlyPay ? plan.billingMonth && plan.billingDay : plan?.billingDay)
               ? 'success'
               : 'error'
           }
@@ -42,7 +42,7 @@ function BuillingOption({ plan, platformId }: IProps) {
             <Input
               placeholder="매달"
               readOnly
-              value={plan.isYearlyPay ? '매년' : '매달'}
+              value={plan?.isYearlyPay ? '매년' : '매달'}
               onClick={() => setOpenSelect(!openSelect)}
             />
             {openSelect && (
@@ -56,7 +56,7 @@ function BuillingOption({ plan, platformId }: IProps) {
             )}
           </Select>
           마다&nbsp;
-          {plan.isYearlyPay && (
+          {plan?.isYearlyPay && (
             <>
               <Input
                 placeholder="1"
@@ -68,7 +68,7 @@ function BuillingOption({ plan, platformId }: IProps) {
           )}
           <Input
             placeholder="1"
-            value={plan.billingDay}
+            value={plan?.billingDay}
             onChange={e => updateBillingDay({ platformId, billingDay: e.target.value })}
           />
           일에 결제하고 있어요.

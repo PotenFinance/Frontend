@@ -5,7 +5,7 @@ import { IPlan, usePlanStore } from 'stores/usePlanStore';
 import Status from '@components/common/Status';
 
 interface IProps {
-  plan: IPlan;
+  plan?: IPlan;
   platformId: number;
 }
 
@@ -20,7 +20,7 @@ function MemberOption({ plan, platformId }: IProps) {
   return (
     <PlanOptionContainer>
       <PlanOptionTitle>
-        <Status status={(plan.isGroup ? plan.groupMembers : true) ? 'success' : 'error'} />
+        <Status status={(plan?.isGroup ? plan.groupMembers : true) ? 'success' : 'error'} />
         <span>개인 / 그룹</span>
       </PlanOptionTitle>
       <PlanOptionList>
@@ -30,12 +30,12 @@ function MemberOption({ plan, platformId }: IProps) {
               <p>{v.planName}</p>
             </div>
             <Checkbox
-              checked={plan.isGroup === v.isGroup}
+              checked={plan?.isGroup === v.isGroup}
               onClick={() => updateIsGroup({ platformId, isGroup: v.isGroup })}
             />
           </PlanOptionItem>
         ))}
-        {plan.isGroup && (
+        {plan?.isGroup && (
           <GroupMembersItem>
             <p>그룹원이 몇 명(본인 포함)인가요?</p>
             <div>
