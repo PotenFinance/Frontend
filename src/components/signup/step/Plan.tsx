@@ -22,7 +22,7 @@ function SignupPlan() {
 
   const router = useRouter();
 
-  const { budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
+  const { code, userId, budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
   const { data } = useQuery<GetPlatformPlanRes>({
@@ -32,7 +32,7 @@ function SignupPlan() {
 
   const { mutate } = useMutation<ILoginRes, Error, ISignupReq>({
     mutationFn: data => signupApi(data),
-    onSuccess: ({ status, code, data }) => {
+    onSuccess: ({ status, data }) => {
       if (status === 200 && data.access_token && data.refresh_token) {
         resetSignupData();
         setCookie('accessToken', data.access_token);
@@ -61,8 +61,8 @@ function SignupPlan() {
     setPlatforms([...plans]);
     console.log('### 회원가입 요청', [...plans]);
     mutate({
-      code: '',
-      userId: '',
+      code,
+      userId,
       budget,
       platforms: [...plans],
     });

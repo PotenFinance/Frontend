@@ -6,7 +6,7 @@ export const getTopPlatformsApi = async () => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };
 
@@ -18,7 +18,7 @@ export const getSearchPlatformsApi = async (platformName: string) => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };
 
@@ -30,6 +30,6 @@ export const getPlatformPlansApi = async (platformId: number) => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };

@@ -8,7 +8,7 @@ export const loginApi = async (code: string) => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };
 
@@ -18,7 +18,7 @@ export const signupApi = async (data: ISignupReq) => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };
 
@@ -28,6 +28,6 @@ export const getTokenApi = async (refresh_token: string) => {
     return res.data;
   } catch (err) {
     console.error(err);
-    throw err;
+    // throw err;
   }
 };

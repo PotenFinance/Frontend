@@ -11,7 +11,7 @@ function LoginPage() {
   const handleLogin = () => {
     if (window.Kakao.isInitialized()) {
       window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
+        redirectUri: process.env.NEXT_PUBLIC_AUTH_KAKAO_REDIRECT_URL,
       });
     }
   };

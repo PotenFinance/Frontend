@@ -7,7 +7,7 @@ interface ISignupReq {
 
 interface ILoginRes extends IRes {
   data: {
-    id: number;
+    id: string;
     connected_at: string;
     properties: {
       nickname: string;
@@ -26,5 +26,11 @@ interface ILoginRes extends IRes {
     };
     access_token: string | null;
     refresh_token: string | null;
+  };
+}
+
+interface IGetTokenRes extends IRes {
+  data: {
+    access_token: string;
   };
 }
