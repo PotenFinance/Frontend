@@ -2,11 +2,11 @@ import SearchIcon from '@assets/icons/Search';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import BackHeader from '../BackHeader';
-import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import { useServiceStore } from 'stores/useServiceStore';
 import { useQuery } from '@tanstack/react-query';
 import { getSearchPlatformsApi } from 'apis/platforms';
 import { useState } from 'react';
+import { BRAND_LOGO } from '@constants/logo';
 
 interface IProps {
   handleClose: () => void;
@@ -57,7 +57,7 @@ function SignupSearch({ handleClose }: IProps) {
           {/* 컴포넌트 분리 SearchedServiceItem */}
           {testData.map(v => (
             <Item key={v.platformId} onClick={() => handleClickItem(v)}>
-              <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
+              {BRAND_LOGO({ width: 40, height: 40 })['small'][v.platformId]}
               <div>
                 <p>{v.platformName}</p>
                 <span>{v.platformType}</span>

@@ -4,14 +4,13 @@ import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import PlusIcon from '@assets/icons/Plus';
 import Button from '@components/common/Button';
-import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
-import { useTheme } from '@emotion/react';
 import { useSignupStore } from 'stores/useSignupStore';
 import { useEffect, useState } from 'react';
 import { useServiceStore } from 'stores/useServiceStore';
 import Search from './Search';
 import { useQuery } from '@tanstack/react-query';
 import { getTopPlatformsApi } from 'apis/platforms';
+import { BRAND_LOGO } from '@constants/logo';
 
 const testData = [
   {
@@ -43,7 +42,6 @@ const testData = [
 
 function SignupService() {
   const router = useRouter();
-  const { color } = useTheme();
 
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -98,7 +96,7 @@ function SignupService() {
             {/* 컴포넌트 분리 AddedServiceItem */}
             {services.map(v => (
               <ServiceItem key={v.platformId}>
-                <NetflixLargeLogo width={'100%'} height={'100%'} color={color.brand.netflix} />
+                {BRAND_LOGO({ width: '100%', height: '100%' })['large'][v.platformId]}
                 <div>
                   <div>
                     <span>{v.platformName}</span>

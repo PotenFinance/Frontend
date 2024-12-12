@@ -1,15 +1,16 @@
-import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import Status, { TStatus } from '@components/common/Status';
+import { BRAND_LOGO } from '@constants/logo';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
+  platformId: number;
   setPlatformId: (value: number) => void;
   getServiceStatus: (plan: ISignupPlatform) => TStatus;
 }
 
-function PlanTabs({ setPlatformId, getServiceStatus }: IProps) {
+function PlanTabs({ platformId, setPlatformId, getServiceStatus }: IProps) {
   const { color } = useTheme();
 
   const { plans } = usePlanStore();
@@ -18,7 +19,13 @@ function PlanTabs({ setPlatformId, getServiceStatus }: IProps) {
     <Tabs>
       {plans.map(v => (
         <Tab key={v.platformId} onClick={() => setPlatformId(v.platformId)}>
-          <SpotifySmallLogo width={40} height={40} color={color.base.gray.base} />
+          {
+            BRAND_LOGO({
+              width: 40,
+              height: 40,
+              color: v.platformId !== platformId ? color.base.gray.base : undefined,
+            })['small'][v.platformId]
+          }
           <Status status={getServiceStatus(v)} />
         </Tab>
       ))}
@@ -40,6 +47,7 @@ const Tab = styled.li`
   width: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: end;
   align-items: center;
   gap: 4px;
   cursor: pointer;
