@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
 import ImagePlaceholder from '@assets/icons/profile-placeholder.svg';
 import SectionLayout from '@components/common/SectionLayout';
-import { MenuList } from '@components/mypage';
-import { MYPAGE_MENU } from '@constants/index';
+import { SETTINGS } from '@constants/index';
 import { TypographySize } from '@styles/theme';
 import NotificationIcon from '@assets/icons/Notification';
+import MenuItem from '@components/mypage/MenuItem';
+import { useRouter } from 'next/router';
 
 export default function MyPage() {
+  const router = useRouter();
+
   return (
     <>
       <SectionLayout heading={``}>
@@ -19,13 +22,40 @@ export default function MyPage() {
         </ProfileHeader>
       </SectionLayout>
       <SectionLayout heading={`개인 / 설정`} style={{ paddingBottom: 0 }}>
-        <MenuList menuNames={MYPAGE_MENU.PERSONAL_SETTINGS} style={{ marginTop: '12px' }} />
+        <ul>
+          {SETTINGS.personal.map(menu => (
+            <MenuItem
+              key={menu.name}
+              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+            >
+              {menu.name}
+            </MenuItem>
+          ))}
+        </ul>
       </SectionLayout>
       <SectionLayout heading={`나의 구독 정보`} style={{ paddingBottom: 0 }}>
-        <MenuList menuNames={MYPAGE_MENU.SUBSCRIPTION} style={{ marginTop: '12px' }} />
+        <ul>
+          {SETTINGS.subscription.map(menu => (
+            <MenuItem
+              key={menu.name}
+              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+            >
+              {menu.name}
+            </MenuItem>
+          ))}
+        </ul>
       </SectionLayout>
       <SectionLayout heading={`커뮤니티 정보`}>
-        <MenuList menuNames={MYPAGE_MENU.COMMUNITY} style={{ marginTop: '12px' }} />
+        <ul>
+          {SETTINGS.community.map(menu => (
+            <MenuItem
+              key={menu.name}
+              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+            >
+              {menu.name}
+            </MenuItem>
+          ))}
+        </ul>
       </SectionLayout>
     </>
   );
