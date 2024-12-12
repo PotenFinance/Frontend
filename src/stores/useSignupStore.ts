@@ -18,6 +18,7 @@ interface IStore {
   platforms: IPlatform[];
   setBudget: (budget: string) => void;
   setPlatforms: (platform: IPlatform[]) => void;
+  resetSignupData: () => void;
 }
 
 export const useSignupStore = create<IStore>()(
@@ -27,6 +28,7 @@ export const useSignupStore = create<IStore>()(
       platforms: [],
       setBudget: budget => set(state => ({ ...state, budget })),
       setPlatforms: platforms => set(state => ({ ...state, platforms })),
+      resetSignupData: () => set({ budget: '', platforms: [] }),
     }),
     { name: 'signup' },
   ),

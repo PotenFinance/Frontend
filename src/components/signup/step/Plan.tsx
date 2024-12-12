@@ -18,7 +18,7 @@ function SignupPlan() {
 
   const router = useRouter();
 
-  const { platforms, setPlatforms } = useSignupStore();
+  const { platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
   const getPlan = (platformId: number) => {
@@ -39,6 +39,7 @@ function SignupPlan() {
   const handleSubmit = () => {
     setPlatforms([...plans]);
     console.log('### 회원가입 요청', [...plans]);
+    resetSignupData();
   };
 
   useEffect(() => {
