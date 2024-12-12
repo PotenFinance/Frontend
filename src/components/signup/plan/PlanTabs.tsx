@@ -6,21 +6,13 @@ import { IPlan, usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
   setPlatformId: (value: number) => void;
+  getServiceStatus: (plan: IPlan) => TStatus;
 }
 
-function PlanTabs({ setPlatformId }: IProps) {
+function PlanTabs({ setPlatformId, getServiceStatus }: IProps) {
   const { color } = useTheme();
 
   const { plans } = usePlanStore();
-
-  const getServiceStatus = (plan: IPlan): TStatus => {
-    const { planId, isGroup, groupMembers, isYearlyPay, billingMonth, billingDay } = plan;
-    return planId &&
-      (isGroup ? groupMembers : true) &&
-      (isYearlyPay ? billingMonth && billingDay : billingDay)
-      ? 'success'
-      : 'error';
-  };
 
   return (
     <Tabs>
