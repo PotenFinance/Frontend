@@ -2,16 +2,21 @@ import Button from '@components/common/Button';
 import MyPageLayout from '@components/layout/MypageLayout';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function ProfileEdit() {
   const theme = useTheme();
   const [username, setUsername] = useState('');
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value);
 
   return (
-    <MyPageLayout pageName="내 정보 수정하기">
+    <MyPageLayout
+      pageName="내 정보 수정하기"
+      onBackButtonClick={() => router.push('/settings/profile')}
+    >
       <Form>
         <InnerWrapper>
           <Label htmlFor="">이름</Label>

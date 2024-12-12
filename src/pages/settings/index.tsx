@@ -4,9 +4,10 @@ import SectionLayout from '@components/common/SectionLayout';
 import { SETTINGS } from '@constants/index';
 import { TypographySize } from '@styles/theme';
 import NotificationIcon from '@assets/icons/Notification';
-import MenuItem from '@components/mypage/MenuItem';
+import MenuItem from '@components/settings/MenuItem';
 import { useRouter } from 'next/router';
 
+/** 마이페이지 */
 export default function MyPage() {
   const router = useRouter();
 
@@ -26,7 +27,7 @@ export default function MyPage() {
           {SETTINGS.personal.map(menu => (
             <MenuItem
               key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
             >
               {menu.name}
             </MenuItem>
@@ -38,7 +39,7 @@ export default function MyPage() {
           {SETTINGS.subscription.map(menu => (
             <MenuItem
               key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
             >
               {menu.name}
             </MenuItem>
@@ -50,7 +51,7 @@ export default function MyPage() {
           {SETTINGS.community.map(menu => (
             <MenuItem
               key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}/${menu.path}`)}
+              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
             >
               {menu.name}
             </MenuItem>

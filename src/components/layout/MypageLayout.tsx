@@ -8,6 +8,8 @@ interface IProps {
   /** 헤더바 우측에 위치하는 버튼 */
   buttonName?: string;
   onButtonClick?: () => void;
+  /** 헤더바 좌측 뒤로가기 화살표 버튼 클릭시 호출하는 함수 */
+  onBackButtonClick?: () => void;
 }
 
 export default function MyPageLayout({
@@ -15,14 +17,15 @@ export default function MyPageLayout({
   pageName = '내 정보',
   buttonName,
   onButtonClick,
+  onBackButtonClick,
 }: IProps) {
   const router = useRouter();
-  const onGoBackButtonClick = () => router.back();
+  const handleBackButtonClick = onBackButtonClick ? onBackButtonClick : () => router.back();
 
   return (
     <Container>
       <Header hasButton={!!buttonName}>
-        <button type="button" onClick={onGoBackButtonClick}>
+        <button type="button" onClick={handleBackButtonClick}>
           <ArrowBackIcon height={16} />
         </button>
         <Heading>{pageName}</Heading>
