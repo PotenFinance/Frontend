@@ -1,10 +1,10 @@
 import Status from '@components/common/Status';
 import { PlanOptionContainer, PlanOptionItem, PlanOptionList, PlanOptionTitle } from '../styled';
 import Checkbox from '@components/common/Checkbox';
-import { IPlan, usePlanStore } from 'stores/usePlanStore';
+import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  plan?: IPlan;
+  plan?: ISignupPlatform;
   platformId: number;
 }
 

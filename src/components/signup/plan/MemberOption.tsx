@@ -1,11 +1,11 @@
 import Checkbox from '@components/common/Checkbox';
 import { PlanOptionContainer, PlanOptionItem, PlanOptionList, PlanOptionTitle } from '../styled';
 import styled from '@emotion/styled';
-import { IPlan, usePlanStore } from 'stores/usePlanStore';
+import { usePlanStore } from 'stores/usePlanStore';
 import Status from '@components/common/Status';
 
 interface IProps {
-  plan?: IPlan;
+  plan?: ISignupPlatform;
   platformId: number;
 }
 

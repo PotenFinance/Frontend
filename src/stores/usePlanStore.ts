@@ -1,21 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export interface IPlan {
-  platformId: number;
-  platformName: string; //TODO 추가
-  platformType: string; //TODO 추가
-  planId: number;
-  isGroup: boolean;
-  groupMembers: string; //TODO 추가
-  isYearlyPay: boolean;
-  billingMonth: string;
-  billingDay: string;
-}
-
 interface IStore {
-  plans: IPlan[];
-  setPlans: (plans: IPlan[]) => void;
+  plans: ISignupPlatform[];
+  setPlans: (plans: ISignupPlatform[]) => void;
   updatePlanId: (plan: { platformId: number; planId: number }) => void;
   updateIsGroup: (plan: { platformId: number; isGroup: boolean }) => void;
   updateGroupMembers: (plan: { platformId: number; groupMembers: string }) => void;

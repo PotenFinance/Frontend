@@ -2,11 +2,11 @@ import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import Status, { TStatus } from '@components/common/Status';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { IPlan, usePlanStore } from 'stores/usePlanStore';
+import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
   setPlatformId: (value: number) => void;
-  getServiceStatus: (plan: IPlan) => TStatus;
+  getServiceStatus: (plan: ISignupPlatform) => TStatus;
 }
 
 function PlanTabs({ setPlatformId, getServiceStatus }: IProps) {

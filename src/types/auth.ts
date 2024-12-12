@@ -1,4 +1,11 @@
-interface ILoginRes {
+interface ISignupReq {
+  code: string;
+  userId: string;
+  budget: string;
+  platforms: ISignupPlatform[];
+}
+
+interface ILoginRes extends IRes {
   data: {
     id: number;
     connected_at: string;
@@ -20,11 +27,4 @@ interface ILoginRes {
     access_token: string | null;
     refresh_token: string | null;
   };
-}
-
-interface ISignupReq {
-  code: string;
-  userId: string;
-  budget: number;
-  platforms: ISignupPlatform[];
 }

@@ -1,16 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export interface IService {
-  platformId: number;
-  platformName: string;
-  platformType: string;
-}
-
 interface IStore {
-  services: IService[];
-  setServices: (service: IService[]) => void;
-  addService: (service: IService) => void;
+  services: IPlatform[];
+  setServices: (service: IPlatform[]) => void;
+  addService: (service: IPlatform) => void;
   deleteService: (serviceId: number) => void;
 }
 

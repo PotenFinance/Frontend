@@ -12,9 +12,9 @@ export const loginApi = async (code: string) => {
   }
 };
 
-export const signupApi = async (formData: ISignupReq) => {
+export const signupApi = async (data: ISignupReq) => {
   try {
-    const res = await axiosInstance.post('/auth/kakao/onboard', formData);
+    const res = await axiosInstance.post('/auth/kakao/onboard', data);
     return res.data;
   } catch (err) {
     console.error(err);

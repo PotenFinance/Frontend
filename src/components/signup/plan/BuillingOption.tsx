@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 import { PlanOptionContainer, PlanOptionList, PlanOptionTitle } from '../styled';
 import Status from '@components/common/Status';
-import { IPlan, usePlanStore } from 'stores/usePlanStore';
+import { usePlanStore } from 'stores/usePlanStore';
 import { useState } from 'react';
 
 interface IProps {
-  plan?: IPlan;
+  plan?: ISignupPlatform;
   platformId: number;
 }
 

@@ -15,17 +15,20 @@ interface IPlan {
 
 interface ISignupPlatform {
   platformId: number;
+  platformName: string; //TODO 추가
+  platformType: string; //TODO 추가
   planId: number;
   isGroup: boolean;
+  groupMembers: string; //TODO 추가
   isYearlyPay: boolean;
-  billingMonth: number;
-  billingDay: number;
+  billingMonth: string;
+  billingDay: string;
 }
 
-interface GetPlatformsRes {
+interface GetPlatformsRes extends IRes {
   data: IPlatform[];
 }
 
-interface GetPlatformPlanRes {
+interface GetPlatformPlanRes extends IRes {
   data: IPlan[];
 }

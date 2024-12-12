@@ -5,22 +5,24 @@ import styled from '@emotion/styled';
 import Divider from '@components/common/Divider';
 import Button from '@components/common/Button';
 import { useSignupStore } from 'stores/useSignupStore';
-import { IPlan, usePlanStore } from 'stores/usePlanStore';
+import { usePlanStore } from 'stores/usePlanStore';
 import { useEffect, useState } from 'react';
 import PlanTabs from '../plan/PlanTabs';
 import PlanOption from '../plan/PlanOption';
 import MemberOption from '../plan/MemberOption';
 import BuillingOption from '../plan/BuillingOption';
 import { TStatus } from '@components/common/Status';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { getPlatformPlansApi } from 'apis/platforms';
+import { signupApi } from 'apis/auth';
+import { setCookie } from '@utils/cookie';
 
 function SignupPlan() {
   const [platformId, setPlatformId] = useState(101);
 
   const router = useRouter();
 
-  const { platforms, setPlatforms, resetSignupData } = useSignupStore();
+  const { budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
   const { data } = useQuery<GetPlatformPlanRes>({
@@ -28,11 +30,23 @@ function SignupPlan() {
     queryFn: () => getPlatformPlansApi(platformId),
   });
 
+  const { mutate } = useMutation<ILoginRes, Error, ISignupReq>({
+    mutationFn: data => signupApi(data),
+    onSuccess: ({ status, code, data }) => {
+      if (status === 200 && data.access_token && data.refresh_token) {
+        resetSignupData();
+        setCookie('accessToken', data.access_token);
+        setCookie('refreshToken', data.refresh_token);
+        router.push('/');
+      }
+    },
+  });
+
   const getPlan = (platformId: number) => {
     return plans.filter(plan => plan.platformId === platformId)[0];
   };
 
-  const getServiceStatus = (plan: IPlan): TStatus => {
+  const getServiceStatus = (plan: ISignupPlatform): TStatus => {
     const { planId, isGroup, groupMembers, isYearlyPay, billingMonth, billingDay } = plan;
     return planId &&
       (isGroup ? groupMembers : true) &&
@@ -46,7 +60,12 @@ function SignupPlan() {
   const handleSubmit = () => {
     setPlatforms([...plans]);
     console.log('### 회원가입 요청', [...plans]);
-    resetSignupData();
+    mutate({
+      code: '',
+      userId: '',
+      budget,
+      platforms: [...plans],
+    });
   };
 
   useEffect(() => {

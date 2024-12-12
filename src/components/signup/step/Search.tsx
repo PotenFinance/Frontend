@@ -3,7 +3,7 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import BackHeader from '../BackHeader';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
-import { IService, useServiceStore } from 'stores/useServiceStore';
+import { useServiceStore } from 'stores/useServiceStore';
 import { useQuery } from '@tanstack/react-query';
 import { getSearchPlatformsApi } from 'apis/platforms';
 import { useState } from 'react';
@@ -37,7 +37,7 @@ function SignupSearch({ handleClose }: IProps) {
     queryFn: () => getSearchPlatformsApi(keyword),
   });
 
-  const handleClickItem = (service: IService) => {
+  const handleClickItem = (service: IPlatform) => {
     addService(service);
     handleClose();
   };
