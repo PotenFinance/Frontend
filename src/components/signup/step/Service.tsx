@@ -10,8 +10,10 @@ import { useSignupStore } from 'stores/useSignupStore';
 import { useEffect, useState } from 'react';
 import { useServiceStore } from 'stores/useServiceStore';
 import Search from './Search';
+import { useQuery } from '@tanstack/react-query';
+import { getTopPlatformsApi } from 'apis/platforms';
 
-const data = [
+const testData = [
   {
     platformId: 101,
     platformName: '넷플릭스',
@@ -48,6 +50,11 @@ function SignupService() {
   const { platforms, setPlatforms } = useSignupStore();
   const { services, setServices, deleteService } = useServiceStore();
 
+  const { data } = useQuery<GetPlatformsRes>({
+    queryKey: ['topPlatforms'],
+    queryFn: getTopPlatformsApi,
+  });
+
   const handleSubmit = () => {
     setPlatforms([
       ...services.map(v => ({
@@ -75,7 +82,7 @@ function SignupService() {
         })),
       ]);
     } else {
-      setServices([...data]);
+      setServices([...testData]);
     }
   }, [platforms]);
 

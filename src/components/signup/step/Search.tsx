@@ -4,12 +4,15 @@ import styled from '@emotion/styled';
 import BackHeader from '../BackHeader';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import { IService, useServiceStore } from 'stores/useServiceStore';
+import { useQuery } from '@tanstack/react-query';
+import { getSearchPlatformsApi } from 'apis/platforms';
+import { useState } from 'react';
 
 interface IProps {
   handleClose: () => void;
 }
 
-const data = [
+const testData = [
   {
     platformId: 106,
     platformName: '스포티파이',
@@ -25,7 +28,14 @@ const data = [
 function SignupSearch({ handleClose }: IProps) {
   const { color } = useTheme();
 
+  const [keyword, setKeyword] = useState('');
+
   const { addService } = useServiceStore();
+
+  const { data } = useQuery<GetPlatformsRes>({
+    queryKey: ['searchPlatforms', keyword],
+    queryFn: () => getSearchPlatformsApi(keyword),
+  });
 
   const handleClickItem = (service: IService) => {
     addService(service);
@@ -38,14 +48,14 @@ function SignupSearch({ handleClose }: IProps) {
       <Container>
         {/* 컴포넌트 분리 ServiceSearch */}
         <Search>
-          <Input />
+          <Input value={keyword} onChange={e => setKeyword(e.target.value)} />
           <SearchButton>
             <SearchIcon width={36} height={36} color={color.secondary} />
           </SearchButton>
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
-          {data.map(v => (
+          {testData.map(v => (
             <Item key={v.platformId} onClick={() => handleClickItem(v)}>
               <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
               <div>

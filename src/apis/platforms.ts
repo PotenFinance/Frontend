@@ -2,31 +2,34 @@ import axiosInstance from './axiosInstance';
 
 export const getTopPlatformsApi = async () => {
   try {
-    const { data }: GetPlatformsRes = await axiosInstance.get('/platforms/top-info');
-    return data;
-  } catch (error) {
-    console.error(error);
+    const res = await axiosInstance.get('/platforms/top-info');
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };
 
 export const getSearchPlatformsApi = async (platformName: string) => {
   try {
-    const { data }: GetPlatformsRes = await axiosInstance.get('/platforms/search', {
+    const res = await axiosInstance.get('/platforms/search', {
       params: { platformName },
     });
-    return data;
-  } catch (error) {
-    console.error(error);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };
 
 export const getPlatformPlansApi = async (platformId: number) => {
   try {
-    const { data }: GetPlatformPlanRes = await axiosInstance.get('/platforms/search-plan', {
+    const res = await axiosInstance.get('/platforms/search-plan', {
       params: { platformId },
     });
-    return data;
-  } catch (error) {
-    console.error(error);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
   }
 };

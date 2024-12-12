@@ -12,6 +12,8 @@ import PlanOption from '../plan/PlanOption';
 import MemberOption from '../plan/MemberOption';
 import BuillingOption from '../plan/BuillingOption';
 import { TStatus } from '@components/common/Status';
+import { useQuery } from '@tanstack/react-query';
+import { getPlatformPlansApi } from 'apis/platforms';
 
 function SignupPlan() {
   const [platformId, setPlatformId] = useState(101);
@@ -20,6 +22,11 @@ function SignupPlan() {
 
   const { platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
+
+  const { data } = useQuery<GetPlatformPlanRes>({
+    queryKey: ['platformPlans', platformId],
+    queryFn: () => getPlatformPlansApi(platformId),
+  });
 
   const getPlan = (platformId: number) => {
     return plans.filter(plan => plan.platformId === platformId)[0];

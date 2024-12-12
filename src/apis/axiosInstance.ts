@@ -30,9 +30,8 @@ axiosInstance.interceptors.response.use(
 
     if (error.response.status === 401) {
       try {
-        const { access_token, refresh_token } = await getTokenApi(refreshToken);
-        setCookie('accessToken', access_token);
-        setCookie('refreshToken', refresh_token);
+        const { data }: { data: { access_token: string } } = await getTokenApi(refreshToken);
+        setCookie('accessToken', data.access_token);
         return axiosInstance(originalRequest);
       } catch (err) {
         router.push('/login');
