@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 interface IProps extends React.HTMLAttributes<HTMLElement> {
-  heading: string;
+  heading: string | React.ReactNode;
   children: React.ReactNode;
   categoryList?: { id: number; name: string }[];
   /** 맨첫번째 섹션인지 여부 */

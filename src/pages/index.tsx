@@ -1,4 +1,4 @@
-import { MySubscription, ExpensesListCard, YearlySpending } from '@components/home';
+import { MySubscription, ExpensesListCard, YearlySpending, BudgetStatus } from '@components/home';
 import SavingOptions from '@components/home/SavingOptions';
 import styled from '@emotion/styled';
 import { TypographySize } from '@styles/theme';
@@ -122,6 +122,7 @@ export default function Home() {
         <ScrollableContainer>
           <MySubscription data={subDummyData} />
           <YearlySpending />
+          <BudgetStatus />
           {/* 후순위 */}
           {/* <SavingOptions /> */}
         </ScrollableContainer>

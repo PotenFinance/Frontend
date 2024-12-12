@@ -44,7 +44,7 @@ export default function MySubscription({ data }: IProps) {
       <CardList moreThanTwo={count < 2}>
         {dummyData.map(data => {
           return (
-            <li>
+            <li key={data.service}>
               <ServiceCard data={data} />
             </li>
           );
