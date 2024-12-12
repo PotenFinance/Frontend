@@ -1,23 +1,24 @@
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
-import { BeginStepContainer, BeginStepTitle } from '../styled';
+import { SignupContainer, SignupTitle } from '../styled';
 import styled from '@emotion/styled';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 import { useTheme } from '@emotion/react';
 import Status from '@components/common/Status';
 import Checkbox from '@components/common/Checkbox';
 import Divider from '@components/common/Divider';
+import Button from '@components/common/Button';
 
-function BeginStep4() {
+function SignupPlan() {
   const router = useRouter();
   const { color } = useTheme();
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/begin/step/2')} />
-      <BeginStepContainer>
+      <BackHeader handleBack={() => router.push('/signup/service')} />
+      <SignupContainer>
         <ContentWrap>
-          <BeginStepTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</BeginStepTitle>
+          <SignupTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</SignupTitle>
           {/* 컴포넌트 분리 ServiceTabs */}
           <Tabs>
             <Tab>
@@ -60,12 +61,13 @@ function BeginStep4() {
             </Option>
           </div>
         </ContentWrap>
-      </BeginStepContainer>
+        <Button text="완료" />
+      </SignupContainer>
     </>
   );
 }
 
-export default BeginStep4;
+export default SignupPlan;
 
 const ContentWrap = styled.div`
   width: 100%;

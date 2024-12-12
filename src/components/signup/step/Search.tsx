@@ -5,13 +5,13 @@ import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
 
-function BeginStep3() {
+function SignupSearch() {
   const router = useRouter();
   const { color } = useTheme();
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/begin/step/2')} />
+      <BackHeader handleBack={() => router.push('/signup/service')} />
       <Container>
         {/* 컴포넌트 분리 ServiceSearch */}
         <Search>
@@ -35,7 +35,7 @@ function BeginStep3() {
   );
 }
 
-export default BeginStep3;
+export default SignupSearch;
 
 const Container = styled.div`
   padding: 20px 16px 40px;
