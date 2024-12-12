@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import SectionLayout from './SectionLayout';
+import GaugeChart from '@components/common/chart/GaugeChart';
 
 /** 이번달 예산 현황 */
 export default function BudgetStatus() {
   const Heading = (
     <>
-      이번달 예산을 <Highlight>초과</Highlight>했어요
+      이번달 예산을 <Highlight>초과</Highlight>했어요.
     </>
   );
 
@@ -24,6 +25,9 @@ export default function BudgetStatus() {
           </li>
         </OverviewList>
       </Overview>
+      <ChartContainer>
+        <GaugeChart width={390} />
+      </ChartContainer>
     </SectionLayout>
   );
 }
@@ -70,3 +74,5 @@ const OverrunAmount = styled(Amount)`
 const Highlight = styled.span`
   color: ${({ theme }) => theme.color.theme.negavite};
 `;
+
+const ChartContainer = styled.div``;
