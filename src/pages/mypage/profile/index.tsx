@@ -8,7 +8,7 @@ import { MenuList } from '@components/mypage';
 export default function Profile() {
   return (
     <MyPageLayout pageName="내 정보" buttonName="수정">
-      <SectionLayout style={{ paddingBottom: 0 }}>
+      <SectionLayout style={{ padding: 0 }}>
         <ProfileImageContainer>
           <EditProfileImageIcon width={96} height={96} />
         </ProfileImageContainer>
