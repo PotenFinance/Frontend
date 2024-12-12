@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
 export const SignupContainer = styled.div`
+  flex-grow: 1;
   padding: 20px 16px 40px;
-  height: calc(100% - 50px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
 `;
 
 export const SignupTitle = styled.p`

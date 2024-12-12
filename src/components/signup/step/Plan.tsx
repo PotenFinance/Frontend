@@ -9,6 +9,41 @@ import Checkbox from '@components/common/Checkbox';
 import Divider from '@components/common/Divider';
 import Button from '@components/common/Button';
 
+const data = [
+  {
+    platformId: 101,
+    planId: 1001,
+    planName: '스탠다드 (연간 / 1명)',
+    planCost: 50000,
+    maxMembers: 1,
+    isYearlyPlan: true,
+  },
+  {
+    platformId: 101,
+    planId: 1002,
+    planName: '스탠다드 (연간 / 2명)',
+    planCost: 80000,
+    maxMembers: 1,
+    isYearlyPlan: true,
+  },
+  {
+    platformId: 101,
+    planId: 1003,
+    planName: '스탠다드 (연간 / 3명)',
+    planCost: 100000,
+    maxMembers: 3,
+    isYearlyPlan: true,
+  },
+  {
+    platformId: 101,
+    planId: 1004,
+    planName: '스탠다드 (월간)',
+    planCost: 90000,
+    maxMembers: 1,
+    isYearlyPlan: true,
+  },
+];
+
 function SignupPlan() {
   const router = useRouter();
   const { color } = useTheme();
@@ -34,13 +69,15 @@ function SignupPlan() {
                 <span>플랜</span>
               </OptionTitle>
               <OptionList>
-                <OptionItem>
-                  <div>
-                    <p>프리미엄 요금제</p>
-                    <span>17,000원 / 1개월</span>
-                  </div>
-                  <Checkbox checked />
-                </OptionItem>
+                {data.map(v => (
+                  <OptionItem key={v.planId}>
+                    <div>
+                      <p>{v.planName}</p>
+                      <span>{v.planCost.toLocaleString()}원 / 1개월</span>
+                    </div>
+                    <Checkbox checked />
+                  </OptionItem>
+                ))}
               </OptionList>
             </Option>
             <Divider />
@@ -53,9 +90,36 @@ function SignupPlan() {
               <OptionList>
                 <OptionItem>
                   <div>
-                    <p>혼자서 구독하고 있어요.</p>
+                    <p>혼자서 결제하고 있어요.</p>
                   </div>
                   <Checkbox />
+                </OptionItem>
+                <OptionItem>
+                  <div>
+                    <p>같이 결제하고 있어요.</p>
+                  </div>
+                  <Checkbox />
+                </OptionItem>
+                <OptionItem>
+                  <div>
+                    <p>그룹원이 몇 명(본인 포함)인가요? 4명</p>
+                  </div>
+                  <Checkbox />
+                </OptionItem>
+              </OptionList>
+            </Option>
+            <Divider />
+            {/* 컴포넌트 분리 ServiceOption */}
+            <Option>
+              <OptionTitle>
+                <Status status="error" />
+                <span>결제일</span>
+              </OptionTitle>
+              <OptionList>
+                <OptionItem>
+                  <div>
+                    <p>매달마다 1일에 결제하고 있어요.</p>
+                  </div>
                 </OptionItem>
               </OptionList>
             </Option>

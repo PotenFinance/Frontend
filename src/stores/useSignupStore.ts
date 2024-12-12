@@ -3,6 +3,8 @@ import { persist } from 'zustand/middleware';
 
 interface IPlatform {
   platformId: number;
+  platformName: string; //TODO 추가
+  platformType: string; //TODO 추가
   planId: number;
   isGroup: boolean;
   isYearlyPay: boolean;
@@ -14,9 +16,10 @@ interface IStore {
   budget: string;
   platforms: IPlatform[];
   setBudget: (budget: string) => void;
-  addPlatform: (platform: IPlatform) => void;
+  setPlatforms: (platform: IPlatform[]) => void;
+  // addPlatform: (platform: IPlatform) => void;
   updatePlatform: (platform: IPlatform) => void;
-  deletePlatform: (platformId: number) => void;
+  // deletePlatform: (platformId: number) => void;
 }
 
 export const useSignupStore = create<IStore>()(
@@ -25,8 +28,9 @@ export const useSignupStore = create<IStore>()(
       budget: '',
       platforms: [],
       setBudget: budget => set(state => ({ ...state, budget })),
-      addPlatform: platform =>
-        set(state => ({ ...state, platforms: [...state.platforms, platform] })),
+      setPlatforms: platforms => set(state => ({ ...state, platforms })),
+      // addPlatform: platform =>
+      //   set(state => ({ ...state, platforms: [...state.platforms, platform] })),
       updatePlatform: platform =>
         set(state => ({
           ...state,
@@ -37,11 +41,11 @@ export const useSignupStore = create<IStore>()(
             }),
           ],
         })),
-      deletePlatform: platformId =>
-        set(state => ({
-          ...state,
-          platforms: [...state.platforms?.filter(v => v.platformId !== platformId)],
-        })),
+      // deletePlatform: platformId =>
+      //   set(state => ({
+      //     ...state,
+      //     platforms: [...state.platforms?.filter(v => v.platformId !== platformId)],
+      //   })),
     }),
     { name: 'signup' },
   ),

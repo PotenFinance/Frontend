@@ -1,17 +1,40 @@
 import SearchIcon from '@assets/icons/Search';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
+import { IService, useServiceStore } from 'stores/useServiceStore';
 
-function SignupSearch() {
-  const router = useRouter();
+interface IProps {
+  handleClose: () => void;
+}
+
+const data = [
+  {
+    platformId: 106,
+    platformName: '스포티파이',
+    platformType: '음악',
+  },
+  {
+    platformId: 107,
+    platformName: '스포티비 나우',
+    platformType: 'OTT',
+  },
+];
+
+function SignupSearch({ handleClose }: IProps) {
   const { color } = useTheme();
+
+  const { addService } = useServiceStore();
+
+  const handleClickItem = (service: IService) => {
+    addService(service);
+    handleClose();
+  };
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/signup/service')} />
+      <BackHeader handleBack={handleClose} />
       <Container>
         {/* 컴포넌트 분리 ServiceSearch */}
         <Search>
@@ -22,13 +45,15 @@ function SignupSearch() {
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
-          <Item>
-            <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
-            <div>
-              <p>스포티파이</p>
-              <span>음악</span>
-            </div>
-          </Item>
+          {data.map(v => (
+            <Item key={v.platformId} onClick={() => handleClickItem(v)}>
+              <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
+              <div>
+                <p>{v.platformName}</p>
+                <span>{v.platformType}</span>
+              </div>
+            </Item>
+          ))}
         </List>
       </Container>
     </>
@@ -77,6 +102,7 @@ const Item = styled.li`
   align-items: center;
   gap: 8px;
   border-bottom: 0.3px solid ${({ theme }) => theme.color.base.black};
+  cursor: pointer;
   & > div {
     display: flex;
     flex-direction: column;
