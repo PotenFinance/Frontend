@@ -11,11 +11,11 @@ import PlanTabs from '../plan/PlanTabs';
 import PlanOption from '../plan/PlanOption';
 import MemberOption from '../plan/MemberOption';
 import BuillingOption from '../plan/BuillingOption';
-import { TStatus } from '@components/common/Status';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { getPlatformPlansApi } from 'apis/platforms';
 import { signupApi } from 'apis/auth';
 import { setCookie } from '@utils/cookie';
+import { isFulfilledPlan } from '@utils/platform';
 
 function SignupPlan() {
   const [platformId, setPlatformId] = useState(101);
@@ -42,20 +42,9 @@ function SignupPlan() {
     },
   });
 
-  const getPlan = (platformId: number) => {
-    return plans.filter(plan => plan.platformId === platformId)[0];
-  };
+  const getPlan = (platformId: number) => plans.filter(plan => plan.platformId === platformId)[0];
 
-  const getServiceStatus = (plan: ISignupPlatform): TStatus => {
-    const { planId, isGroup, groupMembers, isYearlyPay, billingMonth, billingDay } = plan;
-    return planId &&
-      (isGroup ? groupMembers : true) &&
-      (isYearlyPay ? billingMonth && billingDay : billingDay)
-      ? 'success'
-      : 'error';
-  };
-
-  const fulfilledPlans = plans.filter(plan => getServiceStatus(plan) === 'success');
+  const fulfilledPlans = plans.filter(plan => isFulfilledPlan(plan));
 
   const handleSubmit = () => {
     setPlatforms([...plans]);
@@ -78,11 +67,7 @@ function SignupPlan() {
       <SignupContainer>
         <ContentWrap>
           <SignupTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</SignupTitle>
-          <PlanTabs
-            platformId={platformId}
-            setPlatformId={setPlatformId}
-            getServiceStatus={getServiceStatus}
-          />
+          <PlanTabs platformId={platformId} setPlatformId={setPlatformId} />
           <div>
             <PlanOption plan={getPlan(platformId)} platformId={platformId} />
             <Divider />

@@ -3,6 +3,7 @@ import { PlanOptionItem } from '../styled';
 import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
 import PlanOptionLayout from './PlanOptionLayout';
+import { isFulfilledMemberOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -18,7 +19,7 @@ function MemberOption({ plan, platformId }: IProps) {
   const { updateIsGroup, updateGroupMembers } = usePlanStore();
 
   return (
-    <PlanOptionLayout success={plan?.isGroup ? !!plan.groupMembers : true} title="개인 / 그룹">
+    <PlanOptionLayout success={isFulfilledMemberOption(plan)} title="개인 / 그룹">
       {options.map(v => (
         <PlanOptionItem key={v.planName}>
           <div>

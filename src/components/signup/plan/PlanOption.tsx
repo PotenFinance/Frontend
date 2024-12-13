@@ -2,6 +2,7 @@ import { PlanOptionItem } from '../styled';
 import Checkbox from '@components/common/Checkbox';
 import { usePlanStore } from 'stores/usePlanStore';
 import PlanOptionLayout from './PlanOptionLayout';
+import { isFulfilledPlanOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -47,7 +48,7 @@ function PlanOption({ plan, platformId }: IProps) {
   const { updatePlanId } = usePlanStore();
 
   return (
-    <PlanOptionLayout success={!!plan?.planId} title="플랜">
+    <PlanOptionLayout success={isFulfilledPlanOption(plan)} title="플랜">
       {options.map(v => (
         <PlanOptionItem key={v.planId}>
           <div>

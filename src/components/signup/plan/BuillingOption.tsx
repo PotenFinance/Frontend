@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
 import { useState } from 'react';
 import PlanOptionLayout from './PlanOptionLayout';
+import { isFulfilledBuillingOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -24,10 +25,7 @@ function BuillingOption({ plan, platformId }: IProps) {
   };
 
   return (
-    <PlanOptionLayout
-      success={plan?.isYearlyPay ? !!(plan.billingMonth && plan.billingDay) : !!plan?.billingDay}
-      title="결제일"
-    >
+    <PlanOptionLayout success={isFulfilledBuillingOption(plan)} title="결제일">
       <BuillingItem>
         <Select>
           <Input
