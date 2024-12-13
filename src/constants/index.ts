@@ -13,7 +13,7 @@ interface INavMenu {
   icon: React.SVGElementType;
 }
 
-type TMenu = {
+export type TMenu = {
   /** 메뉴명 */
   name: string;
   /** 이동 경로 */

@@ -4,13 +4,10 @@ import SectionLayout from '@components/common/SectionLayout';
 import { SETTINGS } from '@constants/index';
 import { TypographySize } from '@styles/theme';
 import NotificationIcon from '@assets/icons/Notification';
-import MenuItem from '@components/settings/MenuItem';
-import { useRouter } from 'next/router';
+import { MenuSection } from '@components/settings';
 
 /** 마이페이지 */
 export default function MyPage() {
-  const router = useRouter();
-
   return (
     <>
       <SectionLayout heading={``}>
@@ -22,42 +19,9 @@ export default function MyPage() {
           <NotificationIcon width={25} height={32} hasNewMessages={false} />
         </ProfileHeader>
       </SectionLayout>
-      <SectionLayout heading={`개인 / 설정`} style={{ paddingBottom: 0 }}>
-        <ul>
-          {SETTINGS.personal.map(menu => (
-            <MenuItem
-              key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
-            >
-              {menu.name}
-            </MenuItem>
-          ))}
-        </ul>
-      </SectionLayout>
-      <SectionLayout heading={`나의 구독 정보`} style={{ paddingBottom: 0 }}>
-        <ul>
-          {SETTINGS.subscription.map(menu => (
-            <MenuItem
-              key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
-            >
-              {menu.name}
-            </MenuItem>
-          ))}
-        </ul>
-      </SectionLayout>
-      <SectionLayout heading={`커뮤니티 정보`}>
-        <ul>
-          {SETTINGS.community.map(menu => (
-            <MenuItem
-              key={menu.name}
-              onMenuClick={() => router.push(`${router.pathname}${menu.path}`)}
-            >
-              {menu.name}
-            </MenuItem>
-          ))}
-        </ul>
-      </SectionLayout>
+      <MenuSection heading="개인 / 설정" items={SETTINGS.personal} />
+      <MenuSection heading="나의 구독 정보" items={SETTINGS.subscription} />
+      <MenuSection heading="커뮤니티 정보" items={SETTINGS.community} />
     </>
   );
 }
