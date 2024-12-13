@@ -1,10 +1,10 @@
-interface IProps {
+interface IProps extends React.HTMLAttributes<HTMLOrSVGElement> {
   width?: string | number;
   height?: string | number;
   color?: string;
 }
 
-function ArrowBackIcon({ width = '1em', height = '1em', color = 'black' }: IProps) {
+function ArrowBackIcon({ width = '1em', height = '1em', color = 'black', ...props }: IProps) {
   return (
     <svg
       width={width}
@@ -12,6 +12,7 @@ function ArrowBackIcon({ width = '1em', height = '1em', color = 'black' }: IProp
       viewBox="0 0 12 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <mask id="path-1-inside-1_278_2000" fill="white">
         <path d="M12 0L-4.37114e-07 10L12 20" />
