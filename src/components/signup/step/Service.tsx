@@ -1,18 +1,92 @@
 import styled from '@emotion/styled';
 import { SignupContainer, SignupTitle } from '../styled';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
 import PlusIcon from '@assets/icons/Plus';
 import Button from '@components/common/Button';
-import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
-import { useTheme } from '@emotion/react';
+import { useSignupStore } from 'stores/useSignupStore';
+import { useEffect, useState } from 'react';
+import { useServiceStore } from 'stores/useServiceStore';
+import Search from './Search';
+import { useQuery } from '@tanstack/react-query';
+import { getTopPlatformsApi } from 'apis/platforms';
+import { BRAND_LOGO } from '@constants/logo';
+
+const testData = [
+  {
+    platformId: 101,
+    platformName: '넷플릭스',
+    platformType: 'OTT',
+  },
+  {
+    platformId: 102,
+    platformName: '스포티파이',
+    platformType: '음악',
+  },
+  {
+    platformId: 103,
+    platformName: '디스코드',
+    platformType: '작업',
+  },
+  {
+    platformId: 104,
+    platformName: '어도비',
+    platformType: '작업',
+  },
+  {
+    platformId: 105,
+    platformName: '티빙',
+    platformType: 'OTT',
+  },
+];
 
 function SignupService() {
   const router = useRouter();
-  const { color } = useTheme();
 
-  return (
+  const [openSearch, setOpenSearch] = useState(false);
+
+  const { platforms, setPlatforms } = useSignupStore();
+  const { services, setServices, deleteService } = useServiceStore();
+
+  const { data } = useQuery<GetPlatformsRes>({
+    queryKey: ['topPlatforms'],
+    queryFn: getTopPlatformsApi,
+  });
+
+  const handleSubmit = () => {
+    setPlatforms([
+      ...services.map(v => ({
+        platformId: v.platformId,
+        platformName: v.platformName,
+        platformType: v.platformType,
+        planId: 0,
+        isGroup: false,
+        groupMembers: '',
+        isYearlyPay: false,
+        billingMonth: '',
+        billingDay: '',
+      })),
+    ]);
+    router.push('/signup/plan');
+  };
+
+  useEffect(() => {
+    if (platforms.length) {
+      setServices([
+        ...platforms.map(v => ({
+          platformId: v.platformId,
+          platformName: v.platformName,
+          platformType: v.platformType,
+        })),
+      ]);
+    } else {
+      setServices([...testData]);
+    }
+  }, [platforms]);
+
+  return openSearch ? (
+    <Search handleClose={() => setOpenSearch(false)} />
+  ) : (
     <>
       <BackHeader handleBack={() => router.push('/signup/budget')} />
       <SignupContainer>
@@ -20,27 +94,29 @@ function SignupService() {
           <SignupTitle>사용하고 있는 구독 서비스를 선택해 주세요.</SignupTitle>
           <ServiceList>
             {/* 컴포넌트 분리 AddedServiceItem */}
-            <ServiceItem>
-              <NetflixLargeLogo width={'100%'} height={'100%'} color={color.brand.netflix} />
-              <div>
+            {services.map(v => (
+              <ServiceItem key={v.platformId}>
+                {BRAND_LOGO({ width: '100%', height: '100%' })['large'][v.platformId]}
                 <div>
-                  <span>넷플릭스</span>
-                  <p>OTT</p>
+                  <div>
+                    <span>{v.platformName}</span>
+                    <p>{v.platformType}</p>
+                  </div>
+                  <DeleteButton onClick={() => deleteService(v.platformId)}>삭제</DeleteButton>
                 </div>
-                <DeleteButton>삭제</DeleteButton>
-              </div>
-            </ServiceItem>
-            <Link href={'/signup/search'}>
-              {/* 컴포넌트 분리 AddServiceItem */}
-              <PlusItem>
-                <PlusIcon color="white" width={40} height={40} />
-              </PlusItem>
-            </Link>
+              </ServiceItem>
+            ))}
+            {/* 컴포넌트 분리 AddServiceItem */}
+            <PlusItem onClick={() => setOpenSearch(true)}>
+              <PlusIcon color="white" width={40} height={40} />
+            </PlusItem>
           </ServiceList>
         </ContentWrap>
-        <Link href={'/signup/plan'}>
-          <Button text="다 선택했어요." />
-        </Link>
+        <Button
+          text={services.length ? '다 선택했어요.' : '서비스를 추가해 주세요.'}
+          disabled={!services.length}
+          onClick={handleSubmit}
+        />
       </SignupContainer>
     </>
   );
@@ -49,6 +125,7 @@ function SignupService() {
 export default SignupService;
 
 const ContentWrap = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -62,7 +139,7 @@ const ServiceList = styled.ul`
 
 const Item = styled.li`
   padding: 12px;
-  height: 100%;
+  height: 160px;
   border-radius: 8px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 `;

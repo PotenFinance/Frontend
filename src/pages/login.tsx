@@ -11,13 +11,13 @@ function LoginPage() {
   const handleLogin = () => {
     if (window.Kakao.isInitialized()) {
       window.Kakao.Auth.authorize({
-        redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
+        redirectUri: process.env.NEXT_PUBLIC_AUTH_KAKAO_REDIRECT_URL,
       });
     }
   };
 
   useEffect(() => {
-    if (!window.Kakao.isInitialized()) {
+    if (!window.Kakao?.isInitialized()) {
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
     }
   }, []);

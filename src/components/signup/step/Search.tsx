@@ -1,34 +1,69 @@
 import SearchIcon from '@assets/icons/Search';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useRouter } from 'next/router';
 import BackHeader from '../BackHeader';
-import SpotifySmallLogo from '@assets/icons/logo/small/Spotify';
+import { useServiceStore } from 'stores/useServiceStore';
+import { useQuery } from '@tanstack/react-query';
+import { getSearchPlatformsApi } from 'apis/platforms';
+import { useState } from 'react';
+import { BRAND_LOGO } from '@constants/logo';
 
-function SignupSearch() {
-  const router = useRouter();
+interface IProps {
+  handleClose: () => void;
+}
+
+const testData = [
+  {
+    platformId: 106,
+    platformName: '스포티파이',
+    platformType: '음악',
+  },
+  {
+    platformId: 107,
+    platformName: '스포티비 나우',
+    platformType: 'OTT',
+  },
+];
+
+function SignupSearch({ handleClose }: IProps) {
   const { color } = useTheme();
+
+  const [keyword, setKeyword] = useState('');
+
+  const { addService } = useServiceStore();
+
+  const { data } = useQuery<GetPlatformsRes>({
+    queryKey: ['searchPlatforms', keyword],
+    queryFn: () => getSearchPlatformsApi(keyword),
+  });
+
+  const handleClickItem = (service: IPlatform) => {
+    addService(service);
+    handleClose();
+  };
 
   return (
     <>
-      <BackHeader handleBack={() => router.push('/signup/service')} />
+      <BackHeader handleBack={handleClose} />
       <Container>
         {/* 컴포넌트 분리 ServiceSearch */}
         <Search>
-          <Input />
+          <Input value={keyword} onChange={e => setKeyword(e.target.value)} />
           <SearchButton>
             <SearchIcon width={36} height={36} color={color.secondary} />
           </SearchButton>
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
-          <Item>
-            <SpotifySmallLogo width={40} height={40} color={color.brand.spotify} />
-            <div>
-              <p>스포티파이</p>
-              <span>음악</span>
-            </div>
-          </Item>
+          {testData.map(v => (
+            <Item key={v.platformId} onClick={() => handleClickItem(v)}>
+              {BRAND_LOGO({ width: 40, height: 40 })['small'][v.platformId]}
+              <div>
+                <p>{v.platformName}</p>
+                <span>{v.platformType}</span>
+              </div>
+            </Item>
+          ))}
         </List>
       </Container>
     </>
@@ -77,6 +112,7 @@ const Item = styled.li`
   align-items: center;
   gap: 8px;
   border-bottom: 0.3px solid ${({ theme }) => theme.color.base.black};
+  cursor: pointer;
   & > div {
     display: flex;
     flex-direction: column;

@@ -2,27 +2,32 @@ import axiosInstance from './axiosInstance';
 
 export const loginApi = async (code: string) => {
   try {
-    const { data } = await axiosInstance.get('/auth/kakao/callback', { params: { code } });
-    return data;
-  } catch (error) {
-    console.error(error);
+    const res = await axiosInstance.get('/auth/kakao/callback', {
+      params: { code },
+    });
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    // throw err;
   }
 };
 
-export const signupApi = async () => {
+export const signupApi = async (data: ISignupReq) => {
   try {
-    const { data } = await axiosInstance.post('/auth/signup');
-    return data;
-  } catch (error) {
-    console.error(error);
+    const res = await axiosInstance.post('/auth/kakao/onboard', data);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    // throw err;
   }
 };
 
 export const getTokenApi = async (refresh_token: string) => {
   try {
-    const { data } = await axiosInstance.post('/auth/kakao/refresh', { refresh_token });
-    return data;
-  } catch (error) {
-    console.error(error);
+    const res = await axiosInstance.post('/auth/kakao/refresh', { refresh_token });
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    // throw err;
   }
 };

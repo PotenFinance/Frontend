@@ -18,7 +18,8 @@
     "nookies": "^2.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^2.14.1"
+    "recharts": "^2.14.1",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
