@@ -2,6 +2,7 @@ import ArrowDown from '@assets/icons/arrow/ArrowDown';
 import BarChart from '@components/common/chart/BarChart';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { getMonth } from '@utils/date';
 
 interface IProps {
   data: { [key: number]: IReport };
@@ -11,7 +12,8 @@ interface IProps {
 function MonthReportChart({ data, budget }: IProps) {
   const { color } = useTheme();
 
-  const month = new Date().getMonth() + 1;
+  const month = getMonth();
+  const totalCost = data[month].total_cost;
 
   return (
     <Wrap>
@@ -22,24 +24,16 @@ function MonthReportChart({ data, budget }: IProps) {
         </TitleWrap>
         <MonthPriceWrap>
           <p>{month}월</p>
-          <span>{data[month].total_cost.toLocaleString()}원</span>
+          <span>{totalCost.toLocaleString()}원</span>
           <div>
             <p>
-              전월대비{' '}
-              <span>
-                {(data[month].total_cost - data[new Date().getMonth()].total_cost).toLocaleString()}
-                원
-              </span>
+              전월대비 <span>{(totalCost - data[month - 1].total_cost).toLocaleString()}원</span>
             </p>
             <ArrowDown color={color.theme.positive} />
           </div>
         </MonthPriceWrap>
       </FlexWrap>
-      <BarChart
-        data={data}
-        containerBaseValue={budget}
-        statusBaseValue={data[new Date().getMonth() + 1].total_cost}
-      />
+      <BarChart data={data} containerBaseValue={budget} statusBaseValue={totalCost} />
     </Wrap>
   );
 }

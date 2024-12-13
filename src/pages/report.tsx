@@ -5,6 +5,7 @@ import PlatformReportChart from '@components/report/PlatformReportChart';
 import PlatformReportList from '@components/report/PlatformReportList';
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
+import { getYear } from '@utils/date';
 import { getReportApi } from 'apis/report';
 import { useRouter } from 'next/router';
 
@@ -68,7 +69,7 @@ function ReportPage() {
 
   const { data } = useQuery<IGetReportRes>({
     queryKey: ['report'],
-    queryFn: () => getReportApi(new Date().getFullYear()),
+    queryFn: () => getReportApi(getYear()),
   });
 
   const handleChangeTab = (type: string) => {

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { getYear } from '@utils/date';
 
 interface IProps {
   data: { [key: number]: IReport };
@@ -11,7 +12,7 @@ function MonthReportList({ data }: IProps) {
         <Item key={key}>
           <InfoWrap>
             <p>
-              {new Date().getFullYear()}년 {key}월
+              {getYear()}년 {key}월
             </p>
             <span>
               구독서비스 <b>{platform_id.length}</b>
