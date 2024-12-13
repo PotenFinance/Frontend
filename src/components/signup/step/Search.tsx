@@ -30,7 +30,7 @@ function SignupSearch({ handleClose }: IProps) {
 
   const [keyword, setKeyword] = useState('');
 
-  const { addService } = useServiceStore();
+  const { services, addService } = useServiceStore();
 
   const { data } = useQuery<GetPlatformsRes>({
     queryKey: ['searchPlatforms', keyword],
@@ -55,15 +55,17 @@ function SignupSearch({ handleClose }: IProps) {
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
-          {testData.map(v => (
-            <Item key={v.platformId} onClick={() => handleClickItem(v)}>
-              {BRAND_LOGO({ width: 40, height: 40 })['small'][v.platformId]}
-              <div>
-                <p>{v.platformName}</p>
-                <span>{v.platformType}</span>
-              </div>
-            </Item>
-          ))}
+          {testData
+            .filter(v => services.findIndex(service => service.platformId === v.platformId) === -1)
+            .map(v => (
+              <Item key={v.platformId} onClick={() => handleClickItem(v)}>
+                {BRAND_LOGO({ width: 40, height: 40 })['small'][v.platformId]}
+                <div>
+                  <p>{v.platformName}</p>
+                  <span>{v.platformType}</span>
+                </div>
+              </Item>
+            ))}
         </List>
       </Container>
     </>
