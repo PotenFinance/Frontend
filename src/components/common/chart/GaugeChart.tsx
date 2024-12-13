@@ -55,7 +55,7 @@ export default function GaugeChart({ width, height }: IProps) {
         d={`M${xba} ${yba}L${xbb} ${ybb} L${xp} ${yp} L${xba} ${yba}`}
         stroke="#none"
         fill={color}
-        key={x0}
+        key={y0}
       />,
     ];
   };
