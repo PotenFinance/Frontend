@@ -48,6 +48,7 @@ interface IColor {
         base: string;
         _5: string;
         _c: string;
+        _e: string;
       };
     };
   };
@@ -218,6 +219,7 @@ export const lightTheme: Theme = {
         base: '#949494',
         _5: '#555555',
         _c: '#CCCCCC',
+        _e: '#EEEEEE',
       },
     },
   },
