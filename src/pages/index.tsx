@@ -1,7 +1,87 @@
-import { GetServerSidePropsContext } from 'next';
+import { MySubscription, YearlySpending, BudgetStatus, OverviewSection } from '@components/home';
+import SavingOptions from '@components/home/SavingOptions';
+import styled from '@emotion/styled';
 import Head from 'next/head';
 
+// 서비스명
+// 가격
+// 구독플랜명
+
+const subListMockData = [
+  {
+    platform: '넷플릭스',
+    subPlan: '프리미엄',
+    price: 8940,
+  },
+  {
+    platform: '디즈니+',
+    subPlan: '일반',
+    price: 9900,
+  },
+  {
+    platform: '스포티파이',
+    subPlan: '일반',
+    price: 11900,
+  },
+  {
+    platform: '어도비',
+    subPlan: 'CC(All app)',
+    price: 20900,
+  },
+  {
+    platform: '디스코드',
+    subPlan: '니트로',
+    price: 9900,
+  },
+  {
+    platform: '피그마',
+    subPlan: '프로페셔널',
+    price: 20000,
+  },
+  {
+    platform: '오픈 AI',
+    subPlan: 'GPT 4o',
+    price: 10760,
+  },
+];
+
+/** 나의 구독 서비스 더미데이터 */
+const subDummyData = [
+  {
+    service: 'netflix',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'disney',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'spotify',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+  {
+    service: 'adobe',
+    subplan: 'general',
+    monthlyprice: 8940,
+  },
+];
+
 export default function Home() {
+  // const handleLogin = () => {
+  //   if (window.Kakao.isInitialized()) {
+  //     window.Kakao.Auth.authorize({
+  //       redirectUri: process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL,
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
+  // }, []);
+
   return (
     <>
       <Head>
@@ -10,27 +90,33 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>포텐파이낸스</h1>
-      </main>
-      <footer></footer>
+      <Main>
+        <h1 className="a11y-hidden">홈</h1>
+        <OverviewSection data={subListMockData} />
+        <ScrollableContainer>
+          <MySubscription data={subDummyData} />
+          <YearlySpending />
+          <BudgetStatus />
+          {/* 후순위 */}
+          {/* <SavingOptions /> */}
+        </ScrollableContainer>
+      </Main>
     </>
   );
 }
 
-export const getServerSideProps = async ({ req }: GetServerSidePropsContext) => {
-  const accessToken = req.cookies.accessToken;
+const Main = styled.main`
+  background-color: ${({ theme }) => theme.color.primary._1};
+`;
 
-  if (!accessToken) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
+const ScrollableContainer = styled.div`
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  // TODO: 추후 삭제
+  /* margin-top: -10px; */
+  background-color: ${({ theme }) => theme.color.base.white};
+  // 페이지 내 요소가 탭에 가리지 않게 하기 위한 padding-bottom
+  padding-bottom: 64px;
+  position: sticky;
+  top: 18px;
+`;
