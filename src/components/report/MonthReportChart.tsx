@@ -14,6 +14,7 @@ function MonthReportChart({ data, budget }: IProps) {
 
   const month = getMonth();
   const totalCost = data[month].total_cost;
+  const costGap = totalCost - data[month - 1].total_cost;
 
   return (
     <Wrap>
@@ -27,7 +28,7 @@ function MonthReportChart({ data, budget }: IProps) {
           <span>{totalCost.toLocaleString()}원</span>
           <div>
             <p>
-              전월대비 <span>{(totalCost - data[month - 1].total_cost).toLocaleString()}원</span>
+              전월대비 <span>{costGap.toLocaleString()}원</span>
             </p>
             <ArrowDown color={color.theme.positive} />
           </div>
