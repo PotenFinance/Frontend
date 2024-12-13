@@ -1,4 +1,3 @@
-import { CATEGORY } from '@constants/index';
 import SectionLayout from './SectionLayout';
 import ServiceCard from './ServiceCard';
 import styled from '@emotion/styled';
