@@ -7,6 +7,7 @@ interface LayoutProps {
    * page 컴포넌트
    */
   children?: React.ReactNode;
+  viewNavTab?: boolean;
 }
 
 const pretendard = localFont({
@@ -16,13 +17,15 @@ const pretendard = localFont({
   variable: '--font-pretendard-jp',
 });
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, viewNavTab = true }: LayoutProps) {
   return (
     <Container className={pretendard.variable}>
       {children}
-      <div className="nav-wrapper">
-        <NavTab />
-      </div>
+      {viewNavTab && (
+        <div className="nav-wrapper">
+          <NavTab />
+        </div>
+      )}
     </Container>
   );
 }
