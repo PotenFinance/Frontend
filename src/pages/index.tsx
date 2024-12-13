@@ -1,8 +1,6 @@
-import { MySubscription, ExpensesListCard, YearlySpending, BudgetStatus } from '@components/home';
+import { MySubscription, YearlySpending, BudgetStatus, OverviewSection } from '@components/home';
 import SavingOptions from '@components/home/SavingOptions';
 import styled from '@emotion/styled';
-import { TypographySize } from '@styles/theme';
-
 import Head from 'next/head';
 
 // 서비스명
@@ -94,31 +92,7 @@ export default function Home() {
       </Head>
       <Main>
         <h1 className="a11y-hidden">홈</h1>
-        <OverviewSection>
-          <OverviewDesc>
-            <h2>
-              <ul>
-                <li>
-                  <Username>{`박지수님`}</Username>
-                  {`의 이번달 총 구독 비용은`}
-                </li>
-                <li>
-                  <TotalSpendingAmount>{`102,200원`}</TotalSpendingAmount>
-                  {`입니다.`}
-                </li>
-              </ul>
-            </h2>
-            <SubCountContainer>
-              <SubCount>{subListMockData.length}</SubCount>
-              <span className="text">구독</span>
-            </SubCountContainer>
-          </OverviewDesc>
-          <ExpensesListCard subListData={subListMockData} />
-          <RemainingBudget>
-            <Desc>{`남은 예산`}</Desc>
-            <Amount>{`7,800원`}</Amount>
-          </RemainingBudget>
-        </OverviewSection>
+        <OverviewSection data={subListMockData} />
         <ScrollableContainer>
           <MySubscription data={subDummyData} />
           <YearlySpending />
@@ -133,79 +107,6 @@ export default function Home() {
 
 const Main = styled.main`
   background-color: ${({ theme }) => theme.color.primary._1};
-`;
-
-const OverviewSection = styled.section`
-  color: ${({ theme }) => theme.color.base.white};
-  padding: 10px 19px 15px;
-  position: sticky;
-  top: 0;
-`;
-
-const OverviewDesc = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  & h2 {
-    font-family: ${({ theme }) => theme.typography.title_1.fontFamily};
-    font-size: ${({ theme }) => theme.typography.title_1.fontSize};
-    font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
-    line-height: 26px;
-
-    & ul li:nth-child(2) {
-      margin-top: 7px;
-    }
-  }
-`;
-
-const Username = styled.span`
-  font-family: ${({ theme }) => theme.typography.heading_2.fontFamily};
-  font-size: ${({ theme }) => theme.typography.heading_2.fontSize};
-  font-weight: ${({ theme }) => theme.typography.heading_2.fontWeight};
-`;
-
-const TotalSpendingAmount = styled.span`
-  font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
-  font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
-  font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
-`;
-
-/** 구독서비스 총 개수 표시 부분
- * @example 7 구독
- */
-const SubCountContainer = styled.div`
-  & .count {
-    font-family: ${({ theme }) => theme.typography.display_2.fontFamily};
-    font-size: ${({ theme }) => (theme.typography.display_2.fontSize as TypographySize).large};
-  }
-
-  & .text {
-    font-family: ${({ theme }) => theme.typography.title_2.fontFamily};
-    font-size: ${({ theme }) => theme.typography.title_2.fontSize};
-  }
-`;
-
-const SubCount = styled.span`
-  font-family: ${({ theme }) => theme.typography.display_2.fontFamily};
-  font-size: 64px;
-  font-weight: 800;
-`;
-
-const RemainingBudget = styled.div`
-  text-align: right;
-  margin-top: 10px;
-`;
-
-const Desc = styled.span`
-  font-weight: ${({ theme }) =>
-    (theme.typography.body_1.fontWeight as { [key: string]: number }).bold};
-`;
-
-const Amount = styled.span`
-  margin-left: 8px;
-  font-family: ${({ theme }) => theme.typography.heading_1.fontFamily};
-  font-weight: ${({ theme }) => theme.typography.heading_1.fontWeight};
-  font-size: ${({ theme }) => theme.typography.heading_1.fontSize};
 `;
 
 const ScrollableContainer = styled.div`
