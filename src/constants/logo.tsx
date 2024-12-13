@@ -1,6 +1,6 @@
 import AdobeLargeLogo from '@assets/icons/logo/large/Adobe';
 import DiscodeLargeLogo from '@assets/icons/logo/large/Discode';
-import NetflixLargeLogo from '@assets/icons/logo/large/Neflix';
+import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
 import SpotifyLargeLogo from '@assets/icons/logo/large/Spotify';
 import AdobeSmallLogo from '@assets/icons/logo/small/Adobe';
 import DiscodeSmallLogo from '@assets/icons/logo/small/Discode';
