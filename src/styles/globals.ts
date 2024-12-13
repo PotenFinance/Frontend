@@ -28,11 +28,24 @@ export const global = css`
     word-break: keep-all;
   }
 
-  /* css reset */
+  // 접근성을 고려한 텍스트 감춤 클래스
+  .a11y-hidden {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0); /* IE 6,7 */
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+  }
+
+  // css reset
   ul {
     list-style: none;
   }
-  
+
   button {
     background: none;
     border: none;
