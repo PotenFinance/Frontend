@@ -1,23 +1,33 @@
 import styled from '@emotion/styled';
 
-function MonthReportList() {
+interface IProps {
+  data: { [key: number]: IReport };
+}
+
+function MonthReportList({ data }: IProps) {
   return (
     <List>
-      <Item>
-        <InfoWrap>
-          <p>2024년 1월</p>
-          <span>
-            구독서비스 <b>3</b>
-          </span>
-          <div>
-            <p>총 지출</p>
-            <span>89,000원</span>
-          </div>
-        </InfoWrap>
-        <SubIconList>
-          <li>아이콘</li>
-        </SubIconList>
-      </Item>
+      {Object.entries(data).map(([key, { total_cost, platform_id }]) => (
+        <Item key={key}>
+          <InfoWrap>
+            <p>
+              {new Date().getFullYear()}년 {key}월
+            </p>
+            <span>
+              구독서비스 <b>{platform_id.length}</b>
+            </span>
+            <div>
+              <p>총 지출</p>
+              <span>{total_cost.toLocaleString()}원</span>
+            </div>
+          </InfoWrap>
+          <SubIconList>
+            {platform_id.map(v => (
+              <li key={v}>{v}</li>
+            ))}
+          </SubIconList>
+        </Item>
+      ))}
     </List>
   );
 }
@@ -39,6 +49,7 @@ const Item = styled.li`
 `;
 
 const InfoWrap = styled.div`
+  width: 120px;
   display: flex;
   flex-direction: column;
   gap: 8px;
