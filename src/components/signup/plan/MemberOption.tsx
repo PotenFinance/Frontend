@@ -1,8 +1,8 @@
 import Checkbox from '@components/common/Checkbox';
-import { PlanOptionContainer, PlanOptionItem, PlanOptionList, PlanOptionTitle } from '../styled';
+import { PlanOptionItem } from '../styled';
 import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
-import Status from '@components/common/Status';
+import PlanOptionLayout from './PlanOptionLayout';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -18,38 +18,32 @@ function MemberOption({ plan, platformId }: IProps) {
   const { updateIsGroup, updateGroupMembers } = usePlanStore();
 
   return (
-    <PlanOptionContainer>
-      <PlanOptionTitle>
-        <Status status={(plan?.isGroup ? plan.groupMembers : true) ? 'success' : 'error'} />
-        <span>개인 / 그룹</span>
-      </PlanOptionTitle>
-      <PlanOptionList>
-        {options.map(v => (
-          <PlanOptionItem key={v.planName}>
-            <div>
-              <p>{v.planName}</p>
-            </div>
-            <Checkbox
-              checked={plan?.isGroup === v.isGroup}
-              onClick={() => updateIsGroup({ platformId, isGroup: v.isGroup })}
+    <PlanOptionLayout success={plan?.isGroup ? !!plan.groupMembers : true} title="개인 / 그룹">
+      {options.map(v => (
+        <PlanOptionItem key={v.planName}>
+          <div>
+            <p>{v.planName}</p>
+          </div>
+          <Checkbox
+            checked={plan?.isGroup === v.isGroup}
+            onClick={() => updateIsGroup({ platformId, isGroup: v.isGroup })}
+          />
+        </PlanOptionItem>
+      ))}
+      {plan?.isGroup && (
+        <GroupMembersItem>
+          <p>그룹원이 몇 명(본인 포함)인가요?</p>
+          <div>
+            <input
+              placeholder="0"
+              value={plan.groupMembers}
+              onChange={e => updateGroupMembers({ platformId, groupMembers: e.target.value })}
             />
-          </PlanOptionItem>
-        ))}
-        {plan?.isGroup && (
-          <GroupMembersItem>
-            <p>그룹원이 몇 명(본인 포함)인가요?</p>
-            <div>
-              <input
-                placeholder="0"
-                value={plan.groupMembers}
-                onChange={e => updateGroupMembers({ platformId, groupMembers: e.target.value })}
-              />
-              명
-            </div>
-          </GroupMembersItem>
-        )}
-      </PlanOptionList>
-    </PlanOptionContainer>
+            명
+          </div>
+        </GroupMembersItem>
+      )}
+    </PlanOptionLayout>
   );
 }
 

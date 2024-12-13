@@ -1,7 +1,7 @@
-import Status from '@components/common/Status';
-import { PlanOptionContainer, PlanOptionItem, PlanOptionList, PlanOptionTitle } from '../styled';
+import { PlanOptionItem } from '../styled';
 import Checkbox from '@components/common/Checkbox';
 import { usePlanStore } from 'stores/usePlanStore';
+import PlanOptionLayout from './PlanOptionLayout';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -47,26 +47,20 @@ function PlanOption({ plan, platformId }: IProps) {
   const { updatePlanId } = usePlanStore();
 
   return (
-    <PlanOptionContainer>
-      <PlanOptionTitle>
-        <Status status={plan?.planId ? 'success' : 'error'} />
-        <span>플랜</span>
-      </PlanOptionTitle>
-      <PlanOptionList>
-        {options.map(v => (
-          <PlanOptionItem key={v.planId}>
-            <div>
-              <p>{v.planName}</p>
-              <span>{v.planCost.toLocaleString()}원 / 1개월</span>
-            </div>
-            <Checkbox
-              checked={plan?.planId === v.planId}
-              onClick={() => updatePlanId({ platformId, planId: v.planId })}
-            />
-          </PlanOptionItem>
-        ))}
-      </PlanOptionList>
-    </PlanOptionContainer>
+    <PlanOptionLayout success={!!plan?.planId} title="플랜">
+      {options.map(v => (
+        <PlanOptionItem key={v.planId}>
+          <div>
+            <p>{v.planName}</p>
+            <span>{v.planCost.toLocaleString()}원 / 1개월</span>
+          </div>
+          <Checkbox
+            checked={plan?.planId === v.planId}
+            onClick={() => updatePlanId({ platformId, planId: v.planId })}
+          />
+        </PlanOptionItem>
+      ))}
+    </PlanOptionLayout>
   );
 }
 
