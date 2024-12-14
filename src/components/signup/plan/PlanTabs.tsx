@@ -38,9 +38,12 @@ export default PlanTabs;
 const Tabs = styled.ul`
   padding: 8px 16px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  gap: 40px;
   border-top: 0.3px solid ${({ theme }) => theme.color.base.black};
   border-bottom: 0.3px solid ${({ theme }) => theme.color.base.black};
+  overflow-x: auto;
 `;
 
 const Tab = styled.li`
