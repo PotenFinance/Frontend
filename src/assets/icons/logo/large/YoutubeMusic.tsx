@@ -21,7 +21,7 @@ function YoutubeMusicLargeLogo({ width = '1em', height = '1em', color }: IProps)
         d="M31.35 40.6C38.4054 40.6 44.125 34.9588 44.125 28C44.125 21.0412 38.4054 15.4 31.35 15.4C24.2945 15.4 18.575 21.0412 18.575 28C18.575 34.9588 24.2945 40.6 31.35 40.6Z"
         fill={color || '#FF0000'}
         stroke={color || 'white'}
-        stroke-width="1.2"
+        strokeWidth="1.2"
       />
       <path d="M26.975 34.125L38.175 28L26.975 21.875V34.125Z" fill={color || 'white'} />
       <path

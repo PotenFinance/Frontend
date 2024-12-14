@@ -13,8 +13,8 @@ function SearchIcon({ width = '1em', height = '1em', color = 'black' }: IProps) 
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="22" cy="19.5" r="14" stroke={color} stroke-width="5" />
-      <line x1="35.2678" y1="34.2322" x2="40.2678" y2="39.2322" stroke={color} stroke-width="5" />
+      <circle cx="22" cy="19.5" r="14" stroke={color} strokeWidth="5" />
+      <line x1="35.2678" y1="34.2322" x2="40.2678" y2="39.2322" stroke={color} strokeWidth="5" />
     </svg>
   );
 }
