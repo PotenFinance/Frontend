@@ -4,12 +4,14 @@ import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import { getHomeData } from 'apis/home';
 import Head from 'next/head';
+import { useUserStore } from 'stores/useUserStore';
 
 export default function Home() {
+  const { user } = useUserStore();
+
   const { data, status, error } = useQuery({
     queryKey: ['home'],
-    queryFn: () => getHomeData({ userId: '1234' }),
-
+    queryFn: () => getHomeData({ userId: user?.id }),
     select: ({ data }) => {
       console.log('홈데이터', data?.data);
 

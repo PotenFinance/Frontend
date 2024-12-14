@@ -1,6 +1,7 @@
+import { useUserStore } from 'stores/useUserStore';
 import axiosInstance from './axiosInstance';
 
-export const getHomeData = async ({ userId }: { userId: string }) => {
+export const getHomeData = async ({ userId }: { userId?: string }) => {
   try {
     const data = await axiosInstance.get(`/subscriptions/summary`, {
       params: {
