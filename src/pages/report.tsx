@@ -65,7 +65,7 @@ const testData = {
 
 function ReportPage() {
   const router = useRouter();
-  const { type } = router.query;
+  const { type = 'month' } = router.query;
 
   const { data } = useQuery<IGetReportRes>({
     queryKey: ['report'],
