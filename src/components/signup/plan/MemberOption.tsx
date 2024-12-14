@@ -19,6 +19,17 @@ const options: { planName: string; isGroup: TBoolean }[] = [
 function MemberOption({ plan, platformId }: IProps) {
   const { updateIsGroup, updateGroupMembers } = usePlanStore();
 
+  const handleUpdateIsGroup = ({
+    platformId,
+    isGroup,
+  }: {
+    platformId: string;
+    isGroup: TBoolean;
+  }) => {
+    if (isGroup === 'N') updateGroupMembers({ platformId, groupMembers: '' });
+    updateIsGroup({ platformId, isGroup });
+  };
+
   return (
     <PlanOptionLayout success={isFulfilledMemberOption(plan)} title="개인 / 그룹">
       {options.map(v => (
@@ -28,7 +39,7 @@ function MemberOption({ plan, platformId }: IProps) {
           </div>
           <Checkbox
             checked={plan?.isGroup === v.isGroup}
-            onClick={() => updateIsGroup({ platformId, isGroup: v.isGroup })}
+            onClick={() => handleUpdateIsGroup({ platformId, isGroup: v.isGroup })}
           />
         </PlanOptionItem>
       ))}
