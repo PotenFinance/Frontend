@@ -25,10 +25,6 @@ interface ISignupPlatform {
   billingDay: string;
 }
 
-interface GetPlatformsRes extends IRes {
-  data: IPlatform[];
-}
-
-interface GetPlatformPlanRes extends IRes {
+interface GetPlatformPlanRes {
   data: IPlan[];
 }

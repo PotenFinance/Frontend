@@ -21,7 +21,7 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  response => response.data,
+  response => response,
   async error => {
     const originalRequest = error.config;
     const refreshToken = getCookie('refreshToken');

@@ -12,34 +12,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getTopPlatformsApi } from 'apis/platforms';
 import { BRAND_LOGO } from '@constants/logo';
 
-const testData = [
-  {
-    platformId: 101,
-    platformName: '넷플릭스',
-    platformType: 'OTT',
-  },
-  {
-    platformId: 102,
-    platformName: '스포티파이',
-    platformType: '음악',
-  },
-  {
-    platformId: 103,
-    platformName: '디스코드',
-    platformType: '작업',
-  },
-  {
-    platformId: 104,
-    platformName: '어도비',
-    platformType: '작업',
-  },
-  {
-    platformId: 105,
-    platformName: '티빙',
-    platformType: 'OTT',
-  },
-];
-
 function SignupService() {
   const router = useRouter();
 
@@ -48,9 +20,10 @@ function SignupService() {
   const { platforms, setPlatforms } = useSignupStore();
   const { services, setServices, deleteService } = useServiceStore();
 
-  const { data } = useQuery<GetPlatformsRes>({
+  const { data } = useQuery<IPlatform[]>({
     queryKey: ['topPlatforms'],
     queryFn: getTopPlatformsApi,
+    enabled: !platforms.length,
   });
 
   const handleSubmit = () => {
@@ -80,9 +53,9 @@ function SignupService() {
         })),
       ]);
     } else {
-      setServices([...testData]);
+      if (data) setServices([...data]);
     }
-  }, [platforms]);
+  }, [platforms, data]);
 
   return openSearch ? (
     <Search handleClose={() => setOpenSearch(false)} />
