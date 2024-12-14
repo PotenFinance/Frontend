@@ -6,29 +6,6 @@ interface IProps {
   data: ISubscriptionDetails[];
 }
 
-const dummyData = [
-  {
-    service: 'netflix',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'disney',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'spotify',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'adobe',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-];
-
 /** 나의 구독 서비스 */
 export default function MySubscription({ data }: IProps) {
   /** 카드 개수 */
@@ -36,7 +13,7 @@ export default function MySubscription({ data }: IProps) {
 
   return (
     <SectionLayout heading="나의 구독 서비스" isFirst={true}>
-      <CardList moreThanTwo={count < 2}>
+      <CardList isStacked={count > 3}>
         {data.map(data => {
           const { platformId, platformName, planName, actualCost, renewalDaysLeft } = data;
 
@@ -59,9 +36,13 @@ export default function MySubscription({ data }: IProps) {
   );
 }
 
-const CardList = styled.ul<{ moreThanTwo: boolean }>`
+const CardList = styled.ul<{ isStacked: boolean }>`
   margin-top: 12px;
   display: flex;
-  justify-content: ${({ moreThanTwo }) => (moreThanTwo ? 'normal' : 'space-between')};
+  justify-content: ${({ isStacked }) => (isStacked ? 'normal' : 'flex-start')};
   overflow-x: scroll;
+
+  & > li + li {
+    margin-left: 21px;
+  }
 `;
