@@ -20,7 +20,8 @@ function BuillingOption({ plan, platformId }: IProps) {
 
   const { updateIsYearlyPay, updateBillingMonth, updateBillingDay } = usePlanStore();
 
-  const handleClickOption = (isYearlyPay: TBoolean) => {
+  const handleUpdateIsYearlyPay = (isYearlyPay: TBoolean) => {
+    if (isYearlyPay === 'N') updateBillingMonth({ platformId, billingMonth: '' });
     updateIsYearlyPay({ platformId, isYearlyPay });
     setOpenSelect(false);
   };
@@ -38,7 +39,7 @@ function BuillingOption({ plan, platformId }: IProps) {
           {openSelect && (
             <ul>
               {selectOptions.map(v => (
-                <li key={v.planName} onClick={() => handleClickOption(v.isYearlyPay)}>
+                <li key={v.planName} onClick={() => handleUpdateIsYearlyPay(v.isYearlyPay)}>
                   {v.planName}
                 </li>
               ))}
