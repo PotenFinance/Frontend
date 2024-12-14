@@ -23,7 +23,7 @@ function YoutubeLogo({ width = '1em', height = '1em', color }: IProps) {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M17.0885 25.4006L26.4406 19.9999L17.0885 14.5994V25.4006Z"
-        fill={color || 'white'}
+        fill={'white'}
       />
     </svg>
   );
