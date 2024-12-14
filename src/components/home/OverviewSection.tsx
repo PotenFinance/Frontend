@@ -7,7 +7,7 @@ export default function OverviewSection({
   totalSubscriptions,
   subscriptionDetails,
   remainingBudget,
-}: IOverviewData) {
+}: TOverviewData) {
   const formattedRemainingBudget =
     remainingBudget < 0
       ? `-${Math.abs(remainingBudget).toLocaleString()}`

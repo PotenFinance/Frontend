@@ -21,13 +21,20 @@ interface IHomeData {
 /** 구독 정보 상세 */
 interface ISubscriptionDetails {
   platformId: number;
+  /** 구독 플랫폼명 */
   platformName: string;
+  /** 플랫폼 종류 */
   platformType: string;
+  /** 실 지불금액(월 구독 금액) */
   actualCost: number;
+  /** 구독 갱신 잔여일 */
   renewalDaysLeft: number;
+  /** 구독플랜명 */
   planName: string;
   isYearlyPay: string;
+  /** 개인구독/그룹구독 여부 */
   isGroup: string;
+  /** 실제 이용중인 인원 */
   activeUsers: string;
   activeMembers: string;
 }
@@ -45,11 +52,17 @@ interface IAnnualSubscriptionCost {
 }
 
 /** 당월 구독 내역 개요 */
-type IOverviewData = Pick<
+type TOverviewData = Pick<
   IHomeData,
   | 'userName'
   | 'totalSubscriptionCost'
   | 'totalSubscriptions'
   | 'subscriptionDetails'
   | 'remainingBudget'
+>;
+
+/** 나의 구독 서비스 상세 */
+type TSubscriptionDetail = Pick<
+  ISubscriptionDetails,
+  'platformId' | 'platformName' | 'planName' | 'actualCost' | 'renewalDaysLeft'
 >;
