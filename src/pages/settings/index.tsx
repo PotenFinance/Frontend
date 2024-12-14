@@ -5,16 +5,19 @@ import { SETTINGS } from '@constants/index';
 import { TypographySize } from '@styles/theme';
 import NotificationIcon from '@assets/icons/Notification';
 import { MenuSection } from '@components/settings';
+import { useUserStore } from 'stores/useUserStore';
 
 /** 마이페이지 */
 export default function MyPage() {
+  const { user } = useUserStore();
+
   return (
     <>
       <SectionLayout heading={``}>
         <ProfileHeader>
           <div>
             <ImagePlaceholder width={80} height={80} />
-            <Username>김포텐</Username>
+            <Username>{user?.properties.nickname || '김포텐'}</Username>
           </div>
           <NotificationIcon width={25} height={32} hasNewMessages={false} />
         </ProfileHeader>
