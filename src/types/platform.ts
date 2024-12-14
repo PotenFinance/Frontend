@@ -8,9 +8,9 @@ interface IPlan {
   platformId: string;
   planId: string;
   planName: string;
-  planCost: string;
-  maxMembers: string;
-  isYearlyPlan: boolean;
+  planFee: string | null;
+  maxMembers: string | null;
+  isYearlyPlan: TBoolean;
 }
 
 interface ISignupPlatform {
@@ -18,17 +18,9 @@ interface ISignupPlatform {
   platformName: string; //TODO 추가
   platformType: string; //TODO 추가
   planId: string;
-  isGroup: boolean;
+  isGroup: TBoolean;
   groupMembers: string; //TODO 추가
-  isYearlyPay: boolean;
+  isYearlyPay: TBoolean;
   billingMonth: string;
   billingDay: string;
-}
-
-interface GetPlatformsRes extends IRes {
-  data: IPlatform[];
-}
-
-interface GetPlatformPlanRes extends IRes {
-  data: IPlan[];
 }

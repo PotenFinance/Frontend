@@ -12,34 +12,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getTopPlatformsApi } from 'apis/platforms';
 import { BRAND_LOGO } from '@constants/logo';
 
-const testData = [
-  {
-    platformId: 'O001',
-    platformName: '넷플릭스',
-    platformType: 'OTT',
-  },
-  {
-    platformId: 'M004',
-    platformName: '스포티파이',
-    platformType: '음악',
-  },
-  {
-    platformId: 'E001',
-    platformName: '카카오 구독',
-    platformType: '기타',
-  },
-  {
-    platformId: 'M001',
-    platformName: '멜론',
-    platformType: '음악',
-  },
-  {
-    platformId: 'O004',
-    platformName: '티빙',
-    platformType: 'OTT',
-  },
-];
-
 function SignupService() {
   const router = useRouter();
 
@@ -48,24 +20,27 @@ function SignupService() {
   const { platforms, setPlatforms } = useSignupStore();
   const { services, setServices, deleteService } = useServiceStore();
 
-  const { data } = useQuery<GetPlatformsRes>({
+  const { data } = useQuery<IPlatform[]>({
     queryKey: ['topPlatforms'],
     queryFn: getTopPlatformsApi,
+    enabled: !platforms.length,
   });
 
   const handleSubmit = () => {
     setPlatforms([
-      ...services.map(v => ({
-        platformId: v.platformId,
-        platformName: v.platformName,
-        platformType: v.platformType,
-        planId: '',
-        isGroup: false,
-        groupMembers: '',
-        isYearlyPay: false,
-        billingMonth: '',
-        billingDay: '',
-      })),
+      ...services.map(
+        (v): ISignupPlatform => ({
+          platformId: v.platformId,
+          platformName: v.platformName,
+          platformType: v.platformType,
+          planId: '',
+          isGroup: 'N',
+          groupMembers: '',
+          isYearlyPay: 'N',
+          billingMonth: '',
+          billingDay: '',
+        }),
+      ),
     ]);
     router.push('/signup/plan');
   };
@@ -80,9 +55,9 @@ function SignupService() {
         })),
       ]);
     } else {
-      setServices([...testData]);
+      if (data) setServices([...data]);
     }
-  }, [platforms]);
+  }, [platforms, data]);
 
   return openSearch ? (
     <Search handleClose={() => setOpenSearch(false)} />

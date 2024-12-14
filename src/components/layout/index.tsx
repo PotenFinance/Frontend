@@ -35,7 +35,6 @@ const Container = styled.div`
   min-width: 390px;
   max-width: 600px;
   margin: 0 auto;
-  padding-bottom: 64px;
 
   // 하단 탭 화면 하단에 고정하기 위한 wrapper 요소
   & .nav-wrapper {

@@ -5,9 +5,9 @@ interface IStore {
   plans: ISignupPlatform[];
   setPlans: (plans: ISignupPlatform[]) => void;
   updatePlanId: (plan: { platformId: string; planId: string }) => void;
-  updateIsGroup: (plan: { platformId: string; isGroup: boolean }) => void;
+  updateIsGroup: (plan: { platformId: string; isGroup: TBoolean }) => void;
   updateGroupMembers: (plan: { platformId: string; groupMembers: string }) => void;
-  updateIsYearlyPay: (plan: { platformId: string; isYearlyPay: boolean }) => void;
+  updateIsYearlyPay: (plan: { platformId: string; isYearlyPay: TBoolean }) => void;
   updateBillingMonth: (plan: { platformId: string; billingMonth: string }) => void;
   updateBillingDay: (plan: { platformId: string; billingDay: string }) => void;
 }

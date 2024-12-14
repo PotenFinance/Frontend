@@ -25,9 +25,7 @@ export default function BudgetStatus() {
           </li>
         </OverviewList>
       </Overview>
-      <ChartContainer>
-        <GaugeChart width={390} />
-      </ChartContainer>
+      <ChartContainer>{/* <GaugeChart width={390} /> */}</ChartContainer>
     </SectionLayout>
   );
 }

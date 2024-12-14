@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
-import { PlanOptionContainer, PlanOptionList, PlanOptionTitle } from '../styled';
-import Status from '@components/common/Status';
 import { usePlanStore } from 'stores/usePlanStore';
 import { useState } from 'react';
+import PlanOptionLayout from './PlanOptionLayout';
+import { isFulfilledBuillingOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
   platformId: string;
 }
 
-const selectOptions = [
-  { planName: '매달', isYearlyPay: false },
-  { planName: '매년', isYearlyPay: true },
+const selectOptions: { planName: string; isYearlyPay: TBoolean }[] = [
+  { planName: '매달', isYearlyPay: 'N' },
+  { planName: '매년', isYearlyPay: 'N' },
 ];
 
 function BuillingOption({ plan, platformId }: IProps) {
@@ -19,62 +19,50 @@ function BuillingOption({ plan, platformId }: IProps) {
 
   const { updateIsYearlyPay, updateBillingMonth, updateBillingDay } = usePlanStore();
 
-  const handleClickOption = (isYearlyPay: boolean) => {
+  const handleClickOption = (isYearlyPay: TBoolean) => {
     updateIsYearlyPay({ platformId, isYearlyPay });
     setOpenSelect(false);
   };
 
   return (
-    <PlanOptionContainer>
-      <PlanOptionTitle>
-        <Status
-          status={
-            (plan?.isYearlyPay ? plan.billingMonth && plan.billingDay : plan?.billingDay)
-              ? 'success'
-              : 'error'
-          }
-        />
-        <span>결제일</span>
-      </PlanOptionTitle>
-      <PlanOptionList>
-        <BuillingItem>
-          <Select>
-            <Input
-              placeholder="매달"
-              readOnly
-              value={plan?.isYearlyPay ? '매년' : '매달'}
-              onClick={() => setOpenSelect(!openSelect)}
-            />
-            {openSelect && (
-              <ul>
-                {selectOptions.map(v => (
-                  <li key={v.planName} onClick={() => handleClickOption(v.isYearlyPay)}>
-                    {v.planName}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Select>
-          마다&nbsp;
-          {plan?.isYearlyPay && (
-            <>
-              <Input
-                placeholder="1"
-                value={plan.billingMonth}
-                onChange={e => updateBillingMonth({ platformId, billingMonth: e.target.value })}
-              />
-              월&nbsp;
-            </>
-          )}
+    <PlanOptionLayout success={isFulfilledBuillingOption(plan)} title="결제일">
+      <BuillingItem>
+        <Select>
           <Input
-            placeholder="1"
-            value={plan?.billingDay}
-            onChange={e => updateBillingDay({ platformId, billingDay: e.target.value })}
+            placeholder="매달"
+            readOnly
+            value={plan?.isYearlyPay ? '매년' : '매달'}
+            onClick={() => setOpenSelect(!openSelect)}
           />
-          일에 결제하고 있어요.
-        </BuillingItem>
-      </PlanOptionList>
-    </PlanOptionContainer>
+          {openSelect && (
+            <ul>
+              {selectOptions.map(v => (
+                <li key={v.planName} onClick={() => handleClickOption(v.isYearlyPay)}>
+                  {v.planName}
+                </li>
+              ))}
+            </ul>
+          )}
+        </Select>
+        마다&nbsp;
+        {plan?.isYearlyPay && (
+          <>
+            <Input
+              placeholder="1"
+              value={plan.billingMonth}
+              onChange={e => updateBillingMonth({ platformId, billingMonth: e.target.value })}
+            />
+            월&nbsp;
+          </>
+        )}
+        <Input
+          placeholder="1"
+          value={plan?.billingDay}
+          onChange={e => updateBillingDay({ platformId, billingDay: e.target.value })}
+        />
+        일에 결제하고 있어요.
+      </BuillingItem>
+    </PlanOptionLayout>
   );
 }
 

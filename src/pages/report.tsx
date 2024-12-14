@@ -105,6 +105,7 @@ function ReportPage() {
 export default ReportPage;
 
 const Container = styled.div`
+  padding-bottom: 64px;
   display: flex;
   flex-direction: column;
 `;
