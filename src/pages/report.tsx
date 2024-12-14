@@ -5,6 +5,7 @@ import PlatformReportChart from '@components/report/PlatformReportChart';
 import PlatformReportList from '@components/report/PlatformReportList';
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
+import { alertComingSoon } from '@utils/alert';
 import { getYear } from '@utils/date';
 import { getReportApi } from 'apis/report';
 import { useRouter } from 'next/router';
@@ -79,7 +80,7 @@ function ReportPage() {
 
   const handleChangeTab = (type: string) => {
     if (type === 'platform') {
-      alert('지원 예정입니다.');
+      alertComingSoon();
       return;
     }
     router.push(`/report?type=${type}`);

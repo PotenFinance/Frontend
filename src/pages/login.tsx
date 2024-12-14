@@ -2,11 +2,17 @@ import EyeIcon from '@assets/icons/Eye';
 import Button from '@components/common/Button';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { alertComingSoon } from '@utils/alert';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
 function LoginPage() {
   const { color } = useTheme();
+
+  const handleClickExplore = () => {
+    alertComingSoon();
+    return;
+  };
 
   const handleLogin = () => {
     if (window.Kakao.isInitialized()) {
@@ -43,7 +49,7 @@ function LoginPage() {
           textColor={color.base.black}
           onClick={handleLogin}
         />
-        <ExploreButton>
+        <ExploreButton onClick={handleClickExplore}>
           <EyeIcon width={16} height={16} /> 써빗 둘러보기
         </ExploreButton>
       </ButtonWrap>
