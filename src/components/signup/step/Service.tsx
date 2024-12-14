@@ -28,17 +28,19 @@ function SignupService() {
 
   const handleSubmit = () => {
     setPlatforms([
-      ...services.map(v => ({
-        platformId: v.platformId,
-        platformName: v.platformName,
-        platformType: v.platformType,
-        planId: 0,
-        isGroup: false,
-        groupMembers: '',
-        isYearlyPay: false,
-        billingMonth: '',
-        billingDay: '',
-      })),
+      ...services.map(
+        (v): ISignupPlatform => ({
+          platformId: v.platformId,
+          platformName: v.platformName,
+          platformType: v.platformType,
+          planId: '',
+          isGroup: 'N',
+          groupMembers: '',
+          isYearlyPay: 'N',
+          billingMonth: '',
+          billingDay: '',
+        }),
+      ),
     ]);
     router.push('/signup/plan');
   };

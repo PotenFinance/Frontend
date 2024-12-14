@@ -43,7 +43,7 @@ function SignupPlan() {
     },
   });
 
-  const getPlan = (platformId: number) => plans.filter(plan => plan.platformId === platformId)[0];
+  const getPlan = (platformId: string) => plans.filter(plan => plan.platformId === platformId)[0];
 
   const fulfilledPlans = plans.filter(plan => isFulfilledPlan(plan));
 

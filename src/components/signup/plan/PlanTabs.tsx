@@ -6,8 +6,8 @@ import { isFulfilledPlan } from '@utils/platform';
 import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  platformId: number;
-  setPlatformId: (value: number) => void;
+  platformId: string;
+  setPlatformId: (value: string) => void;
 }
 
 function PlanTabs({ platformId, setPlatformId }: IProps) {

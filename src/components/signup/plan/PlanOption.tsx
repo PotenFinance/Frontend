@@ -7,7 +7,7 @@ import { isFulfilledPlanOption } from '@utils/platform';
 interface IProps {
   options?: IPlan[];
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
 function PlanOption({ options, plan, platformId }: IProps) {

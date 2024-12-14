@@ -6,12 +6,12 @@ import { isFulfilledBuillingOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
-const selectOptions = [
-  { planName: '매달', isYearlyPay: false },
-  { planName: '매년', isYearlyPay: true },
+const selectOptions: { planName: string; isYearlyPay: 'Y' | 'N' }[] = [
+  { planName: '매달', isYearlyPay: 'N' },
+  { planName: '매년', isYearlyPay: 'N' },
 ];
 
 function BuillingOption({ plan, platformId }: IProps) {
@@ -19,7 +19,7 @@ function BuillingOption({ plan, platformId }: IProps) {
 
   const { updateIsYearlyPay, updateBillingMonth, updateBillingDay } = usePlanStore();
 
-  const handleClickOption = (isYearlyPay: boolean) => {
+  const handleClickOption = (isYearlyPay: 'Y' | 'N') => {
     updateIsYearlyPay({ platformId, isYearlyPay });
     setOpenSelect(false);
   };

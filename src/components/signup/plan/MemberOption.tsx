@@ -7,12 +7,12 @@ import { isFulfilledMemberOption } from '@utils/platform';
 
 interface IProps {
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
-const options = [
-  { planName: '혼자서 결제하고 있어요.', isGroup: false },
-  { planName: '같이 결제하고 있어요.', isGroup: true },
+const options: { planName: string; isGroup: 'Y' | 'N' }[] = [
+  { planName: '혼자서 결제하고 있어요.', isGroup: 'N' },
+  { planName: '같이 결제하고 있어요.', isGroup: 'N' },
 ];
 
 function MemberOption({ plan, platformId }: IProps) {
