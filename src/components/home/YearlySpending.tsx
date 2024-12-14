@@ -39,7 +39,7 @@ export default function YearlySpending(data: TAnnualSubsSpending) {
         <ChartContainer>
           <BarChart
             data={CHART_DATA}
-            containerBaseValue={data.userBudget}
+            containerBaseValue={totalCost}
             statusBaseValue={currentMonthCost}
           />
         </ChartContainer>
