@@ -61,7 +61,7 @@ export default function GaugeChart({ width, height, userBudget, budgetOverflow }
   };
 
   return (
-    <PieChart width={width} height={width * (2 / 3) || undefined}>
+    <PieChart width={width} height={width * (2 / 3) || undefined} style={{ margin: '0 auto' }}>
       <Pie
         dataKey="value"
         startAngle={180}
