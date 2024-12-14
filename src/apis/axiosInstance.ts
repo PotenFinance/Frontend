@@ -35,6 +35,8 @@ axiosInstance.interceptors.response.use(
         alert('인증이 실패했습니다. 로그인 페이지로 이동합니다.');
         location.replace('/login');
       }
+    } else if (error.response?.status) {
+      location.href = `/error/${error.response?.status}`;
     }
 
     return Promise.reject(error);

@@ -115,37 +115,37 @@ const typography = {
     lineHeight: '16px',
   },
   sub_1: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: 600,
     fontSize: '14px',
     lineHeight: '16px',
   },
   title_1: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: 500,
     fontSize: '16px',
     lineHeight: '20px',
   },
   title_2: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: 500,
     fontSize: '13px',
     lineHeight: '16px',
   },
   title_3: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: 500,
     fontSize: '12px',
     lineHeight: '15px',
   },
   title_4: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: 400,
     fontSize: '10px',
     lineHeight: '13px',
   },
   body_1: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: {
       default: 300,
       bold: 500,
@@ -154,7 +154,7 @@ const typography = {
     lineHeight: '26px',
   },
   display_1: {
-    fontFamily: 'Pretendard JP',
+    fontFamily: 'Pretendard',
     fontWeight: {
       default: 800,
       small: 600,

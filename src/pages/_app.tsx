@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { getCookie } from '@utils/cookie';
+import Head from 'next/head';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={lightTheme}>
         <Global styles={global} />
+        <Head>
+          <title>써빗 Subit</title>
+        </Head>
         {(!isPrivatePage || (isPrivatePage && getCookie('accessToken'))) && (
           <Layout viewNavTab={isPrivatePage}>
             <Component {...pageProps} />

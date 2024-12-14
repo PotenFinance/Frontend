@@ -8,7 +8,7 @@ export const global = css`
   }
 
   body {
-    font-family: 'Pretendard JP', Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont,
+    font-family: 'Pretendard', Arial, Helvetica, sans-serif, -apple-system, BlinkMacSystemFont,
       Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans;
   }
 
@@ -97,6 +97,51 @@ export const global = css`
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff')
       format('woff');
     font-weight: 600;
+    font-style: normal;
+  }
+
+  /* 프리텐다드JP Lite */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Lite.woff')
+      format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  /* 프리텐다드JP Regular */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* 프리텐다드JP Medium */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff')
+      format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  /* 프리텐다드JP SemiBold */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff')
+      format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* 프리텐다드JP ExtraBold */
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff')
+      format('woff');
+    font-weight: 800;
     font-style: normal;
   }
 `;
