@@ -13,11 +13,16 @@ interface IProps {
 
 const options: { planName: string; isGroup: TBoolean }[] = [
   { planName: '혼자서 결제하고 있어요.', isGroup: 'N' },
-  { planName: '같이 결제하고 있어요.', isGroup: 'N' },
+  { planName: '같이 결제하고 있어요.', isGroup: 'Y' },
 ];
 
 function MemberOption({ plan, platformId }: IProps) {
   const { updateIsGroup, updateGroupMembers } = usePlanStore();
+
+  const handleUpdateIsGroup = (isGroup: TBoolean) => {
+    if (isGroup === 'N') updateGroupMembers({ platformId, groupMembers: '' });
+    updateIsGroup({ platformId, isGroup });
+  };
 
   return (
     <PlanOptionLayout success={isFulfilledMemberOption(plan)} title="개인 / 그룹">
@@ -28,11 +33,11 @@ function MemberOption({ plan, platformId }: IProps) {
           </div>
           <Checkbox
             checked={plan?.isGroup === v.isGroup}
-            onClick={() => updateIsGroup({ platformId, isGroup: v.isGroup })}
+            onClick={() => handleUpdateIsGroup(v.isGroup)}
           />
         </PlanOptionItem>
       ))}
-      {plan?.isGroup && (
+      {plan?.isGroup === 'Y' && (
         <GroupMembersItem>
           <p>그룹원이 몇 명(본인 포함)인가요?</p>
           <div>
