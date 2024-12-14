@@ -8,24 +8,6 @@ import ArrowDown from '@assets/icons/arrow/ArrowDown';
 import { useTheme } from '@emotion/react';
 import ArrowUp from '@assets/icons/arrow/ArrowUp';
 
-const dummyData = {
-  // 1: 100000,
-  // 2: 30000,
-  // 3: 50000,
-  // 4: 100000,
-  // 5: 102200,
-  // 6: 50000,
-  // 7: 200000,
-  // 8: 30000,
-  9: 50000,
-  10: 160000,
-  11: 30000,
-  12: 102200,
-};
-
-const budgetValue = 200000;
-const currentValue = 102200;
-
 /** 연간 구독 비용 */
 export default function YearlySpending(data: TAnnualSubsSpending) {
   const theme = useTheme();
@@ -43,15 +25,12 @@ export default function YearlySpending(data: TAnnualSubsSpending) {
   const month = getMonth();
 
   const CHART_DATA = {
-    // [month - 3]: 10000,
     [month - 3]: threeMonthsBeforeCost,
-    // [month - 2]: 8000,
     [month - 2]: twoMonthsBeforeCost,
     [month - 1]: lastMonthCost,
     [month]: currentMonthCost,
   };
 
-  console.log('차트 데이터', CHART_DATA, '예산', data.userBudget, '이번달 비용', currentMonthCost);
   const formattedCost = formatCost(costChangeAmount);
 
   return (

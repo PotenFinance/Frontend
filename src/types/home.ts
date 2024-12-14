@@ -58,6 +58,8 @@ interface IAnnualSubscriptionCost {
   costChange: number;
   /** 비용 증감율 */
   costChangeAmount: number;
+  /** 예산 초과 금액 */
+  budgetOverflow: number;
 }
 
 /** 당월 구독 내역 개요 */
@@ -87,3 +89,8 @@ type TAnnualSubsSpending = Pick<
   | 'currentMonthCost'
   | 'costChangeAmount'
 > & { userBudget: IHomeData['userBudget'] };
+
+/** 예산 초과 현황 */
+type TBudgetStatus = Pick<IHomeData, 'userBudget'> & {
+  budgetOverflow: IAnnualSubscriptionCost['budgetOverflow'];
+};

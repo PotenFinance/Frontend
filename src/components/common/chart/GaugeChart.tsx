@@ -11,18 +11,18 @@ interface INeedleRenderProps {
   color: string;
 }
 
-interface IProps {
+interface IProps extends TBudgetStatus {
   width: number;
   height?: number;
 }
 
-export default function GaugeChart({ width, height }: IProps) {
+export default function GaugeChart({ width, height, userBudget, budgetOverflow }: IProps) {
   const theme = useTheme();
 
   const RADIAN = Math.PI / 180;
   const data = [
-    { name: 'A', value: 75, color: theme.color.theme.negavite },
-    { name: 'B', value: 25, color: theme.color.base.gray._c },
+    { name: '초과한 금액', value: budgetOverflow, color: theme.color.theme.negavite },
+    { name: '설정한 예산', value: userBudget, color: theme.color.base.gray._c },
   ];
   const cx = 150;
   const cy = 200;

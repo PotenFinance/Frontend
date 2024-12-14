@@ -5,34 +5,11 @@ import { useQuery } from '@tanstack/react-query';
 import { getHomeData } from 'apis/home';
 import Head from 'next/head';
 
-/** 나의 구독 서비스 더미데이터 */
-const subDummyData = [
-  {
-    service: 'netflix',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'disney',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'spotify',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-  {
-    service: 'adobe',
-    subplan: 'general',
-    monthlyprice: 8940,
-  },
-];
-
 export default function Home() {
   const { data, status, error } = useQuery({
     queryKey: ['home'],
     queryFn: () => getHomeData({ userId: '1234' }),
+
     select: ({ data }) => {
       console.log('홈데이터', data?.data);
 
@@ -59,6 +36,10 @@ export default function Home() {
         subscriptionDetails,
         // 연간 구독 비용 데이터
         annualSpendingData: { ...annualSubscriptionCost, userBudget },
+        budgetStatusData: {
+          userBudget,
+          budgetOverflow: annualSubscriptionCost.budgetOverflow,
+        },
       };
     },
   });
@@ -77,8 +58,9 @@ export default function Home() {
         <ScrollableContainer>
           {data && <MySubscription data={data.subscriptionDetails} />}
           {data && <YearlySpending {...data.annualSpendingData} />}
-          {/* TODO: BudgetStatus: 예산이 초과한 경우에만 보여준다 */}
-          <BudgetStatus />
+          {data && data.overviewData.remainingBudget < 0 && (
+            <BudgetStatus {...data.budgetStatusData} />
+          )}
           {/* 후순위 */}
           {/* <SavingOptions /> */}
         </ScrollableContainer>

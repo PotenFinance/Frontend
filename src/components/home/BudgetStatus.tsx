@@ -3,7 +3,9 @@ import SectionLayout from './SectionLayout';
 import GaugeChart from '@components/common/chart/GaugeChart';
 
 /** 이번달 예산 현황 */
-export default function BudgetStatus() {
+export default function BudgetStatus({ userBudget, budgetOverflow }: TBudgetStatus) {
+  const CHART_DATA: TBudgetStatus = { userBudget, budgetOverflow };
+
   const Heading = (
     <>
       이번달 예산을 <Highlight>초과</Highlight>했어요.
@@ -17,15 +19,17 @@ export default function BudgetStatus() {
         <OverviewList>
           <li>
             <Budget>설정한 예산</Budget>
-            <Amount>{`100,000원`}</Amount>
+            <Amount>{`${userBudget.toLocaleString()}원`}</Amount>
           </li>
           <li>
             <Overrun>초과한 금액</Overrun>
-            <OverrunAmount>{`+2,200원`}</OverrunAmount>
+            <OverrunAmount>{`+${budgetOverflow.toLocaleString()}원`}</OverrunAmount>
           </li>
         </OverviewList>
       </Overview>
-      <ChartContainer>{/* <GaugeChart width={390} /> */}</ChartContainer>
+      <ChartContainer>
+        {userBudget && budgetOverflow && <GaugeChart width={390} {...CHART_DATA} />}
+      </ChartContainer>
     </SectionLayout>
   );
 }
