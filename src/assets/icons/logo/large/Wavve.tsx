@@ -4,7 +4,7 @@ interface IProps {
   color?: string;
 }
 
-function WatchaLargeLogo({ width = '1em', height = '1em', color }: IProps) {
+function WavveLargeLogo({ width = '1em', height = '1em', color }: IProps) {
   return (
     <svg
       width={width}
@@ -49,4 +49,4 @@ function WatchaLargeLogo({ width = '1em', height = '1em', color }: IProps) {
   );
 }
 
-export default WatchaLargeLogo;
+export default WavveLargeLogo;

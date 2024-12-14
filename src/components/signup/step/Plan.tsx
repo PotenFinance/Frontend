@@ -18,7 +18,7 @@ import { signupApi } from 'apis/auth';
 import { setCookie } from '@utils/cookie';
 
 function SignupPlan() {
-  const [platformId, setPlatformId] = useState(101);
+  const [platformId, setPlatformId] = useState('O101');
 
   const router = useRouter();
 
@@ -42,7 +42,7 @@ function SignupPlan() {
     },
   });
 
-  const getPlan = (platformId: number) => {
+  const getPlan = (platformId: string) => {
     return plans.filter(plan => plan.platformId === platformId)[0];
   };
 

@@ -14,13 +14,13 @@ interface IProps {
 
 const testData = [
   {
-    platformId: 106,
+    platformId: 'M004',
     platformName: '스포티파이',
     platformType: '음악',
   },
   {
-    platformId: 107,
-    platformName: '스포티비 나우',
+    platformId: 'O001',
+    platformName: '넷플릭스',
     platformType: 'OTT',
   },
 ];

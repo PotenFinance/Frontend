@@ -14,7 +14,7 @@ export default function NavTab() {
         const Icon = menu.icon;
 
         const isActive =
-          menu.path === '/' ? pathname === menu.path : pathname.startsWith(menu.path);
+          menu.path === '/' ? pathname === menu.path : pathname?.startsWith(menu.path);
 
         return (
           <Link key={menu.name} href={menu.path} style={{ width: '100%', height: '100%' }}>
