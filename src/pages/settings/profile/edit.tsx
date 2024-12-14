@@ -8,12 +8,14 @@ import { useMutation } from '@tanstack/react-query';
 import { updateUserInfo } from 'apis/profile';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useUserStore } from 'stores/useUserStore';
 
 export default function ProfileEdit() {
   const theme = useTheme();
   const router = useRouter();
+  const { user } = useUserStore();
 
-  const [username, setUsername] = useState(''); // TODO: 회원정보 가져와서 회원이름 기본값으로 넣어주기
+  const [username, setUsername] = useState(user?.properties.nickname || '김포텐');
   const [isError, setIsError] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,7 +81,7 @@ export default function ProfileEdit() {
     const isValid = validateFormData(formData);
 
     if (isValid) {
-      mutation.mutate(formData); // TODO: userId store에서 가져와서 넣기
+      mutation.mutate(formData);
     }
   };
 
@@ -88,8 +90,11 @@ export default function ProfileEdit() {
       pageName="내 정보 수정하기"
       onBackButtonClick={() => router.push('/settings/profile')}
     >
-      {/* TODO: userId store에서 가져오기 */}
-      <Form onSubmit={e => handleSubmit({ e, formData: { userId: 1234, newUserName: username } })}>
+      <Form
+        onSubmit={e =>
+          handleSubmit({ e, formData: { userId: Number(user?.id), newUserName: username } })
+        }
+      >
         <InputBox inputValue={username} onInputChange={handleChange} isError={isError} />
         <Button
           bgColor={!username ? theme.color.base.gray._c : theme.color.primary._2}
