@@ -28,13 +28,3 @@ interface IUserInfo {
   access_token: string | null;
   refresh_token: string | null;
 }
-
-interface ILoginRes extends IRes {
-  data: IUserInfo;
-}
-
-interface IGetTokenRes extends IRes {
-  data: {
-    access_token: string;
-  };
-}

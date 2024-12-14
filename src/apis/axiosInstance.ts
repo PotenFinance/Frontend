@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
 
     if (error.response?.status === 401) {
       try {
-        const { data }: IGetTokenRes = await getTokenApi(refreshToken);
+        const data: { access_token: string } = await getTokenApi(refreshToken);
         setCookie('accessToken', data.access_token);
         return axiosInstance(originalRequest);
       } catch (err) {

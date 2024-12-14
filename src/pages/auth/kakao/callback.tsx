@@ -13,18 +13,16 @@ function AuthCallbackPage() {
   const { setUser } = useUserStore();
 
   const login = async () => {
-    const { status, data }: ILoginRes = await loginApi(code as string);
-    if (status === 200) {
-      if (data.access_token && data.refresh_token) {
-        setUser(data);
-        setCookie('accessToken', data.access_token);
-        setCookie('refreshToken', data.refresh_token);
-        router.push('/');
-      } else {
-        setUserId(data.id);
-        setCode(code as string);
-        router.push('/signup/budget');
-      }
+    const data: IUserInfo = await loginApi(code as string);
+    if (data.access_token && data.refresh_token) {
+      setUser(data);
+      setCookie('accessToken', data.access_token);
+      setCookie('refreshToken', data.refresh_token);
+      router.push('/');
+    } else {
+      setUserId(data.id);
+      setCode(code as string);
+      router.push('/signup/budget');
     }
   };
 
@@ -32,7 +30,7 @@ function AuthCallbackPage() {
     if (code) login();
   }, [code]);
 
-  return <div>code: {code}</div>;
+  return <div></div>;
 }
 
 export default AuthCallbackPage;

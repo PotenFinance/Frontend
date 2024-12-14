@@ -33,10 +33,10 @@ function SignupPlan() {
     enabled: !!platformId,
   });
 
-  const { mutate } = useMutation<ILoginRes, Error, ISignupReq>({
+  const { mutate } = useMutation<IUserInfo, Error, ISignupReq>({
     mutationFn: data => signupApi(data),
-    onSuccess: ({ status, data }) => {
-      if (status === 200 && data.access_token && data.refresh_token) {
+    onSuccess: data => {
+      if (data.access_token && data.refresh_token) {
         resetSignupData();
         setUser(data);
         setCookie('accessToken', data.access_token);

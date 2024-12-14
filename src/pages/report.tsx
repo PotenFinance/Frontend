@@ -73,7 +73,7 @@ function ReportPage() {
   const router = useRouter();
   const { type = 'month' } = router.query;
 
-  const { data } = useQuery<IGetReportRes>({
+  const { data } = useQuery<IMonthReport>({
     queryKey: ['report'],
     queryFn: () => getReportApi(getYear()),
   });
