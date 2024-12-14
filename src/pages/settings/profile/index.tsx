@@ -2,7 +2,7 @@ import SectionLayout from '@components/common/SectionLayout';
 import MyPageLayout from '@components/layout/MypageLayout';
 import EditProfileImageIcon from '@assets/icons/edit-profile-image.svg';
 import styled from '@emotion/styled';
-import { InputBox, MenuItem } from '@components/settings';
+import { MenuItem } from '@components/settings';
 import { PROFILE_MENU } from '@constants/index';
 import { useRouter } from 'next/router';
 import Divider from '@components/common/Divider';
@@ -24,7 +24,6 @@ export default function Profile() {
           <EditProfileImageIcon width={96} height={96} />
         </ProfileImageContainer>
       </SectionLayout>
-
       <UsernameBox>
         <Label>이름</Label>
         <UserName>김포텐</UserName>

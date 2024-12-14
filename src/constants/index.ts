@@ -82,3 +82,8 @@ export const PROFILE_MENU: TMenu[] = [
   { name: '로그아웃', path: '/signout' },
   { name: '계정탈퇴', path: '#' },
 ];
+
+/** 문자열 정규식
+ * @description 한글, 영문만 입력가능, 최소 1개 글자 이상
+ */
+export const characterRegex = /^[가-힣a-zA-Z]+$/;
