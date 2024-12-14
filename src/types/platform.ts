@@ -24,7 +24,3 @@ interface ISignupPlatform {
   billingMonth: string;
   billingDay: string;
 }
-
-interface GetPlatformPlanRes {
-  data: IPlan[];
-}

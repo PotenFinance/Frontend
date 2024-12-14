@@ -12,19 +12,6 @@ interface IProps {
   handleClose: () => void;
 }
 
-const testData = [
-  {
-    platformId: 106,
-    platformName: '스포티파이',
-    platformType: '음악',
-  },
-  {
-    platformId: 107,
-    platformName: '스포티비 나우',
-    platformType: 'OTT',
-  },
-];
-
 function SignupSearch({ handleClose }: IProps) {
   const { color } = useTheme();
 
@@ -32,7 +19,7 @@ function SignupSearch({ handleClose }: IProps) {
 
   const { services, addService } = useServiceStore();
 
-  const { data } = useQuery<GetPlatformsRes>({
+  const { data } = useQuery<IPlatform[]>({
     queryKey: ['searchPlatforms', keyword],
     queryFn: () => getSearchPlatformsApi(keyword),
   });
@@ -55,8 +42,8 @@ function SignupSearch({ handleClose }: IProps) {
         </Search>
         <List>
           {/* 컴포넌트 분리 SearchedServiceItem */}
-          {testData
-            .filter(v => services.findIndex(service => service.platformId === v.platformId) === -1)
+          {data
+            ?.filter(v => services.findIndex(service => service.platformId === v.platformId) === -1)
             .map(v => (
               <Item key={v.platformId} onClick={() => handleClickItem(v)}>
                 {BRAND_LOGO({ width: 40, height: 40 })['small'][v.platformId]}
