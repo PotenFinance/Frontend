@@ -12,7 +12,7 @@ interface IProps {
 
 const selectOptions: { planName: string; isYearlyPay: TBoolean }[] = [
   { planName: '매달', isYearlyPay: 'N' },
-  { planName: '매년', isYearlyPay: 'N' },
+  { planName: '매년', isYearlyPay: 'Y' },
 ];
 
 function BuillingOption({ plan, platformId }: IProps) {
@@ -32,7 +32,7 @@ function BuillingOption({ plan, platformId }: IProps) {
           <Input
             placeholder="매달"
             readOnly
-            value={plan?.isYearlyPay ? '매년' : '매달'}
+            value={plan?.isYearlyPay === 'Y' ? '매년' : '매달'}
             onClick={() => setOpenSelect(!openSelect)}
           />
           {openSelect && (
@@ -46,7 +46,7 @@ function BuillingOption({ plan, platformId }: IProps) {
           )}
         </Select>
         마다&nbsp;
-        {plan?.isYearlyPay && (
+        {plan?.isYearlyPay === 'Y' && (
           <>
             <Input
               placeholder="1"
