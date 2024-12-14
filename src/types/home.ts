@@ -21,7 +21,7 @@ interface IHomeData {
 
 /** 구독 정보 상세 */
 interface ISubscriptionDetails {
-  platformId: number;
+  platformId: string;
   /** 구독 플랫폼명 */
   platformName: string;
   /** 플랫폼 종류 */

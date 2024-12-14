@@ -1,14 +1,17 @@
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { BRAND_LOGO } from '@constants/logo';
+import { PLATFORM_ENG_NAMES } from '@constants/index';
 
 export default function ServiceCard(data: TSubscriptionDetail) {
   const theme = useTheme();
 
   const { platformId, platformName, planName, actualCost, renewalDaysLeft } = data;
 
+  const platformEngName = PLATFORM_ENG_NAMES.find(platform => platform.id === platformId);
+
   return (
-    <Card service={platformName}>
+    <Card platform={platformEngName?.name}>
       <h4>
         <span className="a11y-hidden">{platformName}</span>
         {
@@ -25,7 +28,7 @@ export default function ServiceCard(data: TSubscriptionDetail) {
           <SubPlan>{planName}</SubPlan>
           <MonthlyPrice>{`${actualCost.toLocaleString()}원 / 1달`}</MonthlyPrice>
         </PlanDesc>
-        <RemainingDateBadge service={platformName}>
+        <RemainingDateBadge platform={platformEngName?.name}>
           <span>{`D-${renewalDaysLeft}`}</span>
         </RemainingDateBadge>
       </CardInnerWrapper>
@@ -33,22 +36,13 @@ export default function ServiceCard(data: TSubscriptionDetail) {
   );
 }
 
-const Card = styled.article<{ service: string }>`
+const Card = styled.article<{ platform?: string }>`
   width: 168px;
   height: 228px;
   border-radius: 4px;
   padding: 14px;
-  // TODO: 플랫폼별 컬러 동적 렌더링 필요
-  background-color: ${({ theme, service }) =>
-    service === 'netflix'
-      ? theme.color.brand.netflix
-      : service === 'disney'
-      ? theme.color.brand.disneyplus
-      : service === 'spotify'
-      ? theme.color.brand.spotify
-      : service === 'adobe'
-      ? theme.color.brand.adobe
-      : theme.color.brand.discord};
+  background-color: ${({ theme, platform }) =>
+    platform ? theme.color.brand[platform] : theme.color.base.black};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -85,7 +79,7 @@ const CardInnerWrapper = styled.div`
 `;
 
 /** 구독 갱신 잔여일자 */
-const RemainingDateBadge = styled.div<{ service: string }>`
+const RemainingDateBadge = styled.div<{ platform?: string }>`
   background-color: ${({ theme }) => theme.color.base.white};
   width: 36px;
   height: 36px;
@@ -96,15 +90,7 @@ const RemainingDateBadge = styled.div<{ service: string }>`
 
   & span {
     font-size: ${({ theme }) => theme.typography.title_2.fontSize};
-    color: ${({ theme, service }) =>
-      service === 'netflix'
-        ? theme.color.brand.netflix
-        : service === 'disney'
-        ? theme.color.brand.disneyplus
-        : service === 'spotify'
-        ? theme.color.brand.spotify
-        : service === 'adobe'
-        ? theme.color.brand.adobe
-        : theme.color.brand.discord};
+    color: ${({ theme, platform }) =>
+      platform ? theme.color.brand[platform] : theme.color.base.black};
   }
 `;

@@ -87,3 +87,75 @@ export const PROFILE_MENU: TMenu[] = [
  * @description 한글, 영문만 입력가능, 최소 1개 글자 이상
  */
 export const characterRegex = /^[가-힣a-zA-Z]+$/;
+
+/** 플랫폼 영문명
+ * @description ServiceCard 컴포넌트 동적 컬러 렌더링에 사용
+ * */
+export const PLATFORM_ENG_NAMES = [
+  {
+    id: 'E001',
+    name: 'kakao',
+  },
+  {
+    id: 'M001',
+    name: 'melon',
+  },
+  {
+    id: 'M002',
+    name: 'applemusic',
+  },
+  {
+    id: 'M003',
+    name: 'youtube',
+  },
+  {
+    id: 'M004',
+    name: 'spotify',
+  },
+  {
+    id: 'O001',
+    name: 'netflix',
+  },
+  {
+    id: 'O002',
+    name: 'disneyplus',
+  },
+  {
+    // youtube music id
+    // youtube와 theme color 동일
+    id: 'O003',
+    name: 'youtube',
+  },
+  {
+    id: 'O004',
+    name: 'tving',
+  },
+  {
+    id: 'O005',
+    name: 'wavve',
+  },
+  {
+    id: 'O006',
+    name: 'watch',
+  },
+  {
+    id: 'S001',
+    name: 'coupang',
+  },
+  {
+    id: 'S002',
+    name: 'kurly',
+  },
+  {
+    id: 'S003',
+    name: 'naver',
+  },
+  {
+    id: 'S004',
+    name: 'baemin',
+  },
+  {
+    id: 'S005',
+    name: 'yogiyo',
+  },
+];

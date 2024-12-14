@@ -35,23 +35,7 @@ interface IColor {
      * 구독 서비스별 색상
      */
     brand: {
-      netflix: string;
-      disneyplus: string;
-      spotify: string;
-      adobe: string;
-      discord: string;
-      coupang: string;
-      youtube: string;
-      watcha: string;
-      kurly: string;
-      naver: string;
-      baemin: string;
-      yogiyo: string;
-      wavve: string;
-      melon: string;
-      applemusic: string;
-      kakao: string;
-      tving: string;
+      [key: string]: string;
     };
     base: {
       black: string;
