@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 export const global = css`
-  /* global styles */
+  /* Global Styles */
   html,
   body {
     max-width: 100vw;
@@ -28,7 +28,16 @@ export const global = css`
     word-break: keep-all;
   }
 
-  // 접근성을 고려한 텍스트 감춤 클래스
+  /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+  .scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-hidden {
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+
+  /* 접근성을 고려한 텍스트 감춤 클래스 */
   .a11y-hidden {
     overflow: hidden;
     position: absolute;
@@ -41,7 +50,7 @@ export const global = css`
     padding: 0;
   }
 
-  // css reset
+  /* CSS Reset */
   ul {
     list-style: none;
   }
@@ -63,7 +72,7 @@ export const global = css`
     color: inherit;
   }
 
-  /* Web fonts */
+  /* Web Fonts */
   /* 페이퍼로지 SemiBold */
   @font-face {
     font-family: 'Paperlogy';

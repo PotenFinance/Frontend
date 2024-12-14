@@ -23,7 +23,7 @@ function MonthReportList({ data }: IProps) {
               <span>{total_cost.toLocaleString()}원</span>
             </div>
           </InfoWrap>
-          <SubIconList>
+          <SubIconList className="scroll-hidden">
             {platform_id.map(v => (
               <li key={v}> {BRAND_LOGO({ width: 40, height: 40 })['small'][v]}</li>
             ))}
