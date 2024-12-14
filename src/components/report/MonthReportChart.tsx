@@ -1,4 +1,5 @@
 import ArrowDown from '@assets/icons/arrow/ArrowDown';
+import ArrowUp from '@assets/icons/arrow/ArrowUp';
 import BarChart from '@components/common/chart/BarChart';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -23,14 +24,22 @@ function MonthReportChart({ data, budget }: IProps) {
           <h1>월별 구독 내역</h1>
           <span>월 예산 {budget.toLocaleString()}원</span>
         </TitleWrap>
-        <MonthPriceWrap>
+        <MonthPriceWrap status={costGap ? (costGap > 0 ? 'negavite' : 'positive') : undefined}>
           <p>{month}월</p>
           <span>{totalCost.toLocaleString()}원</span>
           <div>
-            <p>
-              전월대비 <span>{costGap.toLocaleString()}원</span>
-            </p>
-            <ArrowDown color={color.theme.positive} />
+            {costGap ? (
+              <p>
+                전월대비 <span>{Math.abs(costGap).toLocaleString()}원</span>
+              </p>
+            ) : (
+              <p>전월과 동일</p>
+            )}
+            {costGap && costGap > 0 ? (
+              <ArrowUp color={color.theme.negavite} />
+            ) : (
+              <ArrowDown color={color.theme.positive} />
+            )}
           </div>
         </MonthPriceWrap>
       </FlexWrap>
@@ -71,7 +80,7 @@ const TitleWrap = styled.div`
   }
 `;
 
-const MonthPriceWrap = styled.div`
+const MonthPriceWrap = styled.div<{ status?: 'negavite' | 'positive' }>`
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -83,7 +92,12 @@ const MonthPriceWrap = styled.div`
     line-height: ${({ theme }) => theme.typography.title_1.lineHeight};
   }
   & > span {
-    color: ${({ theme }) => theme.color.theme.positive};
+    color: ${({ theme, status }) =>
+      status === 'negavite'
+        ? theme.color.theme.negavite
+        : status === 'positive'
+        ? theme.color.theme.positive
+        : theme.color.base.gray.base};
     font-family: ${({ theme }) => theme.typography.body_1.fontFamily};
     font-weight: ${({ theme }) =>
       (theme.typography.body_1.fontWeight as { [key: string]: number }).bold};
@@ -100,7 +114,12 @@ const MonthPriceWrap = styled.div`
     line-height: ${({ theme }) => theme.typography.title_4.lineHeight};
     p {
       span {
-        color: ${({ theme }) => theme.color.theme.positive};
+        color: ${({ theme, status }) =>
+          status === 'negavite'
+            ? theme.color.theme.negavite
+            : status === 'positive'
+            ? theme.color.theme.positive
+            : theme.color.base.gray.base};
       }
     }
   }
