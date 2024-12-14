@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IProps {
-  data: { [key: number | string]: number };
+  data: { [key: number]: IReport };
   containerBaseValue: number;
   statusBaseValue: number;
 }
@@ -12,25 +12,23 @@ function BarChart({ data, containerBaseValue, statusBaseValue }: IProps) {
 
   return (
     <Chart>
-      {Object.entries(data).map(([key, value]) => {
-        return (
-          <BarWrap key={key}>
-            <BarContainer height={containerHeight}>
-              <Bar
-                height={value * percent}
-                status={
-                  value > statusBaseValue
-                    ? 'negavite'
-                    : value < statusBaseValue
-                    ? 'positive'
-                    : 'neutral'
-                }
-              />
-            </BarContainer>
-            <Label>{key}</Label>
-          </BarWrap>
-        );
-      })}
+      {Object.entries(data).map(([key, { total_cost }]) => (
+        <BarWrap key={key}>
+          <BarContainer height={containerHeight}>
+            <Bar
+              height={total_cost * percent}
+              status={
+                total_cost > statusBaseValue
+                  ? 'negavite'
+                  : total_cost < statusBaseValue
+                  ? 'positive'
+                  : 'neutral'
+              }
+            />
+          </BarContainer>
+          <Label>{key}</Label>
+        </BarWrap>
+      ))}
     </Chart>
   );
 }

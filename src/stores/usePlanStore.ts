@@ -4,12 +4,12 @@ import { persist } from 'zustand/middleware';
 interface IStore {
   plans: ISignupPlatform[];
   setPlans: (plans: ISignupPlatform[]) => void;
-  updatePlanId: (plan: { platformId: number; planId: number }) => void;
-  updateIsGroup: (plan: { platformId: number; isGroup: boolean }) => void;
-  updateGroupMembers: (plan: { platformId: number; groupMembers: string }) => void;
-  updateIsYearlyPay: (plan: { platformId: number; isYearlyPay: boolean }) => void;
-  updateBillingMonth: (plan: { platformId: number; billingMonth: string }) => void;
-  updateBillingDay: (plan: { platformId: number; billingDay: string }) => void;
+  updatePlanId: (plan: { platformId: string; planId: string }) => void;
+  updateIsGroup: (plan: { platformId: string; isGroup: TBoolean }) => void;
+  updateGroupMembers: (plan: { platformId: string; groupMembers: string }) => void;
+  updateIsYearlyPay: (plan: { platformId: string; isYearlyPay: TBoolean }) => void;
+  updateBillingMonth: (plan: { platformId: string; billingMonth: string }) => void;
+  updateBillingDay: (plan: { platformId: string; billingDay: string }) => void;
 }
 
 export const usePlanStore = create<IStore>()(

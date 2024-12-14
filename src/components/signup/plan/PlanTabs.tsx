@@ -1,16 +1,16 @@
-import Status, { TStatus } from '@components/common/Status';
+import Status from '@components/common/Status';
 import { BRAND_LOGO } from '@constants/logo';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import { isFulfilledPlan } from '@utils/platform';
 import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  platformId: number;
-  setPlatformId: (value: number) => void;
-  getServiceStatus: (plan: ISignupPlatform) => TStatus;
+  platformId: string;
+  setPlatformId: (value: string) => void;
 }
 
-function PlanTabs({ platformId, setPlatformId, getServiceStatus }: IProps) {
+function PlanTabs({ platformId, setPlatformId }: IProps) {
   const { color } = useTheme();
 
   const { plans } = usePlanStore();
@@ -26,7 +26,7 @@ function PlanTabs({ platformId, setPlatformId, getServiceStatus }: IProps) {
               color: v.platformId !== platformId ? color.base.gray.base : undefined,
             })['small'][v.platformId]
           }
-          <Status status={getServiceStatus(v)} />
+          <Status status={isFulfilledPlan(v) ? 'success' : 'error'} />
         </Tab>
       ))}
     </Tabs>
@@ -38,9 +38,12 @@ export default PlanTabs;
 const Tabs = styled.ul`
   padding: 8px 16px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
+  gap: 40px;
   border-top: 0.3px solid ${({ theme }) => theme.color.base.black};
   border-bottom: 0.3px solid ${({ theme }) => theme.color.base.black};
+  overflow-x: auto;
 `;
 
 const Tab = styled.li`

@@ -1,34 +1,26 @@
 interface IPlatform {
-  platformId: number;
+  platformId: string;
   platformName: string;
   platformType: string;
 }
 
 interface IPlan {
-  platformId: number;
-  planId: number;
+  platformId: string;
+  planId: string;
   planName: string;
-  planCost: number;
-  maxMembers: number;
-  isYearlyPlan: boolean;
+  planFee: string | null;
+  maxMembers: string | null;
+  isYearlyPlan: TBoolean;
 }
 
 interface ISignupPlatform {
-  platformId: number;
+  platformId: string;
   platformName: string; //TODO 추가
   platformType: string; //TODO 추가
-  planId: number;
-  isGroup: boolean;
+  planId: string;
+  isGroup: TBoolean;
   groupMembers: string; //TODO 추가
-  isYearlyPay: boolean;
+  isYearlyPay: TBoolean;
   billingMonth: string;
   billingDay: string;
-}
-
-interface GetPlatformsRes extends IRes {
-  data: IPlatform[];
-}
-
-interface GetPlatformPlanRes extends IRes {
-  data: IPlan[];
 }

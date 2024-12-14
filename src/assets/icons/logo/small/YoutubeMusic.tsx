@@ -23,7 +23,7 @@ function YoutubeSmallLogo({ width = '1em', height = '1em', color }: IProps) {
         stroke="white"
         stroke-width="1.2"
       />
-      <path d="M16.9965 25.25L26.4391 20L16.9965 14.75V25.25Z" fill={color || 'white'} />
+      <path d="M16.9965 25.25L26.4391 20L16.9965 14.75V25.25Z" fill={'white'} />
     </svg>
   );
 }
