@@ -5,6 +5,8 @@ import { global } from '@styles/globals';
 import { lightTheme } from '@styles/theme';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { getCookie } from '@utils/cookie';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,6 +19,16 @@ const queryClient = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
+  useEffect(() => {
+    if (
+      !router.pathname.includes('login') &&
+      !router.pathname.includes('auth') &&
+      !router.pathname.includes('signup') &&
+      !getCookie('accessToken')
+    )
+      router.push('/login');
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

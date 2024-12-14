@@ -1,7 +1,6 @@
 import { MySubscription, YearlySpending, BudgetStatus, OverviewSection } from '@components/home';
 import SavingOptions from '@components/home/SavingOptions';
 import styled from '@emotion/styled';
-import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 
 // 서비스명
@@ -94,22 +93,22 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps = async ({ req }: GetServerSidePropsContext) => {
-  const accessToken = req.cookies.accessToken;
+// export const getServerSideProps = async ({ req }: GetServerSidePropsContext) => {
+//   const accessToken = req.cookies.accessToken;
 
-  if (!accessToken) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
+//   if (!accessToken) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//         permanent: false,
+//       },
+//     };
+//   }
 
-  return {
-    props: {},
-  };
-};
+//   return {
+//     props: {},
+//   };
+// };
 
 const Main = styled.main`
   background-color: ${({ theme }) => theme.color.primary._1};
