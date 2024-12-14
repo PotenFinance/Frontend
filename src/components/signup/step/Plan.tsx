@@ -23,7 +23,7 @@ function SignupPlan() {
   const { code, userId, budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
-  const [platformId, setPlatformId] = useState(plans[0].platformId);
+  const [platformId, setPlatformId] = useState(platforms[0]?.platformId);
 
   const { data } = useQuery<IPlan[]>({
     queryKey: ['platformPlans', platformId],
