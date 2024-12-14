@@ -14,27 +14,27 @@ import { BRAND_LOGO } from '@constants/logo';
 
 const testData = [
   {
-    platformId: 101,
+    platformId: 'O001',
     platformName: '넷플릭스',
     platformType: 'OTT',
   },
   {
-    platformId: 102,
+    platformId: 'M004',
     platformName: '스포티파이',
     platformType: '음악',
   },
   {
-    platformId: 103,
-    platformName: '디스코드',
-    platformType: '작업',
+    platformId: 'E001',
+    platformName: '카카오 구독',
+    platformType: '기타',
   },
   {
-    platformId: 104,
-    platformName: '어도비',
-    platformType: '작업',
+    platformId: 'M001',
+    platformName: '멜론',
+    platformType: '음악',
   },
   {
-    platformId: 105,
+    platformId: 'O004',
     platformName: '티빙',
     platformType: 'OTT',
   },
@@ -59,7 +59,7 @@ function SignupService() {
         platformId: v.platformId,
         platformName: v.platformName,
         platformType: v.platformType,
-        planId: 0,
+        planId: '',
         isGroup: false,
         groupMembers: '',
         isYearlyPay: false,

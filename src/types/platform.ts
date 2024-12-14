@@ -1,23 +1,23 @@
 interface IPlatform {
-  platformId: number;
+  platformId: string;
   platformName: string;
   platformType: string;
 }
 
 interface IPlan {
-  platformId: number;
-  planId: number;
+  platformId: string;
+  planId: string;
   planName: string;
-  planCost: number;
-  maxMembers: number;
+  planCost: string;
+  maxMembers: string;
   isYearlyPlan: boolean;
 }
 
 interface ISignupPlatform {
-  platformId: number;
+  platformId: string;
   platformName: string; //TODO 추가
   platformType: string; //TODO 추가
-  planId: number;
+  planId: string;
   isGroup: boolean;
   groupMembers: string; //TODO 추가
   isYearlyPay: boolean;

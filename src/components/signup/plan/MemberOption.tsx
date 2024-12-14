@@ -6,7 +6,7 @@ import Status from '@components/common/Status';
 
 interface IProps {
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
 const options = [

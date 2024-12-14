@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 interface IProps {
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
 const selectOptions = [

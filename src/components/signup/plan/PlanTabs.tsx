@@ -5,8 +5,8 @@ import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
-  platformId: number;
-  setPlatformId: (value: number) => void;
+  platformId: string;
+  setPlatformId: (value: string) => void;
   getServiceStatus: (plan: ISignupPlatform) => TStatus;
 }
 

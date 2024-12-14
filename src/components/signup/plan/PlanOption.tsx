@@ -5,37 +5,37 @@ import { usePlanStore } from 'stores/usePlanStore';
 
 interface IProps {
   plan?: ISignupPlatform;
-  platformId: number;
+  platformId: string;
 }
 
 const options = [
   {
-    platformId: 101,
-    planId: 1001,
+    platformId: 'O101',
+    planId: '1001',
     planName: '스탠다드 (연간 / 1명)',
     planCost: 50000,
     maxMembers: 1,
     isYearlyPlan: true,
   },
   {
-    platformId: 101,
-    planId: 1002,
+    platformId: 'O101',
+    planId: '1002',
     planName: '스탠다드 (연간 / 2명)',
     planCost: 80000,
     maxMembers: 1,
     isYearlyPlan: true,
   },
   {
-    platformId: 101,
-    planId: 1003,
+    platformId: 'O101',
+    planId: '1003',
     planName: '스탠다드 (연간 / 3명)',
     planCost: 100000,
     maxMembers: 3,
     isYearlyPlan: true,
   },
   {
-    platformId: 101,
-    planId: 1004,
+    platformId: 'O101',
+    planId: '1004',
     planName: '스탠다드 (월간)',
     planCost: 90000,
     maxMembers: 1,
