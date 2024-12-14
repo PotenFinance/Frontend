@@ -41,11 +41,11 @@ function WatchaSmallLogo({ width = '1em', height = '1em', color }: IProps) {
             />
           </mask>
           <g mask="url(#mask1_561_3240)">
-            <path d="M38.685 2H2.685V38H38.685V2Z" fill={'black'} />
+            <path d="M38.685 2H2.685V38H38.685V2Z" fill={color || 'black'} />
           </g>
           <path
             d="M13.283 32.48L18.3776 32.1423L20.3773 19.522H20.9023L22.8552 31.8447L28.2591 31.4851L32.5946 7.4H27.4114L25.4301 25.7753L24.8248 25.8154L22.7298 12.5832H18.5498L16.3661 26.3772L15.7643 26.4173L13.8933 12.5832H8.685L13.283 32.48Z"
-            fill={color || '#FF0558'}
+            fill={color ? 'white' : '#FF0558'}
           />
         </g>
       </g>
