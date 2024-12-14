@@ -6,7 +6,12 @@ interface IStore {
   setServices: (service: IPlatform[]) => void;
   addService: (service: IPlatform) => void;
   deleteService: (serviceId: string) => void;
+  resetServiceData: () => void;
 }
+
+const initialState = {
+  services: [],
+};
 
 export const useServiceStore = create<IStore>()(
   persist(
@@ -19,6 +24,7 @@ export const useServiceStore = create<IStore>()(
           ...state,
           services: [...state.services?.filter(v => v.platformId !== serviceId)],
         })),
+      resetServiceData: () => set({ ...initialState }),
     }),
     { name: 'service' },
   ),

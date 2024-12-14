@@ -17,13 +17,15 @@ import { signupApi } from 'apis/auth';
 import { setCookie } from '@utils/cookie';
 import { isFulfilledPlan } from '@utils/platform';
 import { useUserStore } from 'stores/useUserStore';
+import { useServiceStore } from 'stores/useServiceStore';
 
 function SignupPlan() {
   const router = useRouter();
 
   const { setUser } = useUserStore();
   const { code, userId, budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
-  const { plans, setPlans } = usePlanStore();
+  const { plans, setPlans, resetPlanData } = usePlanStore();
+  const { resetServiceData } = useServiceStore();
 
   const [platformId, setPlatformId] = useState(platforms[0]?.platformId);
 
@@ -38,6 +40,8 @@ function SignupPlan() {
     onSuccess: data => {
       if (data.access_token && data.refresh_token) {
         resetSignupData();
+        resetServiceData();
+        resetPlanData();
         setUser(data);
         setCookie('accessToken', data.access_token);
         setCookie('refreshToken', data.refresh_token);
