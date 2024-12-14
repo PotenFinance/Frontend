@@ -22,7 +22,7 @@ export const getSearchPlatformsApi = async (platformName: string) => {
   }
 };
 
-export const getPlatformPlansApi = async (platformId: number) => {
+export const getPlatformPlansApi = async (platformId: string) => {
   try {
     const res = await axiosInstance.get('/platforms/search-plan', {
       params: { platformId },

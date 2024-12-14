@@ -5,7 +5,7 @@ interface IStore {
   services: IPlatform[];
   setServices: (service: IPlatform[]) => void;
   addService: (service: IPlatform) => void;
-  deleteService: (serviceId: number) => void;
+  deleteService: (serviceId: string) => void;
 }
 
 export const useServiceStore = create<IStore>()(
