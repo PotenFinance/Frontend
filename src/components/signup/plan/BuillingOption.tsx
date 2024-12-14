@@ -9,7 +9,7 @@ interface IProps {
   platformId: string;
 }
 
-const selectOptions: { planName: string; isYearlyPay: 'Y' | 'N' }[] = [
+const selectOptions: { planName: string; isYearlyPay: TBoolean }[] = [
   { planName: '매달', isYearlyPay: 'N' },
   { planName: '매년', isYearlyPay: 'N' },
 ];
@@ -19,7 +19,7 @@ function BuillingOption({ plan, platformId }: IProps) {
 
   const { updateIsYearlyPay, updateBillingMonth, updateBillingDay } = usePlanStore();
 
-  const handleClickOption = (isYearlyPay: 'Y' | 'N') => {
+  const handleClickOption = (isYearlyPay: TBoolean) => {
     updateIsYearlyPay({ platformId, isYearlyPay });
     setOpenSelect(false);
   };

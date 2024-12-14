@@ -10,7 +10,7 @@ interface IPlan {
   planName: string;
   planFee: string | null;
   maxMembers: string | null;
-  isYearlyPlan: 'Y' | 'N';
+  isYearlyPlan: TBoolean;
 }
 
 interface ISignupPlatform {
@@ -18,9 +18,9 @@ interface ISignupPlatform {
   platformName: string; //TODO 추가
   platformType: string; //TODO 추가
   planId: string;
-  isGroup: 'Y' | 'N';
+  isGroup: TBoolean;
   groupMembers: string; //TODO 추가
-  isYearlyPay: 'Y' | 'N';
+  isYearlyPay: TBoolean;
   billingMonth: string;
   billingDay: string;
 }

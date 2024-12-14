@@ -10,7 +10,7 @@ interface IProps {
   platformId: string;
 }
 
-const options: { planName: string; isGroup: 'Y' | 'N' }[] = [
+const options: { planName: string; isGroup: TBoolean }[] = [
   { planName: '혼자서 결제하고 있어요.', isGroup: 'N' },
   { planName: '같이 결제하고 있어요.', isGroup: 'N' },
 ];
