@@ -1,33 +1,32 @@
 import styled from '@emotion/styled';
 
 interface IProps {
-  label: string;
+  inputValue: string;
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function InputBox({ label }: IProps) {
+export default function InputBox({ inputValue, onInputChange }: IProps) {
   return (
     <Container>
-      <Label htmlFor="">{label}</Label>
-      <Input type="text" />
+      <Label htmlFor="">이름</Label>
+      <Input type="text" value={inputValue} onChange={onInputChange} />
     </Container>
   );
 }
 
 const Container = styled.div`
-  width: 100%;
-  height: 56px;
-  border-bottom: solid 0.5px ${({ theme }) => theme.color.base.gray.base};
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
 `;
 
 const Label = styled.label`
-  width: 30px;
-  color: ${({ theme }) => theme.color.base.gray.base};
+  font-family: ${({ theme }) => theme.typography.title_3.fontFamily};
+  font-size: ${({ theme }) => theme.typography.title_3.fontSize};
 `;
 
 const Input = styled.input`
-  width: calc(100% - 30px);
-  margin-left: 10px;
-  text-align: right;
+  margin-top: 16px;
+  border-bottom: solid 1px ${({ theme }) => theme.color.base.gray.base};
+  padding: 8px 4px;
 `;

@@ -49,7 +49,7 @@ export const NAV_MENU: INavMenu[] = [
   },
   {
     name: '마이페이지',
-    path: '/mypage',
+    path: '/settings',
     icon: mypageIcon,
   },
 ];

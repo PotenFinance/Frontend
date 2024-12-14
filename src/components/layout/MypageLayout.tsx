@@ -2,7 +2,7 @@ import ArrowBackIcon from '@assets/icons/arrow/ArrowBack';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 
-interface IProps {
+interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   pageName: string;
   /** 헤더바 우측에 위치하는 버튼 */
@@ -18,12 +18,13 @@ export default function MyPageLayout({
   buttonName,
   onButtonClick,
   onBackButtonClick,
+  ...props
 }: IProps) {
   const router = useRouter();
   const handleBackButtonClick = onBackButtonClick ? onBackButtonClick : () => router.back();
 
   return (
-    <Container>
+    <Container {...props}>
       <Header hasButton={!!buttonName}>
         <button type="button" onClick={handleBackButtonClick}>
           <ArrowBackIcon height={16} />
@@ -38,7 +39,6 @@ export default function MyPageLayout({
 
 const Container = styled.div`
   position: relative;
-  padding: 0 24px;
   height: calc(100vh - 64px); // 하단 nav 탭 height
 `;
 
@@ -47,6 +47,8 @@ const Header = styled.div<{ hasButton: boolean }>`
   justify-content: ${({ hasButton }) => (hasButton ? 'space-between' : 'normal')};
   align-items: center;
   height: 39px;
+  margin-top: 16px;
+  padding: 0 16px;
 `;
 
 const GoBackButton = styled.button``;
