@@ -1,35 +1,42 @@
 import styled from '@emotion/styled';
 import ExpensesListCard from './ExpensesListCard';
 
-interface IProps {
-  data: { platform: string; subPlan: string; price: number }[];
-}
+export default function OverviewSection({
+  userName,
+  totalSubscriptionCost,
+  totalSubscriptions,
+  subscriptionDetails,
+  remainingBudget,
+}: IOverviewData) {
+  const formattedRemainingBudget =
+    remainingBudget < 0
+      ? `-${Math.abs(remainingBudget).toLocaleString()}`
+      : remainingBudget.toLocaleString();
 
-export default function OverviewSection({ data }: IProps) {
   return (
     <Container>
       <OverviewDesc>
         <h2>
           <ul>
             <li>
-              <Username>{`박지수님`}</Username>
+              <Username>{`${userName}님`}</Username>
               {`의 이번달 총 구독 비용은`}
             </li>
             <li>
-              <TotalSpendingAmount>{`102,200원`}</TotalSpendingAmount>
+              <TotalSpendingAmount>{`${totalSubscriptionCost.toLocaleString()}원`}</TotalSpendingAmount>
               {`입니다.`}
             </li>
           </ul>
         </h2>
         <div>
-          <SubCount>{data.length}</SubCount>
+          <SubCount>{totalSubscriptions}</SubCount>
           <SubText>구독</SubText>
         </div>
       </OverviewDesc>
-      <ExpensesListCard subListData={data} />
+      <ExpensesListCard data={subscriptionDetails} />
       <RemainingBudget>
         <Desc>{`남은 예산`}</Desc>
-        <Amount>{`7,800원`}</Amount>
+        <Amount>{`${formattedRemainingBudget}원`}</Amount>
       </RemainingBudget>
     </Container>
   );
@@ -52,7 +59,7 @@ const OverviewDesc = styled.div`
     font-weight: ${({ theme }) => theme.typography.title_1.fontWeight};
     line-height: 26px;
 
-    & ul li:nth-child(2) {
+    & ul li:nth-of-type(2) {
       margin-top: 7px;
     }
   }
