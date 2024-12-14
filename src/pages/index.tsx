@@ -13,8 +13,6 @@ export default function Home() {
     queryKey: ['home'],
     queryFn: () => getHomeData({ userId: user?.id }),
     select: ({ data }) => {
-      console.log('홈데이터', data?.data);
-
       const {
         userName,
         totalSubscriptionCost,
