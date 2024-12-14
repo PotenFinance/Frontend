@@ -5,4 +5,4 @@ interface IRes {
 
 type TStatus = 'success' | 'warn' | 'error';
 
-type TBoolean = TBoolean;
+type TBoolean = 'Y' | 'N';
