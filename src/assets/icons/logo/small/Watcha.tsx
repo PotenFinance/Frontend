@@ -13,7 +13,7 @@ function WatchaSmallLogo({ width = '1em', height = '1em', color }: IProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_561_3240)">
+      <g clipPath="url(#clip0_561_3240)">
         <mask
           id="mask0_561_3240"
           // style="mask-type:luminance"

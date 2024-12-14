@@ -42,8 +42,8 @@ function NetflixSmallLogo({ width = '1em', height = '1em', color }: IProps) {
           y2="15.0811"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color={color || '#C20000'} stop-opacity="0" />
-          <stop offset="1" stop-color={color || '#9D0000'} />
+          <stop stopColor={color || '#C20000'} stopOpacity="0" />
+          <stop offset="1" stopColor={color || '#9D0000'} />
         </linearGradient>
         <linearGradient
           id="paint1_linear_3_642"
@@ -53,8 +53,8 @@ function NetflixSmallLogo({ width = '1em', height = '1em', color }: IProps) {
           y2="26.0694"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color={color || '#C20000'} stop-opacity="0" />
-          <stop offset="1" stop-color={color || '#9D0000'} />
+          <stop stopColor={color || '#C20000'} stopOpacity="0" />
+          <stop offset="1" stopColor={color || '#9D0000'} />
         </linearGradient>
       </defs>
     </svg>
