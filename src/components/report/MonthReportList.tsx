@@ -1,3 +1,4 @@
+import { BRAND_LOGO } from '@constants/logo';
 import styled from '@emotion/styled';
 import { getYear } from '@utils/date';
 
@@ -24,7 +25,7 @@ function MonthReportList({ data }: IProps) {
           </InfoWrap>
           <SubIconList>
             {platform_id.map(v => (
-              <li key={v}>{v}</li>
+              <li key={v}> {BRAND_LOGO({ width: 40, height: 40 })['small'][v]}</li>
             ))}
           </SubIconList>
         </Item>
@@ -51,6 +52,7 @@ const Item = styled.li`
 
 const InfoWrap = styled.div`
   width: 120px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -89,4 +91,5 @@ const SubIconList = styled.ul`
   display: flex;
   align-items: center;
   gap: 24px;
+  overflow-x: auto;
 `;
