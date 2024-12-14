@@ -20,21 +20,20 @@ const queryClient = new QueryClient({
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
-  useEffect(() => {
-    if (
-      !router.pathname.includes('login') &&
-      !router.pathname.includes('auth') &&
-      !router.pathname.includes('signup') &&
-      !getCookie('accessToken')
-    )
-      router.push('/login');
-  }, []);
+  const isPrivatePage =
+    !router.pathname.includes('login') &&
+    !router.pathname.includes('auth') &&
+    !router.pathname.includes('signup');
+
+  // useEffect(() => {
+  //   if (isPrivatePage && !getCookie('accessToken')) router.push('/login');
+  // }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={lightTheme}>
         <Global styles={global} />
-        <Layout viewNavTab={router.pathname !== '/login'}>
+        <Layout viewNavTab={isPrivatePage}>
           <Component {...pageProps} />
         </Layout>
       </ThemeProvider>

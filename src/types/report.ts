@@ -3,11 +3,9 @@ interface IReport {
   platform_id: string[];
 }
 
-interface IGetReportRes extends IRes {
-  data: {
-    budget: 200000;
-    monthly_report: {
-      [key: number]: IReport;
-    };
+interface IMonthReport {
+  budget: 200000;
+  monthly_report: {
+    [key: number]: IReport;
   };
 }

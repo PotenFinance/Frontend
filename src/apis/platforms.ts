@@ -5,7 +5,6 @@ export const getTopPlatformsApi = async () => {
     const res = await axiosInstance.get('/platforms/top-info');
     return res.data;
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
@@ -17,7 +16,6 @@ export const getSearchPlatformsApi = async (platformName: string) => {
     });
     return res.data;
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
@@ -29,7 +27,6 @@ export const getPlatformPlansApi = async (platformId: string) => {
     });
     return res.data;
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };

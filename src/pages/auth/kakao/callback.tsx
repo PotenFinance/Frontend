@@ -13,8 +13,8 @@ function AuthCallbackPage() {
   const { setUser } = useUserStore();
 
   const login = async () => {
-    const { status, data }: ILoginRes = await loginApi(code as string);
-    if (status === 200) {
+    try {
+      const data: IUserInfo = await loginApi(code as string);
       if (data.access_token && data.refresh_token) {
         setUser(data);
         setCookie('accessToken', data.access_token);
@@ -25,14 +25,14 @@ function AuthCallbackPage() {
         setCode(code as string);
         router.push('/signup/budget');
       }
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
     if (code) login();
   }, [code]);
 
-  return <div>code: {code}</div>;
+  return <div></div>;
 }
 
 export default AuthCallbackPage;

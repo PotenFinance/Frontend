@@ -21,7 +21,6 @@ export default SignupPage;
 
 const Container = styled.div`
   min-height: 100dvh;
-  padding-bottom: 64px;
   display: flex;
   flex-direction: column;
 `;
