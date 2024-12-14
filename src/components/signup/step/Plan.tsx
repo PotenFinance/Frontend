@@ -16,10 +16,12 @@ import { getPlatformPlansApi } from 'apis/platforms';
 import { signupApi } from 'apis/auth';
 import { setCookie } from '@utils/cookie';
 import { isFulfilledPlan } from '@utils/platform';
+import { useUserStore } from 'stores/useUserStore';
 
 function SignupPlan() {
   const router = useRouter();
 
+  const { setUser } = useUserStore();
   const { code, userId, budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
@@ -36,6 +38,7 @@ function SignupPlan() {
     onSuccess: ({ status, data }) => {
       if (status === 200 && data.access_token && data.refresh_token) {
         resetSignupData();
+        setUser(data);
         setCookie('accessToken', data.access_token);
         setCookie('refreshToken', data.refresh_token);
         router.push('/');
