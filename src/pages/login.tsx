@@ -5,9 +5,16 @@ import styled from '@emotion/styled';
 import { alertComingSoon } from '@utils/alert';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { usePlanStore } from 'stores/usePlanStore';
+import { useServiceStore } from 'stores/useServiceStore';
+import { useSignupStore } from 'stores/useSignupStore';
 
 function LoginPage() {
   const { color } = useTheme();
+
+  const { resetSignupData } = useSignupStore();
+  const { resetServiceData } = useServiceStore();
+  const { resetPlanData } = usePlanStore();
 
   const handleClickExplore = () => {
     alertComingSoon();
@@ -26,6 +33,12 @@ function LoginPage() {
     if (!window.Kakao?.isInitialized()) {
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY);
     }
+  }, []);
+
+  useEffect(() => {
+    resetSignupData();
+    resetServiceData();
+    resetPlanData();
   }, []);
 
   return (

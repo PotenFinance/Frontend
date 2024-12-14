@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 interface IStore {
   plans: ISignupPlatform[];
   setPlans: (plans: ISignupPlatform[]) => void;
+  resetPlanData: () => void;
   updatePlanId: (plan: { platformId: string; planId: string }) => void;
   updateIsGroup: (plan: { platformId: string; isGroup: TBoolean }) => void;
   updateGroupMembers: (plan: { platformId: string; groupMembers: string }) => void;
@@ -12,11 +13,16 @@ interface IStore {
   updateBillingDay: (plan: { platformId: string; billingDay: string }) => void;
 }
 
+const initialState = {
+  plans: [],
+};
+
 export const usePlanStore = create<IStore>()(
   persist(
     set => ({
-      plans: [],
+      ...initialState,
       setPlans: plans => set(state => ({ ...state, plans })),
+      resetPlanData: () => set({ ...initialState }),
       updatePlanId: ({ platformId, planId }) =>
         set(state => ({
           ...state,
