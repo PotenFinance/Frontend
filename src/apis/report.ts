@@ -5,7 +5,6 @@ export const getReportApi = async (year: number) => {
     const res = await axiosInstance.get('/report', { params: { year } });
     return res.data;
   } catch (err) {
-    console.error(err);
-    // throw err;
+    throw err;
   }
 };

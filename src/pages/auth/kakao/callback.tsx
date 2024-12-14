@@ -13,17 +13,19 @@ function AuthCallbackPage() {
   const { setUser } = useUserStore();
 
   const login = async () => {
-    const data: IUserInfo = await loginApi(code as string);
-    if (data.access_token && data.refresh_token) {
-      setUser(data);
-      setCookie('accessToken', data.access_token);
-      setCookie('refreshToken', data.refresh_token);
-      router.push('/');
-    } else {
-      setUserId(data.id);
-      setCode(code as string);
-      router.push('/signup/budget');
-    }
+    try {
+      const data: IUserInfo = await loginApi(code as string);
+      if (data.access_token && data.refresh_token) {
+        setUser(data);
+        setCookie('accessToken', data.access_token);
+        setCookie('refreshToken', data.refresh_token);
+        router.push('/');
+      } else {
+        setUserId(data.id);
+        setCode(code as string);
+        router.push('/signup/budget');
+      }
+    } catch (err) {}
   };
 
   useEffect(() => {
