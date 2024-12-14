@@ -1,20 +1,14 @@
 import styled from '@emotion/styled';
+import { getMonth, getYear } from '@utils/date';
 
-// todo: 추후 수정 예정
 interface IProps {
-  subListData: Array<{
-    platform: string;
-    subPlan: string;
-    price: number;
-  }>;
+  data: ISubscriptionDetails[];
 }
 
 /** 당월 구독 내역 */
-export default function ExpensesListCard({ subListData }: IProps) {
-  const date = new Date();
-
-  const currentYear = date.getFullYear();
-  const currentMonth = date.getMonth() + 1;
+export default function ExpensesListCard({ data }: IProps) {
+  const currentYear = getYear();
+  const currentMonth = getMonth();
 
   return (
     <Container>
@@ -23,14 +17,14 @@ export default function ExpensesListCard({ subListData }: IProps) {
         {` 구독 내역`}
       </Heading>
       <List>
-        {subListData.map(data => {
+        {data?.map(sub => {
           return (
-            <Item key={data.platform}>
+            <Item key={sub.platformId}>
               <div>
-                <Service>{data.platform}</Service>
-                <SubPlan>{data.subPlan}</SubPlan>
+                <Service>{sub.platformName}</Service>
+                <SubPlan>{sub.planName}</SubPlan>
               </div>
-              <Price>{data.price.toLocaleString()}원</Price>
+              <Price>{sub.actualCost.toLocaleString()}원</Price>
             </Item>
           );
         })}

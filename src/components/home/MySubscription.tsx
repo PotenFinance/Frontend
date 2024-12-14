@@ -3,11 +3,7 @@ import ServiceCard from './ServiceCard';
 import styled from '@emotion/styled';
 
 interface IProps {
-  data: Array<{
-    service: string;
-    subplan: string;
-    monthlyprice: number;
-  }>;
+  data: ISubscriptionDetails[];
 }
 
 const dummyData = [
@@ -41,10 +37,20 @@ export default function MySubscription({ data }: IProps) {
   return (
     <SectionLayout heading="나의 구독 서비스" isFirst={true}>
       <CardList moreThanTwo={count < 2}>
-        {dummyData.map(data => {
+        {data.map(data => {
+          const { platformId, platformName, planName, actualCost, renewalDaysLeft } = data;
+
+          const serviceCardData = {
+            platformId,
+            platformName,
+            planName,
+            actualCost,
+            renewalDaysLeft,
+          };
+
           return (
-            <li key={data.service}>
-              <ServiceCard data={data} />
+            <li key={data.platformId}>
+              <ServiceCard {...serviceCardData} />
             </li>
           );
         })}

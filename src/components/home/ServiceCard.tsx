@@ -1,57 +1,32 @@
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-import NetflixLargeLogo from '@assets/icons/logo/large/Netflix';
-import DisneyLargeLogo from '@assets/icons/logo/large/Disney';
-import SpotifyLargeLogo from '@assets/icons/logo/large/Spotify';
-import AdobeLargeLogo from '@assets/icons/logo/large/Adobe';
+import { BRAND_LOGO } from '@constants/logo';
 
-interface IProps {
-  data: {
-    service: string;
-    subplan: string;
-    monthlyprice: number;
-  };
-}
-
-export default function ServiceCard({ data }: IProps) {
+export default function ServiceCard(data: TSubscriptionDetail) {
   const theme = useTheme();
 
-  const { service } = data;
-
-  const serviceName =
-    service === 'netflix'
-      ? '넷플릭스'
-      : service === 'disney'
-      ? '디즈니플러스'
-      : service === 'spotify'
-      ? '스포티파이'
-      : '어도비';
+  const { platformId, platformName, planName, actualCost, renewalDaysLeft } = data;
 
   return (
-    <Card service={service}>
+    <Card service={platformName}>
       <h4>
-        <span className="a11y-hidden">{serviceName}</span>
-        {service === 'netflix' && (
-          <NetflixLargeLogo width="100%" height="100%" color={theme.color.base.white} />
-        )}
-        {service === 'disney' && (
-          <DisneyLargeLogo width="100%" height="100%" color={theme.color.base.white} />
-        )}
-        {service === 'spotify' && (
-          <SpotifyLargeLogo width="100%" height="100%" color={theme.color.base.white} />
-        )}
-        {service === 'adobe' && (
-          <AdobeLargeLogo width="100%" height="100%" color={theme.color.base.white} />
-        )}
+        <span className="a11y-hidden">{platformName}</span>
+        {
+          BRAND_LOGO({
+            width: '100%',
+            height: '100%',
+            color: theme.color.base.white,
+          })['large'][platformId]
+        }
       </h4>
       <CardInnerWrapper>
         <PlanDesc>
-          <Service>{serviceName}</Service>
-          <SubPlan>프리미엄 요금제</SubPlan>
-          <MonthlyPrice>{`8,940원 / 1달`}</MonthlyPrice>
+          <Service>{platformName}</Service>
+          <SubPlan>{planName}</SubPlan>
+          <MonthlyPrice>{`${actualCost.toLocaleString()}원 / 1달`}</MonthlyPrice>
         </PlanDesc>
-        <RemainingDateBadge service={service}>
-          <span>D-1</span>
+        <RemainingDateBadge service={platformName}>
+          <span>{`D-${renewalDaysLeft}`}</span>
         </RemainingDateBadge>
       </CardInnerWrapper>
     </Card>
@@ -63,6 +38,7 @@ const Card = styled.article<{ service: string }>`
   height: 228px;
   border-radius: 4px;
   padding: 14px;
+  // TODO: 플랫폼별 컬러 동적 렌더링 필요
   background-color: ${({ theme, service }) =>
     service === 'netflix'
       ? theme.color.brand.netflix

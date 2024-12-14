@@ -40,6 +40,18 @@ interface IColor {
       spotify: string;
       adobe: string;
       discord: string;
+      coupang: string;
+      youtube: string;
+      watcha: string;
+      kurly: string;
+      naver: string;
+      baemin: string;
+      yogiyo: string;
+      wavve: string;
+      melon: string;
+      applemusic: string;
+      kakao: string;
+      tving: string;
     };
     base: {
       black: string;
@@ -211,6 +223,18 @@ export const lightTheme: Theme = {
       spotify: '#1ED760',
       adobe: '#E3392E',
       discord: '#5865F2',
+      coupang: '#E84921',
+      youtube: '#FF0000',
+      watcha: '#FF0558',
+      kurly: '#522472',
+      naver: '#03C75A',
+      baemin: '#2AC1BC',
+      yogiyo: '#FA0050',
+      wavve: '#022CA4',
+      melon: '#00CD3C',
+      applemusic: '#000000',
+      kakao: '#FFCD00',
+      tving: '#FF143D',
     },
     base: {
       black: '#000000',
