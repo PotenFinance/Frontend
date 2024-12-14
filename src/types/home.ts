@@ -1,6 +1,7 @@
 interface IHomeData {
   /** 유저 이름 */
   userName: string;
+  /** 유저가 설정한 예산 */
   userBudget: number;
   /** 총 구독 비용 */
   totalSubscriptionCost: number;
@@ -41,13 +42,21 @@ interface ISubscriptionDetails {
 
 /** 연간 구독 지출비용 */
 interface IAnnualSubscriptionCost {
+  /** 조회 기준 년도 */
   year: number;
+  /** 당월 지출 비용 */
   currentMonthCost: number;
+  /** 전월 지출 비용 */
   lastMonthCost: number;
+  /** 2개월 전 지출 비용 */
   twoMonthsBeforeCost: number;
+  /** 3개월 전 지출 비용 */
   threeMonthsBeforeCost: number;
+  /** 누적 지출 비용 */
   totalCost: number;
+  /** 증감 비율 */
   costChange: number;
+  /** 비용 증감율 */
   costChangeAmount: number;
 }
 
@@ -66,3 +75,15 @@ type TSubscriptionDetail = Pick<
   ISubscriptionDetails,
   'platformId' | 'platformName' | 'planName' | 'actualCost' | 'renewalDaysLeft'
 >;
+
+/** 연간 구독 비용 */
+type TAnnualSubsSpending = Pick<
+  IAnnualSubscriptionCost,
+  | 'totalCost'
+  | 'threeMonthsBeforeCost'
+  | 'twoMonthsBeforeCost'
+  | 'lastMonthCost'
+  | 'costChange'
+  | 'currentMonthCost'
+  | 'costChangeAmount'
+> & { userBudget: IHomeData['userBudget'] };

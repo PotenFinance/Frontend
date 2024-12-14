@@ -43,6 +43,7 @@ export default function Home() {
         subscriptionDetails,
         remainingBudget,
         annualSubscriptionCost,
+        userBudget,
       } = data?.data;
 
       return {
@@ -57,7 +58,7 @@ export default function Home() {
         // 나의 구독 서비스 데이터
         subscriptionDetails,
         // 연간 구독 비용 데이터
-        annualSpendingData: {},
+        annualSpendingData: { ...annualSubscriptionCost, userBudget },
       };
     },
   });
@@ -75,7 +76,7 @@ export default function Home() {
         {data && <OverviewSection {...data.overviewData} />}
         <ScrollableContainer>
           {data && <MySubscription data={data.subscriptionDetails} />}
-          <YearlySpending />
+          {data && <YearlySpending {...data.annualSpendingData} />}
           {/* TODO: BudgetStatus: 예산이 초과한 경우에만 보여준다 */}
           <BudgetStatus />
           {/* 후순위 */}

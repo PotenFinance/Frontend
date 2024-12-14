@@ -2,6 +2,11 @@ import styled from '@emotion/styled';
 import SectionLayout from './SectionLayout';
 import { TypographySize } from '@styles/theme';
 import BarChart from './BarChart';
+import { getMonth, getYear } from '@utils/date';
+import { formatCost } from '@utils/home';
+import ArrowDown from '@assets/icons/arrow/ArrowDown';
+import { useTheme } from '@emotion/react';
+import ArrowUp from '@assets/icons/arrow/ArrowUp';
 
 const dummyData = {
   // 1: 100000,
@@ -22,29 +27,60 @@ const budgetValue = 200000;
 const currentValue = 102200;
 
 /** 연간 구독 비용 */
-export default function YearlySpending() {
-  const year = new Date().getFullYear();
+export default function YearlySpending(data: TAnnualSubsSpending) {
+  const theme = useTheme();
+  const {
+    costChange,
+    costChangeAmount,
+    currentMonthCost,
+    lastMonthCost,
+    twoMonthsBeforeCost,
+    threeMonthsBeforeCost,
+    totalCost,
+  } = data;
+
+  const year = getYear();
+  const month = getMonth();
+
+  const CHART_DATA = {
+    // [month - 3]: 10000,
+    [month - 3]: threeMonthsBeforeCost,
+    // [month - 2]: 8000,
+    [month - 2]: twoMonthsBeforeCost,
+    [month - 1]: lastMonthCost,
+    [month]: currentMonthCost,
+  };
+
+  console.log('차트 데이터', CHART_DATA, '예산', data.userBudget, '이번달 비용', currentMonthCost);
+  const formattedCost = formatCost(costChangeAmount);
 
   return (
     <SectionLayout heading="연간 구독 비용">
       <InnerWrapper>
         <ChartContainer>
           <BarChart
-            data={dummyData}
-            containerBaseValue={budgetValue}
-            statusBaseValue={currentValue}
+            data={CHART_DATA}
+            containerBaseValue={data.userBudget}
+            statusBaseValue={currentMonthCost}
           />
         </ChartContainer>
         <ChartDesc>
           <CurrentYear>{`${year}년`}</CurrentYear>
-          <Amount>{`총 770,800원`}</Amount>
-          {/* 추후 추가 */}
-          {/* <li>
+          <Amount>{`총 ${totalCost.toLocaleString()}원`}</Amount>
+          <li>
             <ul>
-              <AmountDifference>{`-16,352원`}</AmountDifference>
-              <li>{`전월대비 16%+아이콘`}</li>
+              <AmountDifference costChange={costChange}>{`${formattedCost}원`}</AmountDifference>
+              <DifferenceRate>
+                <span>{`전월대비 `}</span>
+                {`${costChange}%`}
+                {costChange < 0 ? (
+                  <ArrowDown color={theme.color.theme.positive} />
+                ) : costChange > 0 ? (
+                  <ArrowUp color={theme.color.theme.negavite} />
+                ) : null}
+              </DifferenceRate>
             </ul>
-          </li> */}
+          </li>
         </ChartDesc>
       </InnerWrapper>
     </SectionLayout>
@@ -84,6 +120,19 @@ const Amount = styled.li`
 `;
 
 /** 전월대비 지출금액 */
-const AmountDifference = styled.li``;
+const AmountDifference = styled.li<{ costChange: number }>`
+  color: ${({ theme, costChange }) =>
+    costChange > 0
+      ? theme.color.theme.negavite
+      : costChange < 0
+      ? theme.color.theme.positive
+      : theme.color.theme.neutral};
+`;
 /** 전월대비 상승/하락률 */
-const DifferenceRate = styled.li``;
+const DifferenceRate = styled.li`
+  font-size: ${({ theme }) => theme.typography.title_4.fontSize};
+
+  & span {
+    color: ${({ theme }) => theme.color.base.gray.base};
+  }
+`;

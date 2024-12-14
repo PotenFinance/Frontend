@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import ExpensesListCard from './ExpensesListCard';
+import { formatCost } from '@utils/home';
 
 export default function OverviewSection({
   userName,
@@ -8,10 +9,7 @@ export default function OverviewSection({
   subscriptionDetails,
   remainingBudget,
 }: TOverviewData) {
-  const formattedRemainingBudget =
-    remainingBudget < 0
-      ? `-${Math.abs(remainingBudget).toLocaleString()}`
-      : remainingBudget.toLocaleString();
+  const formattedRemainingBudget = formatCost(remainingBudget);
 
   return (
     <Container>
