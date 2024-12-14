@@ -6,7 +6,6 @@ import PlatformReportList from '@components/report/PlatformReportList';
 import styled from '@emotion/styled';
 import { useQuery } from '@tanstack/react-query';
 import { alertComingSoon } from '@utils/alert';
-import { getYear } from '@utils/date';
 import { getReportApi } from 'apis/report';
 import { useRouter } from 'next/router';
 
@@ -75,7 +74,7 @@ function ReportPage() {
 
   const { data } = useQuery<IMonthReport>({
     queryKey: ['report'],
-    queryFn: () => getReportApi(getYear()),
+    queryFn: getReportApi,
   });
 
   const handleChangeTab = (type: string) => {
