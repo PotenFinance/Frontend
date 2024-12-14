@@ -3,6 +3,7 @@ import { usePlanStore } from 'stores/usePlanStore';
 import { useState } from 'react';
 import PlanOptionLayout from './PlanOptionLayout';
 import { isFulfilledBuillingOption } from '@utils/platform';
+import { replaceNonNumeric } from '@utils/regex';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -50,7 +51,9 @@ function BuillingOption({ plan, platformId }: IProps) {
             <Input
               placeholder="1"
               value={plan.billingMonth}
-              onChange={e => updateBillingMonth({ platformId, billingMonth: e.target.value })}
+              onChange={e =>
+                updateBillingMonth({ platformId, billingMonth: replaceNonNumeric(e.target.value) })
+              }
             />
             월&nbsp;
           </>
@@ -58,7 +61,9 @@ function BuillingOption({ plan, platformId }: IProps) {
         <Input
           placeholder="1"
           value={plan?.billingDay}
-          onChange={e => updateBillingDay({ platformId, billingDay: e.target.value })}
+          onChange={e =>
+            updateBillingDay({ platformId, billingDay: replaceNonNumeric(e.target.value) })
+          }
         />
         일에 결제하고 있어요.
       </BuillingItem>

@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { usePlanStore } from 'stores/usePlanStore';
 import PlanOptionLayout from './PlanOptionLayout';
 import { isFulfilledMemberOption } from '@utils/platform';
+import { replaceNonNumeric } from '@utils/regex';
 
 interface IProps {
   plan?: ISignupPlatform;
@@ -38,7 +39,9 @@ function MemberOption({ plan, platformId }: IProps) {
             <input
               placeholder="0"
               value={plan.groupMembers}
-              onChange={e => updateGroupMembers({ platformId, groupMembers: e.target.value })}
+              onChange={e =>
+                updateGroupMembers({ platformId, groupMembers: replaceNonNumeric(e.target.value) })
+              }
             />
             명
           </div>

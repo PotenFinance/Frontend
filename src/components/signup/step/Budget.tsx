@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Button from '@components/common/Button';
 import { useSignupStore } from 'stores/useSignupStore';
 import { useState } from 'react';
+import { replaceNonNumeric } from '@utils/regex';
 
 function SignupBudget() {
   const router = useRouter();
@@ -29,7 +30,7 @@ function SignupBudget() {
             <div>
               <PriceInput
                 value={inputBudget}
-                onChange={e => setInputBudget(e.target.value)}
+                onChange={e => setInputBudget(replaceNonNumeric(e.target.value))}
                 placeholder="00,000"
               />
               원
