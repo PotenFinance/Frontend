@@ -16,7 +16,7 @@ function PlanTabs({ platformId, setPlatformId }: IProps) {
   const { plans } = usePlanStore();
 
   return (
-    <Tabs>
+    <Tabs className="scroll-hidden">
       {plans.map(v => (
         <Tab key={v.platformId} onClick={() => setPlatformId(v.platformId)}>
           {

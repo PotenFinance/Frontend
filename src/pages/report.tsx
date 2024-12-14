@@ -63,6 +63,11 @@ const testData = {
   },
 };
 
+const TABS = [
+  { id: 'platform', txt: '플랫폼별' },
+  { id: 'month', txt: '월별' },
+];
+
 function ReportPage() {
   const router = useRouter();
   const { type = 'month' } = router.query;
@@ -73,25 +78,22 @@ function ReportPage() {
   });
 
   const handleChangeTab = (type: string) => {
+    if (type === 'platform') {
+      alert('지원 예정입니다.');
+      return;
+    }
     router.push(`/report?type=${type}`);
   };
 
   return (
     <Container>
-      <Tabs
-        tabList={[
-          { id: 'platform', txt: '플랫폼별' },
-          { id: 'month', txt: '월별' },
-        ]}
-        currentTab={type as string}
-        handleChangeTab={handleChangeTab}
-      />
-      {type === 'platform' && (
+      <Tabs tabList={TABS} currentTab={type as string} handleChangeTab={handleChangeTab} />
+      {/* {type === 'platform' && (
         <div>
           <PlatformReportChart />
           <PlatformReportList />
         </div>
-      )}
+      )} */}
       {type === 'month' && (
         <div>
           <MonthReportChart data={testData.monthly_report} budget={testData.budget} />
