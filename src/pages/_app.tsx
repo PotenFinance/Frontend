@@ -25,17 +25,19 @@ export default function App({ Component, pageProps }: AppProps) {
     !router.pathname.includes('auth') &&
     !router.pathname.includes('signup');
 
-  // useEffect(() => {
-  //   if (isPrivatePage && !getCookie('accessToken')) router.push('/login');
-  // }, []);
+  useEffect(() => {
+    if (isPrivatePage && !getCookie('accessToken')) router.push('/login');
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={lightTheme}>
         <Global styles={global} />
-        <Layout viewNavTab={isPrivatePage}>
-          <Component {...pageProps} />
-        </Layout>
+        {(!isPrivatePage || (isPrivatePage && getCookie('accessToken'))) && (
+          <Layout viewNavTab={isPrivatePage}>
+            <Component {...pageProps} />
+          </Layout>
+        )}
       </ThemeProvider>
     </QueryClientProvider>
   );
