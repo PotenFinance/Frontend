@@ -18,16 +18,17 @@ import { setCookie } from '@utils/cookie';
 import { isFulfilledPlan } from '@utils/platform';
 
 function SignupPlan() {
-  const [platformId, setPlatformId] = useState(101);
-
   const router = useRouter();
 
   const { code, userId, budget, platforms, setPlatforms, resetSignupData } = useSignupStore();
   const { plans, setPlans } = usePlanStore();
 
-  const { data } = useQuery<GetPlatformPlanRes>({
+  const [platformId, setPlatformId] = useState(plans[0].platformId);
+
+  const { data } = useQuery<IPlan[]>({
     queryKey: ['platformPlans', platformId],
     queryFn: () => getPlatformPlansApi(platformId),
+    enabled: !!platformId,
   });
 
   const { mutate } = useMutation<ILoginRes, Error, ISignupReq>({
@@ -69,7 +70,7 @@ function SignupPlan() {
           <SignupTitle>선택한 구독 서비스별 요금제를 입력해 주세요.</SignupTitle>
           <PlanTabs platformId={platformId} setPlatformId={setPlatformId} />
           <div>
-            <PlanOption plan={getPlan(platformId)} platformId={platformId} />
+            <PlanOption options={data} plan={getPlan(platformId)} platformId={platformId} />
             <Divider />
             <MemberOption plan={getPlan(platformId)} platformId={platformId} />
             <Divider />
