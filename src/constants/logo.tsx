@@ -1,0 +1,81 @@
+import {
+  AppleMusicLargeLogo,
+  BaeminLargeLogo,
+  CoupangLargeLogo,
+  DisneyLargeLogo,
+  KakaoLargeLogo,
+  KurlyLargeLogo,
+  MelonLargeLogo,
+  NaverLargeLogo,
+  NetflixLargeLogo,
+  SpotifyLargeLogo,
+  TvingLargeLogo,
+  WatchaLargeLogo,
+  WavveLargeLogo,
+  YogiyoLargeLogo,
+  YoutubeLargeLogo,
+  YoutubeMusicLargeLogo,
+} from '@assets/icons/logo/large';
+import {
+  AppleMusicSmallLogo,
+  BaeminSmallLogo,
+  CoupangSmallLogo,
+  DisneySmallLogo,
+  KakaoSmallLogo,
+  KurlySmallLogo,
+  MelonSmallLogo,
+  NaverSmallLogo,
+  NetflixSmallLogo,
+  SpotifySmallLogo,
+  TvingSmallLogo,
+  WatchaSmallLogo,
+  WavveSmallLogo,
+  YogiyoSmallLogo,
+  YoutubeSmallLogo,
+  YoutubeMusicSmallLogo,
+} from '@assets/icons/logo/small';
+
+interface IProps {
+  width?: string | number;
+  height?: string | number;
+  color?: string;
+}
+
+export const BRAND_LOGO = (props: IProps) => ({
+  large: {
+    E001: <KakaoLargeLogo {...props} />,
+    M001: <MelonLargeLogo {...props} />,
+    M002: <AppleMusicLargeLogo {...props} />,
+    M003: <YoutubeMusicLargeLogo {...props} />,
+    M004: <SpotifyLargeLogo {...props} />,
+    O001: <NetflixLargeLogo {...props} />,
+    O002: <DisneyLargeLogo {...props} />,
+    O003: <YoutubeLargeLogo {...props} />,
+    O004: <TvingLargeLogo {...props} />,
+    O005: <WavveLargeLogo {...props} />,
+    O006: <WatchaLargeLogo {...props} />,
+    S001: <CoupangLargeLogo {...props} />,
+    S002: <KurlyLargeLogo {...props} />,
+    S003: <NaverLargeLogo {...props} />,
+    S004: <BaeminLargeLogo {...props} />,
+    S005: <YogiyoLargeLogo {...props} />,
+  } as Record<string, React.ReactNode>,
+  small: {
+    E001: <KakaoSmallLogo {...props} />,
+    M001: <MelonSmallLogo {...props} />,
+    M002: <AppleMusicSmallLogo {...props} />,
+    M003: <YoutubeMusicSmallLogo {...props} />,
+    M004: <SpotifySmallLogo {...props} />,
+    O001: <NetflixSmallLogo {...props} />,
+    O002: <DisneySmallLogo {...props} />,
+    O003: <YoutubeSmallLogo {...props} />,
+    O004: <TvingSmallLogo {...props} />,
+    O005: <WavveSmallLogo {...props} />,
+    O006: <WatchaSmallLogo {...props} />,
+    S001: <CoupangSmallLogo {...props} />,
+    S002: <KurlySmallLogo {...props} />,
+    S003: <NaverSmallLogo {...props} />,
+    S004: <BaeminSmallLogo {...props} />,
+    S005: <YogiyoSmallLogo {...props} />,
+  } as Record<string, React.ReactNode>,
+});
