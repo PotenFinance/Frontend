@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
     !router.pathname.includes('signup');
 
   useEffect(() => {
-    if (isPrivatePage && !getCookie('accessToken')) router.push('/login');
+    // if (isPrivatePage && !getCookie('accessToken')) router.push('/login');
   }, []);
 
   return (
