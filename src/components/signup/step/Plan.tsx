@@ -38,13 +38,13 @@ function SignupPlan() {
   const { mutate } = useMutation<IUserInfo, Error, ISignupReq>({
     mutationFn: data => signupApi(data),
     onSuccess: data => {
-      if (data.access_token && data.refresh_token) {
+      if (data.accessToken && data.refreshToken) {
         resetSignupData();
         resetServiceData();
         resetPlanData();
         setUser(data);
-        setCookie('accessToken', data.access_token);
-        setCookie('refreshToken', data.refresh_token);
+        setCookie('accessToken', data.accessToken);
+        setCookie('refreshToken', data.refreshToken);
         router.push('/');
       }
     },

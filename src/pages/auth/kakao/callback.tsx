@@ -15,10 +15,10 @@ function AuthCallbackPage() {
   const login = async () => {
     try {
       const data: IUserInfo = await loginApi(code as string);
-      if (data.access_token && data.refresh_token) {
+      if (data.accessToken && data.refreshToken) {
         setUser(data);
-        setCookie('accessToken', data.access_token);
-        setCookie('refreshToken', data.refresh_token);
+        setCookie('accessToken', data.accessToken);
+        setCookie('refreshToken', data.refreshToken);
         router.push('/');
       } else {
         setUserId(data.id);

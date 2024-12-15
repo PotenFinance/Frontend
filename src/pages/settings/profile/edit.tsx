@@ -15,7 +15,7 @@ export default function ProfileEdit() {
   const router = useRouter();
   const { user } = useUserStore();
 
-  const [username, setUsername] = useState(user?.properties.nickname || '김포텐');
+  const [username, setUsername] = useState(user?.nickname || '김포텐');
   const [isError, setIsError] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

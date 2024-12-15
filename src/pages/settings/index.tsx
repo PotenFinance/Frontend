@@ -17,7 +17,7 @@ export default function MyPage() {
         <ProfileHeader>
           <div>
             <ImagePlaceholder width={80} height={80} />
-            <Username>{user?.properties.nickname || '김포텐'}</Username>
+            <Username>{user?.nickname || '김포텐'}</Username>
           </div>
           <NotificationIcon width={25} height={32} hasNewMessages={false} />
         </ProfileHeader>
